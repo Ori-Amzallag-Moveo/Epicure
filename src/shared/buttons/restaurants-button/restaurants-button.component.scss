@@ -1,0 +1,47 @@
+@import 'mobile-typography';
+@import 'desktop-typography';
+
+.container {
+    @include flexStyleRow;
+    gap: 12px;
+    border: none;
+    cursor: pointer;
+    background:none;
+    
+    img {
+        height: 24px;
+        width: 24px;
+    }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: $smallScreenSize) {
+    .container {
+        @include restaurantsLinkFontMobile;
+        font-size: 13px;
+        width: 172px;
+        height: 35px;
+    }
+}
+
+/* Medium screens */
+@media screen and (min-width: ($smallScreenSize + 1)) and (max-width: $largeScreenSize) {
+    .container {
+        @include restaurantsLinkFontDesktop;
+        font-size: 3vh;
+        width: 100%;
+        height: 35px;
+    }   
+}
+
+/* Large screens */
+@media screen and (min-width: ($largeScreenSize + 1)) {
+    .container {
+        @include restaurantsLinkFontDesktop;
+        font-size: 3vh;
+        width: 226px;   
+        height: 35px;
+    }
+}
