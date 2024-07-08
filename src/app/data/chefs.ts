@@ -1,4 +1,4 @@
-import { Chef } from "../../models/chef.model";
+import { Chef } from "../models/chef.model";
 
 export const chefs: Chef[] = [
   {
