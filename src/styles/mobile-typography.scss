@@ -1,0 +1,136 @@
+/* ---------------- fonts imports ---------------- */
+
+@font-face {
+    font-family: primaryFont;
+    src: url(../fonts/HelveticaNeueThin.otf);
+}
+
+/* ---------------- colors variables ---------------- */
+
+$blackColor: #000000;
+$greyColor: #979797;
+$cremeColor: #F9F4EA;
+$goldColor: #E19D1A;
+$lightGreyColor: #FAFAFA;
+
+
+/* ---------------- flex mixins ---------------- */
+
+@mixin flexStyleRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+@mixin flexStyleColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ---------------- fonts mixins ---------------- */
+
+@mixin h1FontMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 24px;
+    // line-height: 32px;
+    letter-spacing: 1.97px;
+}
+
+@mixin h2FontMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 18px;
+    // line-height: 24px;
+    letter-spacing: 1.25px;
+}
+
+@mixin h3FontMobile {
+    font-family: primaryFont;
+    font-weight: 400;
+    font-size: 18px;
+    // line-height: 21.47px;
+    letter-spacing: 2.67px;
+}
+
+@mixin bodyTextFontMobile {
+    font-family: primaryFont;
+    font-weight: 400;
+    font-size: 16px;
+    // line-height: 20px;
+    letter-spacing: 1.97px;
+}
+
+@mixin buttonFontMobile {
+    font-family: primaryFont;
+    font-weight: 400;
+    font-size: 18px; // There is a mistake in the designer typography.
+    // line-height: 20px;
+    letter-spacing: 2.67px;
+}
+
+@mixin inputTextFontMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 16px;
+    // line-height: 18px;
+    letter-spacing: 1.97px;
+}
+
+@mixin labelTextFontMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 14px;
+    // line-height: 18px;
+    letter-spacing: 1.97px;
+}
+
+@mixin searchBarFontMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 12px;
+    // line-height: 14.51px;
+    letter-spacing: 1.29px;
+}
+
+@mixin restaurantsLinkFontMobile {
+    font-family: primaryFont;
+    font-weight: 400;
+    font-size: 16px;
+    // line-height: 35px;
+    letter-spacing: 2px;
+}
+
+@mixin iconLabelMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 18px;
+    // line-height: 30px;
+    letter-spacing: 1.97px;
+}
+
+@mixin chefPhotoNameFontMobile {
+    font-family: primaryFont;
+    font-weight: 400;
+    font-size: 18px;
+    // line-height: 47px;
+    letter-spacing: 2.67px;
+}
+
+@mixin articleTextFontMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 18px;
+    // line-height: 28px;
+    letter-spacing: 1.25px;
+}
+
+@mixin articleSubHeaderFontMobile {
+    font-family: primaryFont;
+    font-weight: 200;
+    font-size: 16px;
+    // line-height: 25px;
+    letter-spacing: 1.25px;
+}
