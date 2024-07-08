@@ -1,19 +1,19 @@
 @import "_fonts";
 
 @mixin fontStyle($primaryFont, $weight, $size, $spacing) {
-    font-family: $primaryFont;
-    font-weight: $weight;
-    font-size: $size;
-    letter-spacing: $spacing;
+  font-family: $primaryFont;
+  font-weight: $weight;
+  font-size: $size;
+  letter-spacing: $spacing;
 }
 
 @mixin fontProperties($weight, $size, $letterSpacing) {
-    @include fontStyle($primaryFont, $weight, $size, $letterSpacing);
+  @include fontStyle($primaryFont, $weight, $size, $letterSpacing);
 }
 
 @mixin fontWithSize($weight, $mobileSize, $desktopSize, $letterSpacing) {
+  @include fontProperties($weight, $desktopSize, $letterSpacing);
+  @include small-screen {
     @include fontProperties($weight, $mobileSize, $letterSpacing);
-    @include small-screen  {
-        @include fontProperties($weight, $desktopSize, $letterSpacing);
-    }
+  }
 }

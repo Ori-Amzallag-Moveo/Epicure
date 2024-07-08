@@ -23,8 +23,7 @@
 
 /* Medium and large screens */
 @mixin medium-large-screens {
-    @media screen and (min-width: ($smallScreenSize + 1)) {
-      @content;
-    }
+  @media screen and (min-width: ($smallScreenSize + 1)) {
+    @content;
+  }
 }
-
