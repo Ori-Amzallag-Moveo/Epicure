@@ -1,0 +1,78 @@
+@import "mobile-typography";
+@import "desktop-typography";
+
+.slider-container {
+  @include componentPadding;
+  width: 100%;
+  overflow: hidden;
+  
+  h2 {        
+      text-transform: uppercase;
+      margin-bottom: 3vh;
+  }
+
+  .slider {
+      display: flex;
+      flex-direction: row;
+  }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: $smallScreenSize) {
+  .wrapper {
+    @include smallPadding;
+    padding-right: 0px;
+
+    .slider-container {
+      h2 {
+          @include h2FontMobile;
+      }
+      .slider {
+          margin-bottom: 18.2px;
+
+          .rating {
+              display: none;
+          }
+          p {
+            margin-bottom: 2vh;
+          }
+      }
+      app-restaurants-button {
+          display: flex;
+      }
+    } 
+  }
+}
+
+/* Medium and large screens */
+@media screen and (min-width: ($smallScreenSize + 1)) {
+  .wrapper {
+    @include bigPadding;
+
+    .slider-container {
+      @include flexStyleColumn;
+      text-align: center;
+  
+      h2 {
+          @include h2FontDesktop;
+      }  
+      .slider {    
+          width: 100%;
+          min-width: 600px;
+
+          p {
+            margin-bottom: 6px;
+          }
+          .rating {
+              width: 60%;
+          }
+      }
+      app-restaurants-button {
+        align-self: flex-end;
+        margin-top: 15px;
+      }
+    }
+  }
+}
