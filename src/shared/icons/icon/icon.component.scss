@@ -1,0 +1,63 @@
+@import 'mobile-typography';
+@import 'desktop-typography';
+
+.container {
+    @include flexStyleColumn;
+    img {
+        height: 60px;
+        width: 77.42px;
+        margin-bottom: 32px;
+    }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: 480px) {
+    .container {
+        height: 102px;
+        width: 136px;
+        p {
+          @include iconLabelMobile;
+          font-size: 3vh;
+        }
+        img {
+            height: 35px;
+            width: 46px;
+            margin-bottom: 32px;
+        }
+    } 
+}
+/* Medium screens */
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+    .container {
+        height: 127px;
+        width: 136px;
+        p {
+          @include iconLabelDesktop;
+          font-size: 4vh;
+        }
+        img {
+            height: 60px;
+            width: 77.42px;
+            margin-bottom: 32px;
+        }
+    }
+}
+
+/* Large screens */
+@media screen and (min-width: 1025px) {
+  .container {
+    height: 127px;
+    width: 136px;
+        p {
+        @include iconLabelDesktop;
+        font-size: 5vh;
+        }
+        img {
+            height: 60px;
+            width: 77.42px;
+            margin-bottom: 32px;
+        }
+    }
+}
