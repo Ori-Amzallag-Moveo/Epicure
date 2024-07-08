@@ -1,0 +1,66 @@
+@import 'mobile-typography';
+@import 'desktop-typography';
+
+.generic-card-container {
+  background-color: $cremeColor;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-container {
+    @include flexStyleColumn;
+  }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: $smallScreenSize) {
+  .generic-card-container {
+    @include flexStyleColumn;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+
+    h3 {
+      @include h3FontMobile;
+      font-size: 3vh;
+      align-self: flex-start;
+      margin-top: 1vh;
+      margin-left: 3vh;
+
+    }
+    .text-container {
+      @include bodyTextFontMobile;
+      font-size: 2vh;
+      align-self: flex-start;
+      margin-left: 3vh;
+    }
+  }
+}
+
+/* Medium and large screens */
+@media screen and (min-width: ($smallScreenSize + 1)) {
+  .generic-card-container {
+    @include flexStyleColumn;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 155px;
+    text-align: center;
+
+    h3 {
+      @include h3FontDesktop;
+      font-size: 19px;
+    }
+    .text-container {
+      @include bodyTextFontDesktop;
+      font-size: 10px;
+      text-align: center;
+    }
+  }
+}
