@@ -1,0 +1,62 @@
+@import "mobile-typography";
+@import "desktop-typography";
+
+.container {
+  @include componentPadding;
+  background-color: $lightGreyColor;
+  @include flexStyleColumn;
+  margin-top: 46px;
+
+  h2 {
+    text-transform: uppercase;
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+
+  .icons-container {
+    @include flexStyleColumn;
+    gap: 56px;
+    margin-bottom: 24px;
+  }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: $smallScreenSize) {
+  .container {
+    h2 {
+      @include h2FontMobile;
+    }
+  }
+}
+
+/* Medium screens */
+@media screen and (min-width: ($smallScreenSize + 1)) {
+  .container {
+    margin-top: 60px;
+
+    h2 {
+      @include h2FontDesktop;
+      font-size: 5vh;
+      margin-top: 35.5px;
+    }
+
+    .icons-container {
+      @include flexStyleRow;
+      margin-bottom: 4vh;
+      gap: 40px; // default gap for large screens
+    }
+  }
+}
+
+/* Large screens */
+@media screen and (min-width: ($largeScreenSize + 1)) {
+  .container {
+    margin-top: 80px;
+
+    .icons-container {
+      gap: 40px;
+    }
+  }
+}
