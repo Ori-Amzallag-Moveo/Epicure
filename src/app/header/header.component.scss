@@ -1,0 +1,104 @@
+@import "mobile-typography";
+@import "desktop-typography";
+
+.wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .header-container {
+    @include flexStyleRow;
+    box-sizing: border-box;
+    justify-content: space-between;
+    position: relative;
+
+    .right-toolbar {
+      @include flexStyleRow;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .left-toolbar {
+      @include flexStyleRow;
+      justify-content: space-between;
+      gap: 15.07px;
+
+      .logo {
+        padding-bottom: 5px;
+      }
+    }
+
+    .links-container {
+      @include flexStyleRow;
+      justify-content: space-between;
+      gap: 32px;
+
+      h2 {
+        @include h2FontDesktop;
+      }
+
+      .button-container {
+        @include flexStyleRow;
+        justify-content: space-between;
+        gap: 32px;
+        padding-top: 3px;
+
+        button {
+          @include linksFontDesktop;
+        }
+      }
+    }
+  }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: $smallScreenSize) {
+  .wrapper {
+    @include smallPadding;
+    .header-container {
+      height: 46px;
+
+      .links-container {
+        display: none;
+      }
+      .logo {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translateY(-50%);
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+/* Medium and large screens */
+@media screen and (min-width: ($smallScreenSize + 1))  {
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    @include bigPadding;
+
+    .header-container {
+      height: 64px;
+      width: 100%;
+      gap: 50px;
+
+      .navbar-icon {
+        display: none;
+      }
+      .navbar-btn {
+        display: none;
+      }
+
+      .right-toolbar {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
