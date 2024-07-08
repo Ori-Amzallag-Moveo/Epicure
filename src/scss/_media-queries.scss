@@ -1,0 +1,29 @@
+@import "_vars";
+
+/* Small screens */
+@mixin small-screen {
+  @media screen and (max-width: $smallScreenSize) {
+    @content;
+  }
+}
+
+/* Medium screens */
+@mixin medium-screens {
+  @media screen and (min-width: ($smallScreenSize + 1)) and (max-width: $largeScreenSize) {
+    @content;
+  }
+}
+
+/* Large screens */
+@mixin large-screens {
+  @media screen and (min-width: ($largeScreenSize + 1)) {
+    @content;
+  }
+}
+
+/* Medium and large screens */
+@mixin medium-large-screens {
+  @media screen and (min-width: ($smallScreenSize + 1)) {
+    @content;
+  }
+}
