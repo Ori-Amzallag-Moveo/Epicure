@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 @import "_index";
+=======
+@import 'mobile-typography';
+@import 'desktop-typography';
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
 
 .hero-container {
   position: relative;
   width: 100%;
   overflow: hidden;
+<<<<<<< HEAD
+=======
+  height: 100vh;
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
 
   .background-img-container {
     position: absolute;
@@ -25,17 +34,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+<<<<<<< HEAD
     background-color: #ffffff;
+=======
+    background-color: #FFFFFF;
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
     opacity: 0.8;
     z-index: 1;
     text-align: center;
     box-sizing: border-box;
     padding-bottom: 26px;
 
+<<<<<<< HEAD
     h1 {
       @include h1Font;
     }
 
+=======
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
     app-search-bar {
       display: flex;
       justify-content: center;
@@ -46,16 +62,29 @@
 /* ---------------- Media Query ---------------- */
 
 /* Small screens */
+<<<<<<< HEAD
 @include small-screen {
+=======
+@media screen and (max-width: $smallScreenSize) {
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
   .hero-container {
     height: 273px;
 
     .overlay-content {
       width: 90vh;
+<<<<<<< HEAD
       max-width: 90%;
 
       h1 {
         line-height: 35px;
+=======
+      max-width: 85%;
+
+      h1 {
+        @include h1FontMobile;
+        line-height: 4vh;
+        font-size: 3vh;
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
         margin-top: 16px;
         margin-bottom: 5px;
       }
@@ -64,17 +93,31 @@
 }
 
 /* Medium and large screens */
+<<<<<<< HEAD
 @include medium-large-screens {
+=======
+@media screen and (min-width: ($smallScreenSize + 1)) {
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
   .hero-container {
     height: 400px;
 
     .overlay-content {
+<<<<<<< HEAD
       width: 750px;
       max-width: 60%;
       min-width: 550px;
 
       h1 {
         line-height: 40px;
+=======
+      max-width: 55%;
+      min-width: 550px;
+
+      h1 {
+        @include h1FontDesktop;
+        line-height: 40px;
+        font-size: 6vh;
+>>>>>>> ae16051 (homepage/hero component and searchbar component)
         margin-top: 36px;
         margin-bottom: 23px;
       }
