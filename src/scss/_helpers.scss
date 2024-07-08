@@ -11,7 +11,7 @@
   @include fontStyle($primaryFont, $weight, $size, $letterSpacing);
 }
 
-@mixin fontWithSize($weight, $mobileSize, $desktopSize, $letterSpacing) {
+@mixin responsiveFont($weight, $mobileSize, $desktopSize, $letterSpacing) {
   @include fontProperties($weight, $desktopSize, $letterSpacing);
   @include small-screen {
     @include fontProperties($weight, $mobileSize, $letterSpacing);

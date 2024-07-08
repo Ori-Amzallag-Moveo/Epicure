@@ -4,53 +4,53 @@
 
 /* Mobile and Desktop Mixins */
 @mixin h1Font {
-  @include fontWithSize(200, 24px, 32px, 2px);
+  @include responsiveFont(200, 24px, 32px, 2px);
 }
 
 @mixin h2Font {
-  @include fontWithSize(200, 18px, 30px, 1.25px);
+  @include responsiveFont(200, 18px, 30px, 1.25px);
 }
 
 @mixin h3Font {
-  @include fontWithSize(400, 18px, 40px, 2.7px);
+  @include responsiveFont(400, 18px, 40px, 2.7px);
 }
 
 @mixin bodyTextFont {
-  @include fontWithSize(200, 16px, 24px, 2px);
+  @include responsiveFont(200, 16px, 24px, 2px);
 }
 
 @mixin buttonFont {
-  @include fontWithSize(400, 18px, 18px, 2.7px);
+  @include responsiveFont(400, 18px, 18px, 2.7px);
 }
 
 @mixin inputTextFont {
-  @include fontWithSize(200, 16px, 16px, 2px);
+  @include responsiveFont(200, 16px, 16px, 2px);
 }
 
 @mixin labelTextFont {
-  @include fontWithSize(200, 14px, 14px, 2px);
+  @include responsiveFont(200, 14px, 14px, 2px);
 }
 
 @mixin searchBarFont {
-  @include fontWithSize(200, 12px, 24px, 1.3px);
+  @include responsiveFont(200, 12px, 24px, 1.3px);
 }
 
 @mixin restaurantsLinkFont {
-  @include fontWithSize(400, 16px, 24px, 2px);
+  @include responsiveFont(400, 16px, 24px, 2px);
 }
 
 @mixin iconLabelFont {
-  @include fontWithSize(200, 18px, 24px, 2px);
+  @include responsiveFont(200, 18px, 24px, 2px);
 }
 
 @mixin chefPhotoNameFont {
-  @include fontWithSize(400, 18px, 40px, 2.65px);
+  @include responsiveFont(400, 18px, 40px, 2.65px);
 }
 
 @mixin articleTextFont {
-  @include fontWithSize(200, 18px, 24px, 1.25px);
+  @include responsiveFont(200, 18px, 24px, 1.25px);
 }
 
 @mixin articleSubHeaderFont {
-  @include fontWithSize(200, 16px, 30px, 1.25px);
+  @include responsiveFont(200, 16px, 30px, 1.25px);
 }
