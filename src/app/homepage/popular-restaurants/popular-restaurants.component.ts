@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { RestaurantsButtonComponent } from '../../../shared/buttons/restaurants-button/restaurants-button.component';
+import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CommonModule } from '@angular/common';
 import { popularRestaurants } from '../../data/popularRestaurants';
 import { breakpointsRes1 } from '../../data/breakpoints';

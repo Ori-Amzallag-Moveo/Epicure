@@ -1,8 +1,7 @@
 <div class="generic-card-container">
-    <img [src]="imageSrc" alt="{{title}}">
-    <h3>{{title}}</h3>
-    <div class="text-container">
-      <ng-content select="[card-content]"></ng-content>
-    </div>
+  <img [src]="imageSrc" alt="{{ title }}" />
+  <h3>{{ title }}</h3>
+  <div class="text-container">
+    <ng-content select="[card-content]"></ng-content>
   </div>
-  
+</div>
