@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { HeroComponent } from './hero/hero.component';
-import { PopularRestaurantsComponent } from "./popular-restaurants/popular-restaurants.component";
+import { PopularRestaurantsComponent } from './popular-restaurants/popular-restaurants.component';
 import { SignatureDishesComponent } from './signature-dishes/signature-dishes.component';
 import { GenericCardComponent } from '../../shared/components/cards/generic-card/generic-card.component';
 import { IconMeaningComponent } from './icon-meaning/icon-meaning.component';
-
-
+import { WeekChefComponent } from './week-chef/week-chef.component';
 
 @Component({
   selector: 'app-homepage',
@@ -16,11 +15,9 @@ import { IconMeaningComponent } from './icon-meaning/icon-meaning.component';
     SignatureDishesComponent,
     GenericCardComponent,
     IconMeaningComponent,
-
+    WeekChefComponent,
   ],
   templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.scss'
+  styleUrl: './homepage.component.scss',
 })
-export class HomepageComponent {
-
-}
+export class HomepageComponent {}
