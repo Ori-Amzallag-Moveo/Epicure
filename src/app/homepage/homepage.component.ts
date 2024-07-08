@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HeroComponent } from './hero/hero.component';
+import { PopularRestaurantsComponent } from "./popular-restaurants/popular-restaurants.component";
+
 
 
 @Component({
@@ -7,6 +9,7 @@ import { HeroComponent } from './hero/hero.component';
   standalone: true,
   imports: [
     HeroComponent,
+    PopularRestaurantsComponent,
 
   ],
   templateUrl: './homepage.component.html',
