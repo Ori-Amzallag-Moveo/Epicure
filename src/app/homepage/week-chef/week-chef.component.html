@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="week-chef-container">
+    <h2>Chef of the week:</h2>
+    <div class="descripition-container">
+      <img src="assets/yosi-shitrit.jpg" alt="Yosi Shitrit" />
+      <p class="chef-description">{{ chefOfTheWeek.description }}</p>
+    </div>
+    <div class="restaurants-container">
+      <h3>{{ getFirstName(chefOfTheWeek.name) }}'s restaurants</h3>
+      <swiper-container class="cards-container" [breakpoints]="breakpoints">
+        @for (restaurant of chefOfTheWeek.restaurants; track restaurant){
+        <swiper-slide>
+          <app-generic-card
+            [title]="restaurant.name"
+            [imageSrc]="restaurant.imgSrc">
+          </app-generic-card>
+        </swiper-slide>
+        }
+      </swiper-container>
+    </div>
+    <app-restaurants-button />
+  </div>
+</div>
