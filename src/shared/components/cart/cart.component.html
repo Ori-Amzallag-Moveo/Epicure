@@ -1,0 +1,41 @@
+@if (cartIsEmpty) {
+<div class="cart-container empty">
+  <div class="empty-bag">
+    <img src="/assets/bag.svg" alt="Empty bag" />
+    <p>
+      Your bag is <br />
+      empty
+    </p>
+  </div>
+  <app-order-history-button
+    (click)="viewOrderHistory()"
+  ></app-order-history-button>
+</div>
+} @else {
+<div class="cart-container full">
+  <div class="full-bag">
+    <h2>YOUR ORDER</h2>
+    <h3>Mashya</h3>
+  </div>
+  <div>
+    <ul>
+      <!-- @for (item of cartItems; track item) {
+            <app-cart-card [dish]="item"></app-cart-card>
+          } -->
+    </ul>
+  </div>
+  <div class="dishes-counter">
+    <br />
+    <br />
+    <p class="counter">price counter</p>
+  </div>
+  <div class="comment-container">
+    <p>Add A Comment</p>
+    <textarea rows="3" placeholder="Special requests, allergies"></textarea>
+  </div>
+  <div class="buttons-container">
+    <app-checkout-button></app-checkout-button>
+    <app-order-history-button />
+  </div>
+</div>
+}
