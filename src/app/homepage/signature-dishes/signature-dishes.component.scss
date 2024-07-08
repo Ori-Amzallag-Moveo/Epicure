@@ -1,0 +1,148 @@
+@import "mobile-typography";
+@import "desktop-typography";
+
+.slider-container {
+  @include componentPadding;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
+
+  h2 {
+    text-transform: uppercase;
+    margin-bottom: 3vh;
+  }
+
+  .slider {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: $smallScreenSize) {
+  .wrapper {
+    @include smallPadding;
+    padding-right: 0px;
+    .slider-container {
+      width: 100%;
+      h2 {
+        @include h2FontMobile;
+        text-align: left;
+      }
+      .slider {
+        margin-bottom: 18px;
+
+        .ingredients-container {
+          @include flexStyleColumn;
+          gap: 5px;
+          align-items: flex-start;
+          margin-right: 25px;
+
+          .ingredients {
+            text-align: left;
+            line-height: 2vh;
+            max-height: 35px;
+            overflow-y: scroll;
+          }
+          .icon-container {
+            display: flex;
+            gap: 5px;
+
+            .icon {
+              width: 4vh;
+              height: 4vh;
+            }
+          }
+          .line {
+            display: none;
+          }
+          .coin-container {
+            @include flexStyleRow;
+            gap: 3px;
+            margin-bottom: 10px;
+            .ILS {
+              width: 1vh;
+              height: 1vh;
+            }
+          }
+        }
+      }
+      app-restaurants-button {
+        display: flex;
+      }
+    }
+  }
+}
+
+/* Medium and large screens */
+@media screen and (min-width: ($smallScreenSize + 1)) {
+  .wrapper {
+    @include bigPadding;
+    .slider-container {
+      @include flexStyleColumn;
+      h2 {
+        @include h2FontDesktop;
+      }
+      .swiper-slide {
+        height: auto;
+      }
+      .slider {
+        width: 100%;
+
+        .ingredients-container {
+          @include flexStyleColumn;
+          gap: 5px;
+
+          .ingredients {
+            order: 2;
+            line-height: 3vh;
+            font-size: 11px;
+            margin-left: 50px;
+            margin-right: 50px;
+            text-align: center;
+            max-height: 52px;
+            overflow-y: scroll;
+          }
+          .icon-container {
+            order: 1;
+            display: flex;
+            gap: 5px;
+
+            .icon {
+              width: 4vh;
+              height: 4vh;
+            }
+          }
+          .price-container {
+            @include flexStyleRow;
+            order: 3;
+            gap: 10px;
+
+            .line {
+              width: 55px;
+              height: 0px;
+              border: 0.1px solid #979797;
+            }
+
+            .coin-container {
+              @include flexStyleRow;
+              gap: 3px;
+              margin-bottom: 10px;
+              margin-top: 7px;
+              .ILS {
+                width: 1vh;
+                height: 1vh;
+              }
+            }
+          }
+        }
+      }
+      app-restaurants-button {
+        display: none;
+      }
+    }
+  }
+}

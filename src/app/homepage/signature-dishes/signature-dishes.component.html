@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="slider-container">
+    <h2>Signature dish of:</h2>
+    <swiper-container class="slider" [breakpoints]="breakpoints">
+      @for (dish of dishes; track dish) {
+      <swiper-slide>
+        <app-generic-card
+          class="card h-100"
+          [imageSrc]="dish.imageSrc"
+          [title]="dish.name">
+          <div class="ingredients-container" card-content>
+            <p class="ingredients">{{ dish.ingredients }}</p>
+            <div class="icon-container">
+              @for (icon of dish.icons; track icon) {
+              <img [src]="icon.src" [alt]="icon.alt" class="icon" />
+              }
+            </div>
+            <div class="price-container">
+              <img class="line" src="../../../../assets/Line.svg" />
+              <div class="coin-container">
+                <img class="ILS" src="../../../../assets/ILS.svg" alt="ILS" />
+                <p>{{ dish.price }}</p>
+              </div>
+              <img class="line" src="../../../../assets/Line.svg" />
+            </div>
+          </div>
+        </app-generic-card>
+      </swiper-slide>
+      }
+    </swiper-container>
+    <app-restaurants-button />
+  </div>
+</div>
