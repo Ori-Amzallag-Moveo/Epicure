@@ -1,0 +1,52 @@
+@import "mobile-typography";
+@import "desktop-typography";
+
+.footer-container {
+  gap: 40px;
+  button {
+    @include linksFontDesktop;
+  }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@media screen and (max-width: $smallScreenSize) {
+  .wrapper {
+    @include smallPadding;
+    .footer-container {
+      width: 100%;
+      @include flexStyleColumn;
+      align-items: flex-start;
+      margin-top: 32px;
+      margin-bottom: 24px;
+    }
+  }
+}
+/* Medium screens */
+@media screen and (min-width: ($smallScreenSize + 1)) and (max-width: $largeScreenSize) {
+  .wrapper {
+    @include bigPadding;
+    .footer-container {
+      width: 100%;
+      @include flexStyleRow;
+      justify-content: center;
+      margin-top: 31px;
+      margin-bottom: 52px;
+    }
+  }
+}
+
+/* Large screens */
+@media screen and (min-width: ($largeScreenSize + 1)) {
+  .wrapper {
+    @include bigPadding;
+    .footer-container {
+      width: 100%;
+      @include flexStyleRow;
+      justify-content: center;
+      margin-top: 31px;
+      margin-bottom: 52px;
+    }
+  }
+}
