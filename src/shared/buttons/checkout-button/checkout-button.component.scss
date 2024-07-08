@@ -1,0 +1,17 @@
+@import "mobile-typography";
+@import "desktop-typography";
+
+.checkout-container {
+  @include buttonFontMobile;
+  font-size: 2vh;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  min-width: 95px;
+  border-width: 0.5px;
+  border-style: solid;
+  cursor: pointer;
+}
