@@ -1,5 +1,4 @@
-@import "mobile-typography";
-@import "desktop-typography";
+@import "_index";
 
 .slider-container {
   @include componentPadding;
@@ -7,6 +6,7 @@
   overflow: hidden;
 
   h2 {
+    @include h2Font;
     text-transform: uppercase;
     margin-bottom: 3vh;
   }
@@ -20,15 +20,12 @@
 /* ---------------- Media Query ---------------- */
 
 /* Small screens */
-@media screen and (max-width: $smallScreenSize) {
+@include small-screen {
   .wrapper {
     @include smallPadding;
     padding-right: 0px;
 
     .slider-container {
-      h2 {
-        @include h2FontMobile;
-      }
       .slider {
         margin-bottom: 18.2px;
 
@@ -47,7 +44,7 @@
 }
 
 /* Medium and large screens */
-@media screen and (min-width: ($smallScreenSize + 1)) {
+@include medium-large-screens {
   .wrapper {
     @include bigPadding;
 
@@ -55,9 +52,6 @@
       @include flexStyleColumn;
       text-align: center;
 
-      h2 {
-        @include h2FontDesktop;
-      }
       .slider {
         width: 100%;
         min-width: 600px;
@@ -71,7 +65,7 @@
       }
       app-restaurants-button {
         align-self: flex-end;
-        margin-top: 15px;
+        margin-top: 20px;
       }
     }
   }

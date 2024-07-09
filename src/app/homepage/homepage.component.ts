@@ -19,8 +19,6 @@ import { IconMeaningComponent } from './icon-meaning/icon-meaning.component';
 
   ],
   templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.scss'
+  styleUrl: './homepage.component.scss',
 })
-export class HomepageComponent {
-
-}
+export class HomepageComponent {}
