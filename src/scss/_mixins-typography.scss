@@ -4,11 +4,11 @@
 
 /* Mobile and Desktop Mixins */
 @mixin h1Font {
-  @include responsiveFont(200, 24px, 32px, 2px);
+  @include responsiveFont(200, 24px, 30px, 2px);
 }
 
 @mixin h2Font {
-  @include responsiveFont(200, 18px, 30px, 1.25px);
+  @include responsiveFont(200, 18px, 25px, 1.25px);
 }
 
 @mixin h3Font {
@@ -16,7 +16,7 @@
 }
 
 @mixin bodyTextFont {
-  @include responsiveFont(200, 16px, 24px, 2px);
+  @include responsiveFont(200, 12px, 24px, 2px);
 }
 
 @mixin buttonFont {
