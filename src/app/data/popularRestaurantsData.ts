@@ -1,4 +1,4 @@
-export const popularRestaurants = [
+export const popularRestaurantsData = [
   {
     name: 'Claro',
     imageSrc: 'assets/restaurants/claro.jpg',
