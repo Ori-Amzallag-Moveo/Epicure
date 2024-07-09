@@ -5,7 +5,6 @@
       @for (dish of dishes; track dish) {
       <swiper-slide>
         <app-generic-card
-          class="card h-100"
           [imageSrc]="dish.imageSrc"
           [title]="dish.name">
           <div class="ingredients-container" card-content>
@@ -16,12 +15,12 @@
               }
             </div>
             <div class="price-container">
-              <img class="line" src="../../../../assets/Line.svg" />
+              <img class="line" src="assets/Line.svg" />
               <div class="coin-container">
-                <img class="ILS" src="../../../../assets/ILS.svg" alt="ILS" />
+                <img class="ILS" src="assets/ILS.svg" alt="ILS" />
                 <p>{{ dish.price }}</p>
               </div>
-              <img class="line" src="../../../../assets/Line.svg" />
+              <img class="line" src="assets/Line.svg" />
             </div>
           </div>
         </app-generic-card>

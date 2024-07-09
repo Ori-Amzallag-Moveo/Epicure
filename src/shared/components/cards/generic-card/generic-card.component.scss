@@ -27,14 +27,12 @@
 
     h3 {
       @include h3Font;
-      font-size: 3vh;
       align-self: flex-start;
       margin-top: 1vh;
       margin-left: 3vh;
     }
     .text-container {
       @include bodyTextFont;
-      font-size: 2vh;
       align-self: flex-start;
       margin-left: 3vh;
     }
@@ -46,7 +44,7 @@
   .generic-card-container {
     @include flexStyleColumn;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
     width: 100%;
     min-height: 155px;
     text-align: center;
@@ -57,7 +55,7 @@
     }
     .text-container {
       @include bodyTextFont;
-      font-size: 10px;
+      font-size: 12px;
       text-align: center;
     }
   }
