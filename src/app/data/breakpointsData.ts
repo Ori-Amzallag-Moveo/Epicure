@@ -1,4 +1,4 @@
-export const breakpoints = {
+export const breakpointsData = {
   320: {
     slidesPerView: 1.5,
     spaceBetween: 10,
