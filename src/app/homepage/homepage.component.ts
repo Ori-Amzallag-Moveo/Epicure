@@ -21,7 +21,7 @@ export class HomepageComponent {}
 
   ],
   templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.scss'
+  styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent {
 
