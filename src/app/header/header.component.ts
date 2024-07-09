@@ -6,8 +6,6 @@ import { SearchBarComponent } from '../../shared/components/search-bar/search-ba
   standalone: true,
   imports: [SearchBarComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent {}
