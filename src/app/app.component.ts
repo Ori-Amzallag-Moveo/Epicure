@@ -12,7 +12,6 @@ import { HomepageComponent } from './homepage/homepage.component';
     HomepageComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Epicure-project';
