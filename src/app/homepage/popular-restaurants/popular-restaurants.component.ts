@@ -3,7 +3,7 @@ import { GenericCardComponent } from '../../../shared/components/cards/generic-c
 import { RestaurantsButtonComponent } from '../../../shared/buttons/restaurants-button/restaurants-button.component';
 import { CommonModule } from '@angular/common';
 import { popularRestaurants } from '../../data/popularRestaurants';
-import { breakpointsRes1 } from '../../data/breakpoints';
+import { breakpoints } from '../../data/breakpoints';
 
 @Component({
   selector: 'app-popular-restaurants',
@@ -20,8 +20,7 @@ import { breakpointsRes1 } from '../../data/breakpoints';
 
 })
 export class PopularRestaurantsComponent {
-  restaurants = popularRestaurants;
+  restaurants = popularRestaurantsData;
 
-  breakpoints = breakpointsRes1;
-
+  breakpoints = breakpoints;
 }
