@@ -51,8 +51,8 @@
     height: 273px;
 
     .overlay-content {
-      width: 90vh;
-      max-width: 90%;
+      width: 65%;
+      min-width: 365px;
 
       h1 {
         line-height: 35px;
@@ -69,8 +69,8 @@
     height: 400px;
 
     .overlay-content {
-      width: 750px;
-      max-width: 60%;
+      max-width: 55%;
+      width: 850px;
       min-width: 550px;
 
       h1 {
