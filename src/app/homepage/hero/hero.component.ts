@@ -6,8 +6,6 @@ import { SearchBarComponent } from '../../../shared/components/search-bar/search
   standalone: true,
   imports: [SearchBarComponent],
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.scss'
+  styleUrl: './hero.component.scss',
 })
-export class HeroComponent {
-
-}
+export class HeroComponent {}

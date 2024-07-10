@@ -8,7 +8,6 @@ import { HomepageComponent } from './homepage/homepage.component';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, HomepageComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Epicure-project';

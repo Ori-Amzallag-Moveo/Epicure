@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroComponent } from './hero/hero.component';
 import { PopularRestaurantsComponent } from './popular-restaurants/popular-restaurants.component';
+import { PopularRestaurantsComponent } from './popular-restaurants/popular-restaurants.component';
 import { SignatureDishesComponent } from './signature-dishes/signature-dishes.component';
 import { GenericCardComponent } from '../../shared/components/cards/generic-card/generic-card.component';
 import { IconMeaningComponent } from './icon-meaning/icon-meaning.component';
@@ -23,6 +24,7 @@ import { CartService } from '../../shared/components/cart/cart.service';
     FooterComponent,
   ],
   templateUrl: './homepage.component.html',
+  styleUrl: './homepage.component.scss',
   styleUrl: './homepage.component.scss',
 })
 

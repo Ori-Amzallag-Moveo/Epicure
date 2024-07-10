@@ -1,5 +1,4 @@
-@import 'mobile-typography';
-@import 'desktop-typography';
+@import "_index";
 
 .generic-card-container {
   background-color: $cremeColor;
@@ -10,7 +9,7 @@
     height: 100%;
     object-fit: cover;
   }
-
+  
   .text-container {
     @include flexStyleColumn;
   }
@@ -19,7 +18,7 @@
 /* ---------------- Media Query ---------------- */
 
 /* Small screens */
-@media screen and (max-width: $smallScreenSize) {
+@include small-screen {
   .generic-card-container {
     @include flexStyleColumn;
     justify-content: space-between;
@@ -27,16 +26,13 @@
     width: 100%;
 
     h3 {
-      @include h3FontMobile;
-      font-size: 3vh;
+      @include h3Font;
       align-self: flex-start;
       margin-top: 1vh;
       margin-left: 3vh;
-
     }
     .text-container {
-      @include bodyTextFontMobile;
-      font-size: 2vh;
+      @include bodyTextFont;
       align-self: flex-start;
       margin-left: 3vh;
     }
@@ -44,22 +40,22 @@
 }
 
 /* Medium and large screens */
-@media screen and (min-width: ($smallScreenSize + 1)) {
+@include medium-large-screens {
   .generic-card-container {
     @include flexStyleColumn;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
     width: 100%;
     min-height: 155px;
     text-align: center;
 
     h3 {
-      @include h3FontDesktop;
+      @include h3Font;
       font-size: 19px;
     }
     .text-container {
-      @include bodyTextFontDesktop;
-      font-size: 10px;
+      @include bodyTextFont;
+      font-size: 12px;
       text-align: center;
     }
   }

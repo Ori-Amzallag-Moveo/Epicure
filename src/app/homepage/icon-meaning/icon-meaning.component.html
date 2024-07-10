@@ -1,7 +1,8 @@
-<div class="container"> 
-    <h2>The meaning of our icons:</h2>
-    <div class="icons-container">
-        <app-icon *ngFor="let icon of icons" [icon]="icon" />
-    </div>
+<div class="container">
+  <h2>The meaning of our icons:</h2>
+  <div class="icons-container">
+    @for (icon of icons; track icon) {
+    <app-icon [icon]="icon" />
+    }
+  </div>
 </div>
-  

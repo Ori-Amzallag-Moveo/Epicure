@@ -1,12 +1,10 @@
-@import "mobile-typography";
-@import "desktop-typography";
+@import "_index";
 
 .slider-container {
   @include componentPadding;
   width: 100%;
   overflow: hidden;
   text-align: center;
-  align-items: center;
 
   h2 {
     text-transform: uppercase;
@@ -22,14 +20,16 @@
 /* ---------------- Media Query ---------------- */
 
 /* Small screens */
-@media screen and (max-width: $smallScreenSize) {
+@include small-screen {
   .wrapper {
     @include smallPadding;
     padding-right: 0px;
+
     .slider-container {
       width: 100%;
+
       h2 {
-        @include h2FontMobile;
+        @include h2Font;
         text-align: left;
       }
       .slider {
@@ -43,7 +43,6 @@
 
           .ingredients {
             text-align: left;
-            line-height: 2vh;
             max-height: 35px;
             overflow-y: scroll;
           }
@@ -63,6 +62,7 @@
             @include flexStyleRow;
             gap: 3px;
             margin-bottom: 10px;
+
             .ILS {
               width: 1vh;
               height: 1vh;
@@ -78,13 +78,15 @@
 }
 
 /* Medium and large screens */
-@media screen and (min-width: ($smallScreenSize + 1)) {
+@include medium-large-screens {
   .wrapper {
     @include bigPadding;
+
     .slider-container {
       @include flexStyleColumn;
+
       h2 {
-        @include h2FontDesktop;
+        @include h2Font;
       }
       .swiper-slide {
         height: auto;
@@ -94,14 +96,13 @@
 
         .ingredients-container {
           @include flexStyleColumn;
-          gap: 5px;
+          justify-content:space-between;
+          max-height: 95px;
 
           .ingredients {
             order: 2;
-            line-height: 3vh;
-            font-size: 11px;
-            margin-left: 50px;
-            margin-right: 50px;
+            margin-left: 25px;
+            margin-right: 25px;
             text-align: center;
             max-height: 52px;
             overflow-y: scroll;
@@ -112,8 +113,9 @@
             gap: 5px;
 
             .icon {
-              width: 4vh;
-              height: 4vh;
+              width: 20px;
+              height: 20px;
+              margin-bottom: 5px;
             }
           }
           .price-container {
@@ -122,16 +124,16 @@
             gap: 10px;
 
             .line {
-              width: 55px;
+              width: 60px;
               height: 0px;
               border: 0.1px solid #979797;
             }
-
             .coin-container {
               @include flexStyleRow;
               gap: 3px;
               margin-bottom: 10px;
               margin-top: 7px;
+
               .ILS {
                 width: 1vh;
                 height: 1vh;
