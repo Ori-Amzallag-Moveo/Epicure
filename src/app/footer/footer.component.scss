@@ -1,52 +1,35 @@
-@import "mobile-typography";
-@import "desktop-typography";
+@import "_index";
 
 .footer-container {
   gap: 40px;
+
   button {
-    @include linksFontDesktop;
+    @include linksFont;
+  }
+
+  @include small-screen {
+    @include flexStyleColumn;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+
+  @include medium-large-screens {
+    width: 100%;
+    @include flexStyleRow;
+    justify-content: center;
+    margin-top: 31px;
+    margin-bottom: 52px;
   }
 }
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@media screen and (max-width: $smallScreenSize) {
-  .wrapper {
+.wrapper {
+  @include small-screen {
     @include smallPadding;
-    .footer-container {
-      width: 100%;
-      @include flexStyleColumn;
-      align-items: flex-start;
-      margin-top: 32px;
-      margin-bottom: 24px;
-    }
   }
-}
-/* Medium screens */
-@media screen and (min-width: ($smallScreenSize + 1)) and (max-width: $largeScreenSize) {
-  .wrapper {
-    @include bigPadding;
-    .footer-container {
-      width: 100%;
-      @include flexStyleRow;
-      justify-content: center;
-      margin-top: 31px;
-      margin-bottom: 52px;
-    }
-  }
-}
 
-/* Large screens */
-@media screen and (min-width: ($largeScreenSize + 1)) {
-  .wrapper {
+  @include medium-large-screens {
     @include bigPadding;
-    .footer-container {
-      width: 100%;
-      @include flexStyleRow;
-      justify-content: center;
-      margin-top: 31px;
-      margin-bottom: 52px;
-    }
   }
 }

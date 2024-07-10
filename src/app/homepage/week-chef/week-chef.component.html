@@ -2,7 +2,9 @@
   <div class="week-chef-container">
     <h2>Chef of the week:</h2>
     <div class="descripition-container">
-      <img src="assets/yosi-shitrit.jpg" alt="Yosi Shitrit" />
+      <app-week-chef-picture
+        [chefPicture]="chefs[0].imgSrc"
+        [chefName]="chefs[0].name"/>
       <p class="chef-description">{{ chefOfTheWeek.description }}</p>
     </div>
     <div class="restaurants-container">
@@ -12,8 +14,7 @@
         <swiper-slide>
           <app-generic-card
             [title]="restaurant.name"
-            [imageSrc]="restaurant.imgSrc">
-          </app-generic-card>
+            [imageSrc]="restaurant.imgSrc"/>
         </swiper-slide>
         }
       </swiper-container>

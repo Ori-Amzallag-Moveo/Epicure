@@ -12,31 +12,20 @@
     height: 24px;
     width: 24px;
   }
-}
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .container {
+  @include small-screen {
     font-size: 13px;
     width: 172px;
     height: 35px;
   }
-}
 
-/* Medium screens */
-@include medium-screens {
-  .container {
+  @include medium-screens {
     font-size: 15px;
     width: 100%;
     height: 35px;
   }
-}
 
-/* Large screens */
-@include large-screens {
-  .container {
+  @include large-screens {
     font-size: 25px;
     width: 226px;
     height: 35px;

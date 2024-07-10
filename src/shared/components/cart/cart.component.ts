@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OrderHistoryButtonComponent } from '../../buttons/order-history-button/order-history-button.component';
 import { CheckoutButtonComponent } from '../../buttons/checkout-button/checkout-button.component';
-import { signatureDishes } from '../../../app/data/signatureDishes';
+import { signatureDishesData } from '../../../app/data/signatureDishesData';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +12,7 @@ import { signatureDishes } from '../../../app/data/signatureDishes';
 })
 export class CartComponent {
   cartIsEmpty = true;
-  cartItems = signatureDishes;
+  cartItems = signatureDishesData;
 
   addToCart(item: any) {
     this.cartItems.push(item);

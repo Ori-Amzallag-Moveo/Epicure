@@ -9,17 +9,12 @@
     height: 100%;
     object-fit: cover;
   }
-  
+
   .text-container {
     @include flexStyleColumn;
   }
-}
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .generic-card-container {
+  @include small-screen {
     @include flexStyleColumn;
     justify-content: space-between;
     gap: 8px;
@@ -31,17 +26,15 @@
       margin-top: 1vh;
       margin-left: 3vh;
     }
+
     .text-container {
       @include bodyTextFont;
       align-self: flex-start;
       margin-left: 3vh;
     }
   }
-}
 
-/* Medium and large screens */
-@include medium-large-screens {
-  .generic-card-container {
+  @include medium-large-screens {
     @include flexStyleColumn;
     justify-content: space-between;
     gap: 10px;
@@ -53,6 +46,7 @@
       @include h3Font;
       font-size: 19px;
     }
+
     .text-container {
       @include bodyTextFont;
       font-size: 12px;

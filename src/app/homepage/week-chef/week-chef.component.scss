@@ -1,144 +1,85 @@
-@import "mobile-typography";
-@import "desktop-typography";
+@import "_index";
 
-.week-chef-container {
-  @include componentPadding;
-  h2 {
-    text-transform: uppercase;
-  }
-}
+.wrapper {
+  .week-chef-container {
+    @include componentPadding;
+    @include small-screen {
+      @include smallPadding;
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@media screen and (max-width: $smallScreenSize) {
-  .wrapper {
-    @include smallPadding;
-
-    .week-chef-container {
-      align-items: flex-start;
-      overflow: hidden;
-      margin-top: 10vh;
-
-      img {
-        margin-bottom: 24px;
+      .week-chef-container {
+        align-items: flex-start;
+        overflow: hidden;
         width: 100%;
       }
-
-      h2 {
-        @include h2FontMobile;
-        margin-bottom: 16px;
-      }
-      .chef-description {
-        @include articleTextFontMobile;
-        line-height: 28px;
-        text-align: justify;
-        margin-bottom: 32px;
-      }
-      .restaurants-container {
-        h3 {
-          @include articleSubHeaderFontMobile;
-          margin-bottom: 16px;
-        }
-        .cards-container {
-          @include flexStyleRow;
-          margin-bottom: 13px;
-        }
-      }
     }
-  }
-}
 
-/* Medium screens */
-@media screen and (min-width: ($smallScreenSize + 1)) and (max-width: $largeScreenSize) {
-  .wrapper {
-    @include bigPadding;
+    @include medium-large-screens {
+      @include bigPadding;
+    }
 
-    .week-chef-container {
-      width: 100%;
-      box-sizing: border-box;
+    h2 {
+      @include h2Font;
+      text-transform: uppercase;
+      margin-bottom: 16px;
 
-      h2 {
-        @include h2FontDesktop;
+      @include medium-large-screens {
         text-align: center;
         margin-bottom: 40px;
       }
-      .descripition-container {
-        @include flexStyleRow;
-        gap: 63.5px;
+    }
 
-        .chef-description {
-          @include articleTextFontDesktop;
-          line-height: 30px;
-          font-size: 16px;
-          text-align: justify;
-        }
-        img {
-          width: 300px;
-          height: 250ox;
-        }
+    .restaurants-container {
+      h3 {
+        @include articleSubHeaderFont;
+        margin-bottom: 16px;
+        margin-top: 20px;
       }
 
-      .restaurants-container {
-        h3 {
-          @include articleSubHeaderFontDesktop;
-          margin-bottom: 16px;
-          margin-top: 20px;
+      .cards-container {
+        @include small-screen {
+          @include flexStyleRow;
+          margin-bottom: 13px;
         }
-        .cards-container {
+
+        @include medium-large-screens {
           margin-right: 250px;
           margin-bottom: 13px;
         }
       }
-      app-restaurants-button {
-        display: none;
+    }
+
+    .descripition-container {
+      @include medium-large-screens {
+        @include flexStyleRow;
+        gap: 63.5px;
+        align-items: flex-start;
+      }
+
+      .chef-description {
+        @include articleTextFont;
+        text-align: justify;
+        margin-bottom: 32px;
+        width: 100%;
+  
+        @include small-screen {
+          line-height: 28px;
+        }
+  
+        @include medium-screens {
+          line-height: 26px;
+          font-size: 16px;
+        }
+  
+        @include large-screens {
+          line-height: 40px;
+        }
       }
     }
   }
-}
 
-/* Large screens */
-@media screen and (min-width: ($largeScreenSize + 1)) {
-  .wrapper {
-    @include bigPadding;
-
-    .week-chef-container {
-      margin-top: 80px;
-
-      h2 {
-        @include h2FontDesktop;
-        margin-bottom: 40px;
-      }
-      .descripition-container {
-        @include flexStyleRow;
-        gap: 63.5px;
-        margin-bottom: 100px;
-
-        .chef-description {
-          @include articleTextFontDesktop;
-          text-align: justify;
-          margin-bottom: 45px;
-        }
-        img {
-          width: 478px;
-          height: 372px;
-        }
-      }
-
-      .restaurants-container {
-        h3 {
-          @include articleSubHeaderFontDesktop;
-          margin-bottom: 16px;
-          margin-top: 20px;
-        }
-        .cards-container {
-          margin-bottom: 13px;
-          margin-right: 250px;
-        }
-      }
-      app-restaurants-button {
-        display: none;
-      }
+  app-restaurants-button {
+    @include medium-large-screens {
+      display: none;
     }
   }
 }

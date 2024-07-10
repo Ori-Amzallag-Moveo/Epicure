@@ -1,8 +1,7 @@
-@import "mobile-typography";
-@import "desktop-typography";
+@import "_index";
 
 .checkout-container {
-  @include buttonFontMobile;
+  @include buttonFont;
   font-size: 2vh;
   font-weight: 700;
   letter-spacing: 1.5px;

@@ -1,4 +1,6 @@
-export const popularRestaurantsData = [
+import { PopularRestaurant } from '../models/popularRestaurants.model';
+
+export const popularRestaurantsData: PopularRestaurant[] = [
   {
     name: 'Claro',
     imageSrc: 'assets/restaurants/claro.jpg',

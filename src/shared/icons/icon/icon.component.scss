@@ -8,13 +8,8 @@
     width: 77.42px;
     margin-bottom: 32px;
   }
-}
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .container {
+  @include small-screen {
     height: 102px;
     width: 136px;
 
@@ -29,11 +24,8 @@
       margin-bottom: 32px;
     }
   }
-}
 
-/* Medium screens */
-@include medium-screens {
-  .container {
+  @include medium-screens {
     height: 127px;
     width: 136px;
 
@@ -48,11 +40,8 @@
       margin-bottom: 32px;
     }
   }
-}
 
-/* Large screens */
-@include large-screens {
-  .container {
+  @include large-screens {
     height: 127px;
     width: 136px;
 
