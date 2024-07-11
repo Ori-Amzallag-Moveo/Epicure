@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IconComponent } from '../../../shared/icons/icon/icon.component'; 
-import { iconsData } from '../../data/iconsData';
+import { IconComponent } from '../../../../shared/icons/icon/icon.component'; 
+import { iconsData } from '../../../data/iconsData';
 
 @Component({
   selector: 'app-icon-meaning',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchBarComponent } from '../../../shared/components/search-bar/search-bar.component';
+import { SearchBarComponent } from '../../../../shared/components/search-bar/search-bar.component';
 
 @Component({
   selector: 'app-hero',

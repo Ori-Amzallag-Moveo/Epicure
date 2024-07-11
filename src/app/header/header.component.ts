@@ -3,6 +3,7 @@ import { CartComponent } from '../../shared/components/cart/cart.component';
 import { CartService } from '../../shared/components/cart/cart.service';
 import { HeaderService } from './header.service';
 import { MobileNavbarComponent } from '../../shared/components/mobile-navbar/mobile-navbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -31,5 +33,9 @@ export class HeaderComponent implements OnInit {
 
   onToggleNavbar() {
     this.headerService.toggleNavbar();
+  }
+
+  navigateToRestaurants() {
+    this.router.navigate(['/restaurants']);
   }
 }

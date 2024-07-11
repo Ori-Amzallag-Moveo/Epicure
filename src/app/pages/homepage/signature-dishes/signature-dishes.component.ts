@@ -1,9 +1,9 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
-import { signatureDishesData } from '../../data/signatureDishesData';
+import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
+import { signatureDishesData } from '../../../data/signatureDishesData';
 import { CommonModule } from '@angular/common';
-import { RestaurantsButtonComponent } from '../../../shared/buttons/restaurants-button/restaurants-button.component';
-import { breakpointsData } from '../../data/breakpointsData';
+import { RestaurantsButtonComponent } from '../../../../shared/buttons/restaurants-button/restaurants-button.component';
+import { breakpointsData } from '../../../data/breakpointsData';
 
 @Component({
     selector: 'app-signature-dishes',
