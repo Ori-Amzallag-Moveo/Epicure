@@ -1,0 +1,16 @@
+@import "_index";
+
+.second-filter-button-container {
+  @include flexStyleRow;
+  gap: 5px;
+
+  p {
+    @include linksFont;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  img {
+    height: 24px;
+    width: 24px;
+  }
+}

@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RestaurantsButtonComponent } from '../../../../shared/buttons/restaurants-button/restaurants-button.component';
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { CommonModule } from '@angular/common';
-import { popularRestaurantsData } from '../../../data/popularRestaurantsData';
+import { restaurantsData } from '../../../data/restaurantsData';
 import { breakpointsData } from '../../../data/breakpointsData';
 
 @Component({
@@ -14,7 +14,7 @@ import { breakpointsData } from '../../../data/breakpointsData';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PopularRestaurantsComponent {
-  restaurants = popularRestaurantsData;
+  restaurants = restaurantsData;
 
   breakpoints = breakpointsData;
 }

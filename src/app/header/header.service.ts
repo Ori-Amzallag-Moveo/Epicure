@@ -18,4 +18,8 @@ export class HeaderService {
   navigateToRestaurants() {
     this.router.navigate(['/restaurants']);
   }
+
+  navigateToHomepage() {
+    this.router.navigate(['/']);
+  }
 }

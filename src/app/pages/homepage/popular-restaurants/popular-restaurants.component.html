@@ -2,7 +2,7 @@
   <div class="slider-container">
     <h2>Popular restaurants in epicure:</h2>
     <swiper-container class="slider" [breakpoints]="breakpoints">
-      @for (restaurant of restaurants; track restaurant) {
+      @for (restaurant of restaurants | slice:0:3 ; track restaurant) {
       <swiper-slide>
         <app-generic-card
           [imageSrc]="restaurant.imageSrc"

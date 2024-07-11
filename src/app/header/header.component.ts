@@ -29,11 +29,16 @@ export class HeaderComponent implements OnInit {
       this.navBarMobile = isVisible;
     });
 
-    this.router.events.pipe(
-      filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.setActiveTab(event.urlAfterRedirects);
-    });
+    this.router.events
+      .pipe(
+        filter(
+          (event: Event): event is NavigationEnd =>
+            event instanceof NavigationEnd
+        )
+      )
+      .subscribe((event: NavigationEnd) => {
+        this.setActiveTab(event.urlAfterRedirects);
+      });
   }
 
   onToggleCart() {
@@ -46,6 +51,9 @@ export class HeaderComponent implements OnInit {
 
   navigateToRestaurants() {
     this.headerService.navigateToRestaurants();
+  }
+  navigateToHomepage() {
+    this.headerService.navigateToHomepage();
   }
 
   private setActiveTab(url: string) {

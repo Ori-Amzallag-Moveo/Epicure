@@ -26,23 +26,24 @@
     justify-content: center;
     gap: 40px;
 
-    .filter-item {
-      @include linksFont;
-      font-size: 16px;
-      transition: all 0.3s ease;
-
-      &.active {
-        font-weight: bold;
-        border-bottom: 1.5px solid $goldColor;
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
-    }
-
     .map-view {
       @include small-screen {
         display: none;
       }
     }
+  }
+
+}
+.second-filter-bar-container {
+  @include flexStyleRow;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  height: 60px;
+  width: 100%;
+  background-color: $lightGreyColor;
+
+  @include small-screen {
+    display: none;
   }
 }

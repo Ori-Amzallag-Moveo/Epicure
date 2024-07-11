@@ -8,9 +8,11 @@
       </button>
 
       <div class="left-toolbar">
-        <img class="logo" src="assets/logos/navbar-logos/about-logo.svg" alt="Logo" />
+        <button class="btn" (click)="navigateToHomepage()">
+          <img class="logo" src="assets/logos/navbar-logos/about-logo.svg" alt="Logo" />
+        </button>
         <div class="links-container">
-          <h2 class="title">Epicure</h2>
+          <button class="btn" (click)="navigateToHomepage()"> <h2 class="title">Epicure</h2></button>
           <div class="button-container">
             <button class="btn" [ngClass]="{ active: selectedTab === 'Restaurants'}" (click)="navigateToRestaurants()">Restaurants</button>
             <button class="btn">Chefs</button>

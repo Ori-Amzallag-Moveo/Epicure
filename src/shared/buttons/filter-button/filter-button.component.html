@@ -1,0 +1,6 @@
+<button
+  class="filter-item btn {{ getFilterClass() }}"
+  [ngClass]="{ active: selectedFilter === filter }"
+  (click)="setFilter()">
+  {{ filter }}
+</button>

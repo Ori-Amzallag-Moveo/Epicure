@@ -3,4 +3,5 @@ export interface PopularRestaurant {
   imageSrc: string;
   chef: string;
   rating: string;
+  attributes: string[];
 }
