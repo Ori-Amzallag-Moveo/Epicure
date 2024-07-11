@@ -3,17 +3,20 @@ import { CartComponent } from '../../shared/components/cart/cart.component';
 import { CartService } from '../../shared/components/cart/cart.service';
 import { HeaderService } from './header.service';
 import { MobileNavbarComponent } from '../../shared/components/mobile-navbar/mobile-navbar.component';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, Event } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CartComponent, MobileNavbarComponent],
+  imports: [CartComponent, MobileNavbarComponent, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   navBarMobile: boolean = false;
+  selectedTab: string = '';
 
   constructor(
     private cartService: CartService,
@@ -24,6 +27,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.headerService.navbarVisible$.subscribe((isVisible) => {
       this.navBarMobile = isVisible;
+    });
+
+    this.router.events.pipe(
+      filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.setActiveTab(event.urlAfterRedirects);
     });
   }
 
@@ -36,6 +45,14 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToRestaurants() {
-    this.router.navigate(['/restaurants']);
+    this.headerService.navigateToRestaurants();
+  }
+
+  private setActiveTab(url: string) {
+    if (url === '/restaurants') {
+      this.selectedTab = 'Restaurants';
+    } else {
+      this.selectedTab = '';
+    }
   }
 }

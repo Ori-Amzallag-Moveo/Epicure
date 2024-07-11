@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <h1>RESTAURANTS</h1>
+  <div class="filter-bar-container">
+    <button
+      class="filter-item btn"
+      [ngClass]="{ active: selectedFilter === 'All' }"
+      (click)="setFilter('All')"
+    >
+      All
+    </button>
+    <button
+      class="filter-item btn"
+      [ngClass]="{ active: selectedFilter === 'New' }"
+      (click)="setFilter('New')"
+    >
+      New
+    </button>
+    <button
+      class="filter-item btn"
+      [ngClass]="{ active: selectedFilter === 'Most Popular' }"
+      (click)="setFilter('Most Popular')"
+    >
+      Most Popular
+    </button>
+    <button
+      class="filter-item btn"
+      [ngClass]="{ active: selectedFilter === 'Open Now' }"
+      (click)="setFilter('Open Now')"
+    >
+      Open Now
+    </button>
+    <button
+      class="filter-item map-view btn"
+      [ngClass]="{ active: selectedFilter === 'Map View' }"
+      (click)="setFilter('Map View')"
+    >
+      Map View
+    </button>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+@import "_index";
+
+.wrapper {
+  @include small-screen {
+    @include smallPadding;
+    margin-top: 14px;
+  }
+
+  @include medium-large-screens {
+    @include bigPadding;
+    margin-top: 48px;
+  }
+
+  h1 {
+    align-self: flex-start;
+    @include h1Font;
+    margin-bottom: 24px;
+
+    @include medium-large-screens {
+      display: none;
+    }
+  }
+
+  .filter-bar-container {
+    @include flexStyleRow;
+    justify-content: center;
+    gap: 40px;
+
+    .filter-item {
+      @include linksFont;
+      font-size: 16px;
+      transition: all 0.3s ease;
+
+      &.active {
+        font-weight: bold;
+        border-bottom: 1.5px solid $goldColor;
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+    }
+
+    .map-view {
+      @include small-screen {
+        display: none;
+      }
+    }
+  }
+}

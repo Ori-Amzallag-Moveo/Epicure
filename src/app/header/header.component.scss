@@ -75,6 +75,14 @@
 
         button {
           @include buttonFont;
+          transition: all 0.3s ease;
+
+          &.active {
+            font-weight: bold;
+            border-bottom: 1.5px solid $goldColor;
+            padding-top: 3px;
+            padding-bottom: 3px;
+          }
         }
       }
     }

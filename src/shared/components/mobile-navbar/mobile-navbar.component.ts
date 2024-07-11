@@ -15,4 +15,9 @@ export class MobileNavbarComponent {
   onClosing() {
     this.headerService.toggleNavbar();
   }
+
+  navigateToRestaurants() {
+    this.headerService.navigateToRestaurants();
+    this.headerService.toggleNavbar();
+  }
 }
