@@ -10,9 +10,6 @@
   }
 
   @include small-screen {
-    height: 102px;
-    width: 136px;
-
     p {
       @include iconLabelFont;
       font-size: 15px;
@@ -26,9 +23,6 @@
   }
 
   @include medium-screens {
-    height: 127px;
-    width: 136px;
-
     p {
       @include iconLabelFont;
       font-size: 15px;
@@ -42,9 +36,6 @@
   }
 
   @include large-screens {
-    height: 127px;
-    width: 136px;
-
     p {
       @include iconLabelFont;
       font-size: 20px;

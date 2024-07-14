@@ -1,7 +1,6 @@
 @import "_index";
 
 .slider-container {
-  @include componentPadding;
   width: 100%;
   overflow: hidden;
 
@@ -16,7 +15,7 @@
     flex-direction: row;
 
     @include small-screen {
-      margin-bottom: 18.2px;
+      margin-bottom: 18px;
 
       .rating {
         display: none;
@@ -44,6 +43,8 @@
 }
 
 .wrapper {
+  @include componentPadding;
+  
   @include small-screen {
     @include smallPadding;
 

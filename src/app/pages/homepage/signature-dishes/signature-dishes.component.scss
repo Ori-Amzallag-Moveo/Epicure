@@ -1,7 +1,6 @@
 @import "_index";
 
 .slider-container {
-  @include componentPadding;
   width: 100%;
   overflow: hidden;
   text-align: center;
@@ -124,6 +123,8 @@
 }
 
 .wrapper {
+  @include componentPadding;
+
   @include small-screen {
     @include smallPadding;
     .slider-container {

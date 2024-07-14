@@ -11,7 +11,6 @@
     @include flexStyleColumn;
     width: 100%;
     align-items: flex-start;
-    margin-top: 32px;
     margin-bottom: 24px;
   }
 
@@ -19,12 +18,13 @@
     width: 100%;
     @include flexStyleRow;
     justify-content: center;
-    margin-top: 31px;
-    margin-bottom: 52px;
+    margin-bottom: 50px;
   }
 }
 
 .wrapper {
+  @include componentPadding;
+  
   @include small-screen {
     @include smallPadding;
   }

@@ -1,6 +1,8 @@
 @import "_index";
 
 .wrapper {
+  @include componentPadding;
+
   @include small-screen {
     @include smallPadding;
     margin-top: 14px;
@@ -8,7 +10,6 @@
 
   @include medium-large-screens {
     @include bigPadding;
-    margin-top: 48px;
   }
 
   h1 {
@@ -35,10 +36,10 @@
 
 }
 .second-filter-bar-container {
+  @include componentPadding;
   @include flexStyleRow;
   justify-content: center;
   gap: 30px;
-  margin-top: 30px;
   height: 60px;
   width: 100%;
   background-color: $lightGreyColor;

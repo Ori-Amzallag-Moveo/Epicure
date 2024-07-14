@@ -5,6 +5,8 @@
 }
 
 .wrapper {
+  @include componentPadding;
+  
   @include small-screen {
     @include smallPadding;
   }
@@ -19,7 +21,6 @@
     @include medium-large-screens {
       @include flexStyleRow;
       flex-direction: row-reverse;
-      margin-top: 80px;
     }
 
     .logo {
