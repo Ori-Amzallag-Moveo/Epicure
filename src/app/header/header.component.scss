@@ -15,7 +15,6 @@
 
     .right-toolbar {
       @include flexStyleRow;
-      justify-content: space-between;
       gap: 20px;
     }
 
