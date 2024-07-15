@@ -1,3 +1,11 @@
-<div class="map-container">
-    <div id="map"></div>
-</div>
+<google-map
+  height="100%"
+  width="100%"
+  [center]="center"
+  [zoom]="zoom"
+  mapId="YOUR_MAP_ID"
+>
+  @for (position of markerPositions; track position) {
+  <map-advanced-marker [position]="position"></map-advanced-marker>
+  }
+</google-map>
