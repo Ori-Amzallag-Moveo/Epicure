@@ -4,4 +4,6 @@ export interface PopularRestaurant {
   chef: string;
   rating: string;
   attributes: string[];
+  latitude: number;
+  longitude: number;
 }

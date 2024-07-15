@@ -50,14 +50,15 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToRestaurants() {
-    this.headerService.navigateToRestaurants();
+    this.router.navigate(['/restaurants']);
   }
+  
   navigateToHomepage() {
-    this.headerService.navigateToHomepage();
+    this.router.navigate(['/']);
   }
 
   private setActiveTab(url: string) {
-    if (url === '/restaurants') {
+    if (url.startsWith('/restaurants')) {
       this.selectedTab = 'Restaurants';
     } else {
       this.selectedTab = '';

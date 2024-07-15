@@ -7,6 +7,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Ran Shmueli',
     rating: 'assets/rating-icons/4-stars-rating.svg',
     attributes: ['All', 'New', 'Most Popular'],
+    latitude: 32.067, 
+    longitude: 34.779 
   },
   {
     name: 'Lumina',
@@ -14,13 +16,18 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Meir Adoni',
     rating: 'assets/rating-icons/3-stars-rating.svg',
     attributes: ['All', 'Open Now'],
+    latitude: 32.085, 
+    longitude: 34.797 
   },
+
   {
     name: 'Tiger Lilly',
     imageSrc: 'assets/restaurants/tiger-lily.jpg',
     chef: 'Yanir Green',
     rating: 'assets/rating-icons/2-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.071,
+    longitude: 34.784
   },
   {
     name: 'Kab Kem',
@@ -28,6 +35,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Anat Mor',
     rating: 'assets/rating-icons/1-stars-rating.svg',
     attributes: ['All', 'New', 'Open Now'],
+    latitude: 32.075,
+    longitude: 34.792
   },
   {
     name: 'Messa',
@@ -35,6 +44,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Aviv Moshe',
     rating: 'assets/rating-icons/4-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.073,
+    longitude: 34.791
   },
   {
     name: 'Yapan',
@@ -42,6 +53,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Yuval Ben Neriah',
     rating: 'assets/rating-icons/4-stars-rating.svg',
     attributes: ['All', 'New'],
+    latitude: 32.080,
+    longitude: 34.785
   },
   {
     name: 'OCD',
@@ -49,6 +62,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Raz Rahav',
     rating: 'assets/rating-icons/2-stars-rating.svg',
     attributes: ['All', 'Open Now'],
+    latitude: 32.083,
+    longitude: 34.772
   },
   {
     name: 'Shila',
@@ -56,6 +71,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Shachar Shalev',
     rating: 'assets/rating-icons/2-stars-rating.svg',
     attributes: ['All', 'New'],
+    latitude: 32.074,
+    longitude: 34.776
   },
   {
     name: 'Taizu',
@@ -63,6 +80,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Yuval Ben Neriah',
     rating: 'assets/rating-icons/1-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.073,
+    longitude: 34.788
   },
   {
     name: 'Popina',
@@ -70,6 +89,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Orel Kimchi',
     rating: 'assets/rating-icons/4-stars-rating.svg',
     attributes: ['All', 'Open Now'],
+    latitude: 32.086,
+    longitude: 34.769
   },
   {
     name: 'Milgo & Milbar',
@@ -77,6 +98,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Moti Titman',
     rating: 'assets/rating-icons/2-stars-rating.svg',
     attributes: ['All', 'New'],
+    latitude: 32.081,
+    longitude: 34.775
   },
   {
     name: 'Cafe Noir',
@@ -84,6 +107,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Micky Shemo',
     rating: 'assets/rating-icons/3-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.067,
+    longitude: 34.781
   },
   {
     name: 'Port Said',
@@ -91,6 +116,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Eyal Shani',
     rating: 'assets/rating-icons/3-stars-rating.svg',
     attributes: ['All', 'New'],
+    latitude: 32.073,
+    longitude: 34.773
   },
   {
     name: 'Santa Katarina',
@@ -98,6 +125,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Tomer Agay',
     rating: 'assets/rating-icons/4-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.065,
+    longitude: 34.774
   },
   {
     name: 'Onza',
@@ -105,6 +134,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Yossi Shitrit',
     rating: 'assets/rating-icons/1-stars-rating.svg',
     attributes: ['All', 'Open Now'],
+    latitude: 32.071,
+    longitude: 34.778
   },
   {
     name: 'Malka',
@@ -112,6 +143,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Eyal Shani',
     rating: 'assets/rating-icons/2-stars-rating.svg',
     attributes: ['All', 'New'],
+    latitude: 32.081,
+    longitude: 34.767
   },
   {
     name: 'Benedict',
@@ -119,6 +152,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Guy Gamzo',
     rating: 'assets/rating-icons/3-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.086,
+    longitude: 34.771
   },
   {
     name: 'Toto',
@@ -126,6 +161,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Yaron Shalev',
     rating: 'assets/rating-icons/1-stars-rating.svg',
     attributes: ['All', 'New'],
+    latitude: 32.066,
+    longitude: 34.776
   },
   {
     name: 'Topolopompo',
@@ -133,6 +170,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Aviv Moshe',
     rating: 'assets/rating-icons/1-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.067,
+    longitude: 34.770
   },
   {
     name: 'Hudson',
@@ -140,6 +179,8 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Tomer Tal',
     rating: 'assets/rating-icons/3-stars-rating.svg',
     attributes: ['All', 'Open Now'],
+    latitude: 32.070,
+    longitude: 34.783
   },
   {
     name: 'North Abraxas',
@@ -147,5 +188,7 @@ export const restaurantsData: PopularRestaurant[] = [
     chef: 'Eyal Shani',
     rating: 'assets/rating-icons/4-stars-rating.svg',
     attributes: ['All', 'Most Popular'],
+    latitude: 32.076,
+    longitude: 34.781
   },
 ];

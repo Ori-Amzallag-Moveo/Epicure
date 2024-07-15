@@ -1,11 +1,8 @@
-<app-filter-bar />
-<div class="restaurants-wrapper">
-  @for (restaurant of restaurants; track restaurant) {
-  <app-generic-card [imageSrc]="restaurant.imageSrc" [title]="restaurant.name">
-    <div card-content>
-      <p>{{ restaurant.chef }}</p>
-      <img class="rating" [src]="restaurant.rating" alt="rating" />
-    </div>
-  </app-generic-card>
-  }
+<div class="wrapper">
+  <div class="filter-bar-container">
+    <app-filter-bar (filterChange)="onFilterChange($event)"></app-filter-bar>
+  </div>
+  <div class="restaurant-content">
+    <router-outlet></router-outlet>
+  </div>
 </div>

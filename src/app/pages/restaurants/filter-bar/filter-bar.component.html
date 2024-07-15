@@ -7,6 +7,7 @@
         [filter]="filter"
         [selectedFilter]="selectedFilter"
         (onFilterChange)="setFilter($event)"
+        (click)="onFilterButtonClick(filter)"
       ></app-filter-button>
     </ng-container>
     }

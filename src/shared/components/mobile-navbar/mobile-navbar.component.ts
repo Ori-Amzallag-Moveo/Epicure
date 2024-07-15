@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../../../app/footer/footer.component';
 import { HeaderService } from '../../../app/header/header.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-mobile-navbar',
@@ -10,14 +11,14 @@ import { HeaderService } from '../../../app/header/header.service';
   imports: [FooterComponent],
 })
 export class MobileNavbarComponent {
-  constructor(private headerService: HeaderService) {}
+  constructor(private headerService: HeaderService, private router: Router) {}
 
   onClosing() {
     this.headerService.toggleNavbar();
   }
 
   navigateToRestaurants() {
-    this.headerService.navigateToRestaurants();
+    this.router.navigate(['/restaurants']);
     this.headerService.toggleNavbar();
   }
 }

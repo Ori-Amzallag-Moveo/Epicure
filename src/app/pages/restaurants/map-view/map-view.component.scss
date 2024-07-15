@@ -1,0 +1,12 @@
+@import "_index";
+
+.map-container {
+  @include componentPadding;
+  @include bigPadding;
+
+  #map {
+    height: 80vh;
+    width: 100%;
+  }
+}
+
