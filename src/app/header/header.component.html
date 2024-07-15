@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="header-container">
+    <button class="btn navbar-btn" >
+      <img class="navbar-icon" src="assets/logos/navbar-logos/navbar.svg" alt="Navigation Bar" />
+    </button>
+
+    <div class="left-toolbar">
+      <img class="logo" src="assets/logos/navbar-logos/about-logo.svg" alt="Logo" />
+      <div class="links-container">
+        <h2 class="title">Epicure</h2>
+        <div class="button-container">
+          @for (tabs of headerTabs;track tabs) {
+            <button class="btn">{{tabs}}</button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="right-toolbar">
+      @for (icon of toolbarIcons; track icon.name) {
+        <button class="btn"><img [src]="icon.imgsrc" [alt]="icon.name" /></button>
+      }
+    </div>
+  </div>
+</div>
+
