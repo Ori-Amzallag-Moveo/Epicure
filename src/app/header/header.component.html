@@ -9,16 +9,17 @@
       <div class="links-container">
         <h2 class="title">Epicure</h2>
         <div class="button-container">
-          <button class="btn">Restaurants</button>
-          <button class="btn">Chefs</button>
+          @for (tabs of headerTabs;track tabs) {
+            <button class="btn">{{tabs}}</button>
+          }
         </div>
       </div>
     </div>
 
     <div class="right-toolbar">
-      <button class="btn"><img src="assets/hero-logos/search.svg" alt="Search" /></button>
-      <button class="btn"><img src="assets/logos/navbar-logos/client.svg" alt="Client" /></button>
-      <button class="btn"> <img src="assets/logos/navbar-logos/bag.svg" alt="Bag"/> </button>
+      @for (icon of toolbarIcons; track icon.name) {
+        <button class="btn"><img [src]="icon.imgsrc" [alt]="icon.name" /></button>
+      }
     </div>
   </div>
 </div>
