@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { restaurantsData } from '../../../data/restaurantsData';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { PopularRestaurant } from '../../../models/popularRestaurants.model';
+
 
 @Component({
   selector: 'app-map-view',
@@ -19,7 +21,7 @@ export class MapViewComponent implements OnInit {
   }
 
   loadMarkers() {
-    this.markerPositions = restaurantsData.map(restaurant => ({
+    this.markerPositions = restaurantsData.map((restaurant : PopularRestaurant) => ({
       lat: restaurant.latitude,
       lng: restaurant.longitude,
     }));

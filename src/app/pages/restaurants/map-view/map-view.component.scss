@@ -1,12 +1,14 @@
-@import "_index";
-
 .map-container {
-  @include componentPadding;
-  @include bigPadding;
-
-  #map {
-    height: 80vh;
-    width: 100%;
-  }
+  height: 100vh;
+  width: 100%;
 }
 
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+google-map {
+  height: 80vh;
+  width: 100%;
+}
