@@ -1,0 +1,64 @@
+@import "_index";
+
+.generic-card-container {
+  background-color: $cremeColor;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .text-container {
+    @include flexStyleColumn;
+  }
+}
+
+/* ---------------- Media Query ---------------- */
+
+/* Small screens */
+@include small-screen {
+  .generic-card-container {
+    @include flexStyleColumn;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+
+    h3 {
+      @include h3Font;
+      font-size: 3vh;
+      align-self: flex-start;
+      margin-top: 1vh;
+      margin-left: 3vh;
+    }
+    .text-container {
+      @include bodyTextFont;
+      font-size: 2vh;
+      align-self: flex-start;
+      margin-left: 3vh;
+    }
+  }
+}
+
+/* Medium and large screens */
+@include medium-large-screens {
+  .generic-card-container {
+    @include flexStyleColumn;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 155px;
+    text-align: center;
+
+    h3 {
+      @include h3Font;
+      font-size: 19px;
+    }
+    .text-container {
+      @include bodyTextFont;
+      font-size: 10px;
+      text-align: center;
+    }
+  }
+}
