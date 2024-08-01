@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { SearchBarComponent } from '../../shared/components/search-bar/search-bar.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [SearchBarComponent],
+  imports: [],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-<<<<<<< HEAD
 export class HeaderComponent {
   headerTabs = ['Restaurants', 'Chefs'];
   toolbarIcons = [
@@ -17,6 +15,3 @@ export class HeaderComponent {
     { name: 'bag', imgsrc: 'assets/logos/navbar-logos/bag.svg' },
   ];
 }
-=======
-export class HeaderComponent {}
->>>>>>> e96d977 (prettier)

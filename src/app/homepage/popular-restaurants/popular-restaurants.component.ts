@@ -1,32 +1,19 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RestaurantsButtonComponent } from '../../../shared/buttons/restaurants-button/restaurants-button.component';
+import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CommonModule } from '@angular/common';
+import { restaurantsData } from '../../data/restaurantsData';
 import { breakpointsData } from '../../data/breakpointsData';
-import { Restaurant } from '../../models/restaurant.model';
-import { PopularRestaurantsService } from './popular-restaurants.service';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
 @Component({
   selector: 'app-popular-restaurants',
   standalone: true,
-  imports: [GenericCardComponent, RestaurantsButtonComponent, CommonModule, HttpClientModule],
+  imports: [GenericCardComponent, RestaurantsButtonComponent, CommonModule],
   templateUrl: './popular-restaurants.component.html',
-  styleUrls: ['./popular-restaurants.component.scss'],
+  styleUrl: './popular-restaurants.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-
 })
-export class PopularRestaurantsComponent implements OnInit {
-  restaurants: Restaurant[] = [];
+export class PopularRestaurantsComponent {
+  restaurants = restaurantsData;
+
   breakpoints = breakpointsData;
-
-  constructor(private popularRestaurantsService: PopularRestaurantsService) {}
-
-  ngOnInit() {
-    this.popularRestaurantsService.fetchRestaurants()
-      .pipe(tap((data: Restaurant[]) => this.restaurants = data))
-      .subscribe();
-  }
 }
