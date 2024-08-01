@@ -78,7 +78,9 @@
         margin-top: 16px;
         margin-bottom: 5px;
       }
-
+    }
+  }
+}
 /* Medium and large screens */
 @include medium-large-screens {
   .hero-container {

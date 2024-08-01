@@ -7,15 +7,41 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
+  @include small-screen {
+    @include smallPadding;
+  }
+
+  @include medium-large-screens {
+    display: flex;
+    justify-content: center;
+    @include bigPadding;
+  }
+
   .header-container {
     @include flexStyleRow;
     box-sizing: border-box;
     justify-content: space-between;
     position: relative;
 
+    @include small-screen {
+      height: 46px;
+    }
+
+    @include medium-large-screens {
+      height: 64px;
+      width: 100%;
+      gap: 50px;
+    }
+
     .right-toolbar {
       @include flexStyleRow;
+      justify-content: space-between;
       gap: 20px;
+
+      @include medium-large-screens {
+        display: flex;
+        flex-direction: row;
+      }
     }
 
     .left-toolbar {
@@ -33,6 +59,10 @@
       justify-content: space-between;
       gap: 32px;
 
+      @include small-screen {
+        display: none;
+      }
+
       h2 {
         @include h2Font;
       }
@@ -45,6 +75,14 @@
 
         button {
           @include buttonFont;
+          transition: all 0.3s ease;
+
+          &.active {
+            font-weight: bold;
+            border-bottom: 1.5px solid $goldColor;
+            padding-top: 3px;
+            padding-bottom: 3px;
+          }
         }
       }
     }
@@ -55,48 +93,21 @@
 
 /* Small screens */
 @include small-screen {
-  .wrapper {
-    @include smallPadding;
-    .header-container {
-      height: 46px;
-
-      .links-container {
-        display: none;
-      }
-      .logo {
-        position: absolute;
-        top: 15%;
-        left: 50%;
-        transform: translateY(-50%);
-        transform: translateX(-50%);
-      }
-    }
+  .logo {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
   }
 }
 
 /* Medium and large screens */
 @include medium-large-screens {
-  .wrapper {
-    display: flex;
-    justify-content: center;
-    @include bigPadding;
-
-    .header-container {
-      height: 64px;
-      width: 100%;
-      gap: 50px;
-
-      .navbar-icon {
-        display: none;
-      }
-      .navbar-btn {
-        display: none;
-      }
-
-      .right-toolbar {
-        display: flex;
-        flex-direction: row;
-      }
-    }
+  .navbar-icon {
+    display: none;
+  }
+  .navbar-btn {
+    display: none;
   }
 }
