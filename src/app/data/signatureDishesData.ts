@@ -1,4 +1,6 @@
-export const signatureDishesData = [
+import { Dish } from "../models/dish.model";
+
+export const signatureDishesData: Dish[] = [
   {
     name: 'Pad Ki Mao',
     imageSrc: 'assets/dishes/pad-ki-mao.jpg',

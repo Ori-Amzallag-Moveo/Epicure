@@ -1,10 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { RestaurantsButtonComponent } from '../../../shared/buttons/restaurants-button/restaurants-button.component';
+import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CommonModule } from '@angular/common';
-import { popularRestaurantsData } from '../../data/popularRestaurantsData';
 import { breakpointsData } from '../../data/breakpointsData';
-
+import { PopularRestaurant } from '../../models/popularRestaurants.model';
+import { popularRestaurantsService } from './popularRestaurants.service';
 @Component({
   selector: 'app-popular-restaurants',
   standalone: true,
@@ -13,8 +13,19 @@ import { breakpointsData } from '../../data/breakpointsData';
   styleUrl: './popular-restaurants.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PopularRestaurantsComponent {
-  restaurants = popularRestaurantsData;
-
+export class PopularRestaurantsComponent implements OnInit {
+  restaurants: PopularRestaurant[] = [];
   breakpoints = breakpointsData;
+
+  constructor(private restaurantsService: popularRestaurantsService) {}
+
+  ngOnInit() {
+    this.loadRestaurants();
+  }
+
+  loadRestaurants() {
+    this.restaurantsService.getRestaurants().subscribe((data: PopularRestaurant[]) => {
+      this.restaurants = data;
+    });
+  }
 }

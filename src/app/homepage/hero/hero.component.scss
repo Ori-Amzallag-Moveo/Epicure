@@ -5,6 +5,14 @@
   width: 100%;
   overflow: hidden;
 
+  @include small-screen {
+    height: 273px;
+  }
+
+  @include medium-large-screens {
+    height: 400px;
+  }
+
   .background-img-container {
     position: absolute;
     top: 0;
@@ -31,6 +39,17 @@
     text-align: center;
     box-sizing: border-box;
     padding-bottom: 26px;
+
+    @include small-screen {
+      width: 65%;
+      min-width: 365px;
+    }
+
+    @include medium-large-screens {
+      max-width: 55%;
+      width: 850px;
+      min-width: 550px;
+    }
 
     h1 {
       @include h1Font;
@@ -59,9 +78,6 @@
         margin-top: 16px;
         margin-bottom: 5px;
       }
-    }
-  }
-}
 
 /* Medium and large screens */
 @include medium-large-screens {
@@ -78,6 +94,11 @@
         margin-top: 36px;
         margin-bottom: 23px;
       }
+    }
+
+    app-search-bar {
+      display: flex;
+      justify-content: center;
     }
   }
 }
