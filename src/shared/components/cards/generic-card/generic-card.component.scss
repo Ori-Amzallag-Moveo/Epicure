@@ -9,39 +9,32 @@
     height: 100%;
     object-fit: cover;
   }
-  
+
   .text-container {
     @include flexStyleColumn;
   }
-}
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .generic-card-container {
+  @include small-screen {
     @include flexStyleColumn;
     justify-content: space-between;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
 
     h3 {
       @include h3Font;
       align-self: flex-start;
-      margin-top: 1vh;
-      margin-left: 3vh;
+      margin-top: 5px;
+      margin-left: 10px;
     }
+
     .text-container {
       @include bodyTextFont;
       align-self: flex-start;
-      margin-left: 3vh;
+      margin-left: 5px;
     }
   }
-}
 
-/* Medium and large screens */
-@include medium-large-screens {
-  .generic-card-container {
+  @include medium-large-screens {
     @include flexStyleColumn;
     justify-content: space-between;
     gap: 10px;
@@ -51,11 +44,12 @@
 
     h3 {
       @include h3Font;
-      font-size: 19px;
+      font-size: 20px;
     }
+
     .text-container {
       @include bodyTextFont;
-      font-size: 12px;
+      font-size: 10px;
       text-align: center;
     }
   }

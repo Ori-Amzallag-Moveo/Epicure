@@ -5,19 +5,11 @@
 
   img {
     height: 60px;
-    width: 77.42px;
-    margin-bottom: 32px;
+    width: 80px;
+    margin-bottom: 30px;
   }
-}
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .container {
-    height: 102px;
-    width: 136px;
-
+  @include small-screen {
     p {
       @include iconLabelFont;
       font-size: 15px;
@@ -25,18 +17,12 @@
 
     img {
       height: 35px;
-      width: 46px;
-      margin-bottom: 32px;
+      width: 45px;
+      margin-bottom: 30px;
     }
   }
-}
 
-/* Medium screens */
-@include medium-screens {
-  .container {
-    height: 127px;
-    width: 136px;
-
+  @include medium-screens {
     p {
       @include iconLabelFont;
       font-size: 15px;
@@ -45,17 +31,11 @@
     img {
       height: 45px;
       width: 60px;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
   }
-}
 
-/* Large screens */
-@include large-screens {
-  .container {
-    height: 127px;
-    width: 136px;
-
+  @include large-screens {
     p {
       @include iconLabelFont;
       font-size: 20px;
@@ -63,8 +43,8 @@
 
     img {
       height: 60px;
-      width: 77.42px;
-      margin-bottom: 32px;
+      width: 80px;
+      margin-bottom: 30px;
     }
   }
 }

@@ -24,11 +24,11 @@
     position: relative;
 
     @include small-screen {
-      height: 46px;
+      height: 45px;
     }
 
     @include medium-large-screens {
-      height: 64px;
+      height: 65px;
       width: 100%;
       gap: 50px;
     }
@@ -57,7 +57,7 @@
     .links-container {
       @include flexStyleRow;
       justify-content: space-between;
-      gap: 32px;
+      gap: 30px;
 
       @include small-screen {
         display: none;
@@ -70,7 +70,7 @@
       .button-container {
         @include flexStyleRow;
         justify-content: space-between;
-        gap: 32px;
+        gap: 30px;
         padding-top: 3px;
 
         button {

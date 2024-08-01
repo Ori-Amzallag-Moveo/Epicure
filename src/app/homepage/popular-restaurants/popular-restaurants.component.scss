@@ -1,69 +1,67 @@
 @import "_index";
 
 .slider-container {
-  @include componentPadding;
   width: 100%;
   overflow: hidden;
 
   h2 {
     @include h2Font;
     text-transform: uppercase;
-    margin-bottom: 3vh;
+    margin-bottom: 10px;
   }
 
   .slider {
     display: flex;
     flex-direction: row;
-  }
-}
 
-/* ---------------- Media Query ---------------- */
+    @include small-screen {
+      margin-bottom: 20px;
 
-/* Small screens */
-@include small-screen {
-  .wrapper {
-    @include smallPadding;
-    padding-right: 0px;
-
-    .slider-container {
-      .slider {
-        margin-bottom: 18.2px;
-
-        .rating {
-          display: none;
-        }
-        p {
-          margin-bottom: 2vh;
-        }
+      .rating {
+        display: none;
       }
-      app-restaurants-button {
-        display: flex;
+
+      p {
+        margin-bottom: 5px;
+      }
+    }
+
+    @include medium-large-screens {
+      width: 100%;
+      min-width: 600px;
+
+      p {
+        margin-bottom: 5px;
+      }
+
+      .rating {
+        width: 60%;
+        margin-bottom: 10px;
       }
     }
   }
 }
 
-/* Medium and large screens */
-@include medium-large-screens {
-  .wrapper {
+.wrapper {
+  @include componentPadding;
+  
+  @include small-screen {
+    @include smallPadding;
+
+    .slider-container {
+      app-restaurants-button {
+        display: flex;
+      }
+    }
+  }
+
+  @include medium-large-screens {
     @include bigPadding;
 
     .slider-container {
       @include flexStyleColumn;
       text-align: center;
 
-      .slider {
-        width: 100%;
-        min-width: 600px;
-
-        p {
-          margin-bottom: 6px;
-        }
-        .rating {
-          width: 60%;
-          margin-bottom: 10px;
-        }
-      }
       app-restaurants-button {
         align-self: flex-end;
         margin-top: 20px;
