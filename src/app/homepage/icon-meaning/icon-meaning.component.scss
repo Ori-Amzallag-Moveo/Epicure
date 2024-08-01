@@ -10,39 +10,26 @@
     text-transform: uppercase;
     margin-top: 24px;
     margin-bottom: 32px;
+
+    @include medium-screens {
+      margin-top: 35.5px;
+    }
   }
 
   .icons-container {
     @include flexStyleColumn;
-    gap: 20px;
+    gap: 56px;
     margin-bottom: 24px;
-  }
-}
 
-/* ---------------- Media Query ---------------- */
-
-/* Medium screens */
-@include medium-screens {
-  .container {
-    h2 {
-      @include h2Font;
-      margin-top: 35.5px;
+    @include medium-screens {
+      @include flexStyleRow;
+      margin-bottom: 35.5px;
+      gap: 40px;
     }
 
-    .icons-container {
+    @include large-screens {
       @include flexStyleRow;
-      margin-bottom: 4vh;
-      gap: 25px; 
-    }
-  }
-}
-
-/* Large screens */
-@include large-screens {
-  .container {
-    .icons-container {
-      @include flexStyleRow;
-      gap: 30px;
+      gap: 40px;
     }
   }
 }
