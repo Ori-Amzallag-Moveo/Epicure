@@ -5,7 +5,7 @@
   overflow: hidden;
 
   @include small-screen {
-    height: 273px;
+    height: 270px;
   }
 
   @include medium-large-screens {
@@ -37,7 +37,7 @@
     z-index: 1;
     text-align: center;
     box-sizing: border-box;
-    padding-bottom: 26px;
+    padding-bottom: 25px;
 
     @include small-screen {
       width: 65%;
@@ -55,14 +55,14 @@
 
       @include small-screen {
         line-height: 35px;
-        margin-top: 16px;
+        margin-top: 15px;
         margin-bottom: 5px;
       }
 
       @include medium-large-screens {
         line-height: 40px;
-        margin-top: 36px;
-        margin-bottom: 23px;
+        margin-top: 35px;
+        margin-bottom: 25px;
       }
     }
 

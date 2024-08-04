@@ -16,10 +16,12 @@
     }
   }
 
+
   .text-container {
     @include flexStyleColumn;
   }
 
+  @include small-screen {
   @include small-screen {
     @include flexStyleColumn;
     gap: 10px;
@@ -32,6 +34,7 @@
       margin-left: 15px;
     }
 
+
     .text-container {
       @include bodyTextFont;
       align-self: flex-start;
@@ -39,6 +42,7 @@
     }
   }
 
+  @include medium-large-screens {
   @include medium-large-screens {
     @include flexStyleColumn;
     gap: 10px;
@@ -48,6 +52,7 @@
     h3 {
       @include h3Font;
     }
+
 
     .text-container {
       @include bodyTextFont;

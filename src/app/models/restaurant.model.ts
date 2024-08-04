@@ -1,4 +1,4 @@
 export interface Restaurant {
-    name: string;
-    imgSrc: string;
-  }
+  name: string;
+  imgSrc: string;
+}
