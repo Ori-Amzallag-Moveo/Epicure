@@ -7,23 +7,35 @@
         <img class="navbar-icon" src="assets/logos/navbar-logos/navbar.svg" alt="Navigation Bar" />
       </button>
 
-    <div class="left-toolbar">
-      <img class="logo" src="assets/logos/navbar-logos/about-logo.svg" alt="Logo" />
-      <div class="links-container">
-        <h2 class="title">Epicure</h2>
-        <div class="button-container">
-          @for (tabs of headerTabs;track tabs) {
-            <button class="btn">{{tabs}}</button>
-          }
+      <div class="left-toolbar">
+        <button class="btn" (click)="navigateToHomepage()">
+          <img class="logo" src="assets/logos/navbar-logos/about-logo.svg" alt="Logo" />
+        </button>
+        <div class="links-container">
+          <button class="btn" (click)="navigateToHomepage()">
+            <h2 class="title">Epicure</h2>
+          </button>
+          <div class="button-container">
+           @for (tab of headerTabs; track tab) {
+            <button  class="btn" [ngClass]="{ active: selectedTab === tab }" (click)="navigateTo(tab)">
+              {{ tab }}
+            </button>
+           }
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="right-toolbar">
-      @for (icon of toolbarIcons; track icon.name) {
-        <button class="btn"><img [src]="icon.imgsrc" [alt]="icon.name" /></button>
-      }
+      <div class="right-toolbar">
+        @for(icon of toolbarIcons; track icon) {
+          <button (click)="onToggleCart()" class="btn">
+            <img [src]="icon.imgsrc" [alt]="icon.name" />
+          </button>
+        } 
+      </div>
     </div>
   </div>
-</div>
 }
+  
+
+
+        

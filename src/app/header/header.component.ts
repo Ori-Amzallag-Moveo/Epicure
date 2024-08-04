@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { CartComponent } from '../../shared/components/cart/cart.component';
 import { CartService } from '../../shared/components/cart/cart.service';
 import { HeaderService } from './header.service';
 import { MobileNavbarComponent } from '../../shared/components/mobile-navbar/mobile-navbar.component';
 import { Router, NavigationEnd, Event } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CartComponent, MobileNavbarComponent, CommonModule],
+  imports: [CartComponent, MobileNavbarComponent,CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     { name: 'bag', imgsrc: 'assets/logos/navbar-logos/bag.svg' },
   ];
   navBarMobile: boolean = false;
-  selectedTab: string = '';
+  selectedTab: typeof this.headerTabs[number] | '' = '';
 
   constructor(
     private cartService: CartService,
@@ -55,8 +55,11 @@ export class HeaderComponent implements OnInit {
     this.headerService.toggleNavbar();
   }
 
-  navigateToRestaurants() {
-    this.router.navigate(['/restaurants']);
+  navigateTo(tab: typeof this.headerTabs[number]) {
+    const routes: { [key in typeof this.headerTabs[number]]: string } = {
+      Restaurants: '/restaurants',
+    };
+    this.router.navigate([routes[tab]]);
   }
   
   navigateToHomepage() {

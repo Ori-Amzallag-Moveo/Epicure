@@ -14,6 +14,7 @@ import { Chef } from '../../../models/chef.model';
     GenericCardComponent,
     RestaurantsButtonComponent,
     WeekChefPictureComponent,
+    RestaurantsButtonComponent
   ],
   templateUrl: './week-chef.component.html',
   styleUrl: './week-chef.component.scss',
