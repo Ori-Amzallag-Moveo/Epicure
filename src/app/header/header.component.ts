@@ -15,6 +15,12 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  headerTabs = ['Restaurants', 'Chefs'];
+  toolbarIcons = [
+    { name: 'search', imgsrc: 'assets/hero-logos/search.svg' },
+    { name: 'client', imgsrc: 'assets/logos/navbar-logos/client.svg' },
+    { name: 'bag', imgsrc: 'assets/logos/navbar-logos/bag.svg' },
+  ];
   navBarMobile: boolean = false;
   selectedTab: string = '';
 

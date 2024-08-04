@@ -22,7 +22,6 @@
   }
 
   @include small-screen {
-  @include small-screen {
     @include flexStyleColumn;
     gap: 10px;
     width: 100%;
@@ -42,7 +41,6 @@
     }
   }
 
-  @include medium-large-screens {
   @include medium-large-screens {
     @include flexStyleColumn;
     gap: 10px;
