@@ -20,7 +20,7 @@
     h2 {
       @include h2Font;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
 
       @include medium-large-screens {
         text-align: center;
@@ -31,19 +31,19 @@
     .restaurants-container {
       h3 {
         @include articleSubHeaderFont;
-        margin-bottom: 16px;
+        margin-bottom: 15px;
         margin-top: 20px;
       }
 
       .cards-container {
         @include small-screen {
           @include flexStyleRow;
-          margin-bottom: 13px;
+          margin-bottom: 15px;
         }
 
         @include medium-large-screens {
-          margin-right: 250px;
-          margin-bottom: 13px;
+          margin-right: 450px;
+          margin-bottom: 15px;
         }
       }
     }
@@ -51,23 +51,23 @@
     .descripition-container {
       @include medium-large-screens {
         @include flexStyleRow;
-        gap: 63.5px;
+        gap: 100px;
         align-items: flex-start;
       }
 
       .chef-description {
         @include articleTextFont;
         text-align: justify;
-        margin-bottom: 32px;
+        margin-bottom: 30px;
         width: 100%;
   
         @include small-screen {
-          line-height: 28px;
+          line-height: 30px;
         }
   
         @include medium-screens {
-          line-height: 26px;
-          font-size: 16px;
+          line-height: 25px;
+          font-size: 15px;
         }
   
         @include large-screens {

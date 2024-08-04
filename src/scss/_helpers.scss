@@ -1,14 +1,11 @@
-@import "_fonts";
-
-@mixin fontStyle($primaryFont, $weight, $size, $spacing) {
-  font-family: $primaryFont;
+@mixin fontStyle($weight, $size, $spacing) {
   font-weight: $weight;
   font-size: $size;
   letter-spacing: $spacing;
 }
 
 @mixin fontProperties($weight, $size, $letterSpacing) {
-  @include fontStyle($primaryFont, $weight, $size, $letterSpacing);
+  @include fontStyle($weight, $size, $letterSpacing);
 }
 
 @mixin responsiveFont($weight, $mobileSize, $desktopSize, $letterSpacing) {

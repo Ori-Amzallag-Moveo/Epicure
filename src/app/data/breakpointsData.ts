@@ -5,6 +5,6 @@ export const breakpointsData = {
   },
   490: {
     slidesPerView: 3,
-    spaceBetween: 10,
+    spaceBetween: 30,
   },
 };
