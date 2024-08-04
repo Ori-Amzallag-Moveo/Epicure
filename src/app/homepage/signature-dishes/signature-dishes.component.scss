@@ -34,8 +34,7 @@
 
         .ingredients {
           text-align: left;
-          max-height: 35px;
-          overflow-y: scroll;
+          height: 60px;
         }
 
         .icon-container {
@@ -58,8 +57,8 @@
           margin-bottom: 10px;
 
           .ILS {
-            width: 3px;
-            height: 3px;
+            width: 5px;
+            height: 5px;
           }
         }
       }
@@ -71,15 +70,17 @@
       .ingredients-container {
         @include flexStyleColumn;
         justify-content: space-between;
-        max-height: 100px;
 
         .ingredients {
           order: 2;
-          margin-left: 25px;
-          margin-right: 25px;
+          margin-left: 40px;
+          margin-right: 40px;
           text-align: center;
-          max-height: 50px;
-          overflow-y: scroll;
+          height: 150px;
+
+          @include small-screen {
+            height: 100px;
+          }
         }
 
         .icon-container {
@@ -88,8 +89,8 @@
           gap: 5px;
 
           .icon {
-            width: 20px;
-            height: 20px;
+            width: 40px;
+            height: 30px;
             margin-bottom: 5px;
           }
         }
@@ -112,8 +113,8 @@
             margin-top: 10px;
 
             .ILS {
-              width: 5px;
-              height: 5px;
+              width: 10px;
+              height: 10px;
             }
           }
         }
@@ -142,13 +143,18 @@
     .slider-container {
       @include flexStyleColumn;
 
-      .swiper-slide {
-        height: auto;
-      }
-
       app-restaurants-button {
         display: none;
       }
     }
   }
+}
+
+swiper-slide {
+  height: auto;
+}
+
+app-generic-card {
+  display: block;
+  height: 100%;
 }
