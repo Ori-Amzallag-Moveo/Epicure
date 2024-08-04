@@ -1,11 +1,10 @@
-<google-map
-  height="100%"
-  width="100%"
-  [center]="center"
-  [zoom]="zoom"
-  mapId="YOUR_MAP_ID"
->
-  @for (position of markerPositions; track position) {
-  <map-advanced-marker [position]="position"></map-advanced-marker>
-  }
-</google-map>
+<div class="map-wrapper">
+  <google-map height="500px" width="100%" [options]="options">
+    @for (marker of markers; track marker) {
+    <map-advanced-marker 
+    [position]="marker.position">
+    </map-advanced-marker>
+    }
+  </google-map>
+</div>
+ש

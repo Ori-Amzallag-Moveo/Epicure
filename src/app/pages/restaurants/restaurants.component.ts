@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
@@ -10,10 +10,14 @@ import { GenericCardComponent } from '../../../shared/components/cards/generic-c
   templateUrl: './restaurants.component.html',
   styleUrls: ['./restaurants.component.scss'],
 })
-export class RestaurantsComponent {
+export class RestaurantsComponent implements OnInit{
   selectedFilter: string = 'All';
 
   constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.redirectToAll();
+  }
 
   onFilterChange(filter: string) {
     this.selectedFilter = filter;
@@ -34,5 +38,9 @@ export class RestaurantsComponent {
       default:
         return 'all';
     }
+  }
+
+  redirectToAll() {
+    this.router.navigate(['/restaurants/all']);
   }
 }

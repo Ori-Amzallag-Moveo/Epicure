@@ -3,7 +3,6 @@ import { restaurantsData } from '../../../data/restaurantsData';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { PopularRestaurant } from '../../../models/popularRestaurants.model';
 
-
 @Component({
   selector: 'app-map-view',
   standalone: true,
@@ -12,18 +11,23 @@ import { PopularRestaurant } from '../../../models/popularRestaurants.model';
   imports: [GoogleMapsModule],
 })
 export class MapViewComponent implements OnInit {
-  center: google.maps.LatLngLiteral = { lat: 32.0853, lng: 34.7818 };
-  zoom = 12;
-  markerPositions: google.maps.LatLngLiteral[] = [];
+
+  options: google.maps.MapOptions = {
+    mapId: "DEMO_MAP_ID",
+    center: { lat: 32.0853, lng: 34.7818 },
+    zoom: 13,
+  };
+  markers: { position: google.maps.LatLngLiteral; name: string }[] = [];
 
   ngOnInit() {
     this.loadMarkers();
   }
 
   loadMarkers() {
-    this.markerPositions = restaurantsData.map((restaurant : PopularRestaurant) => ({
-      lat: restaurant.latitude,
-      lng: restaurant.longitude,
+    this.markers = restaurantsData.map((restaurant: PopularRestaurant) => ({
+      position: { lat: restaurant.latitude, lng: restaurant.longitude },
+      name: restaurant.name,
     }));
   }
+  
 }
