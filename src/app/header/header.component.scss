@@ -38,6 +38,10 @@
       justify-content: space-between;
       gap: 20px;
 
+      @include small-screen {
+        gap: 10px;
+      }
+
       @include medium-large-screens {
         display: flex;
         flex-direction: row;
@@ -51,6 +55,14 @@
 
       .logo {
         padding-bottom: 5px;
+
+        @include small-screen {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+        }
       }
     }
 
@@ -87,20 +99,6 @@
     }
   }
 }
-
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .logo {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateY(-50%);
-    transform: translateX(-50%);
-  }
-}
-
 /* Medium and large screens */
 @include medium-large-screens {
   .navbar-icon {

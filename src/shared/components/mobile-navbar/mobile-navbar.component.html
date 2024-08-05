@@ -1,11 +1,11 @@
-<div class="mobile-navbar-container">
+<div class="mobile-navbar-container" [ngClass]="{ 'open': navBarMobile, 'closed': !navBarMobile }">
   <button (click)="onClosing()" class="close-btn btn">
     <img src="/assets/logos/navbar-logos/x-icon.svg" alt="Close icon" />
   </button>
   <div class="links-container">
-    <button class="btn" (click)="navigateToRestaurants()" >Restaurants</button>
+    <button class="btn" (click)="navigateToRestaurants()">Restaurants</button>
     <button class="btn">Chefs</button>
   </div>
   <hr />
-  <app-footer />
+  <app-footer></app-footer>
 </div>

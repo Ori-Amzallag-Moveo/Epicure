@@ -35,7 +35,7 @@
 }
 
 @mixin restaurantsLinkFont {
-  @include responsiveFont(200, 16px, 24px, 2px);
+  @include responsiveFont(200, 15px, 24px, 2px);
 }
 
 @mixin iconLabelFont {
@@ -53,9 +53,11 @@
 @mixin articleSubHeaderFont {
   @include responsiveFont(200, 16px, 20px, 1.25px);
 }
+
 @mixin linksFont {
   @include responsiveFont(200, 12px, 18px, 1.92px);
 }
+
 @mixin linksFont {
   @include responsiveFont(200, 12px, 18px, 1.92px);
 }

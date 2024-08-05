@@ -11,10 +11,15 @@
   img {
     height: 25px;
     width: 25px;
+
+    @include small-screen {
+      margin-top: 4px;
+      height: 15px;
+      width: 15px;
+    }
   }
 
   @include small-screen {
-    font-size: 15px;
     width: 170px;
     height: 35px;
   }

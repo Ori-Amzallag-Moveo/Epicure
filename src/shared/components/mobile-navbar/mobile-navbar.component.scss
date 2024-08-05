@@ -7,17 +7,18 @@
   background-color: #fff;
   position: fixed;
   z-index: 1000;
+  transition: 1.3s all;
 
   .close-btn {
-    padding-left: 15px;
-    padding-top: 8px;
+    padding: 30px;
+    padding-top: 30px;
   }
 
   hr {
     border-width: 0.2px;
     border-color: #333;
     width: 100%;
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
   .links-container {
@@ -25,9 +26,7 @@
     @include smallPadding;
     align-items: flex-start;
     gap: 30px;
-    margin-bottom: 32px;
-    margin-top: 32px;
-
+    margin-bottom: 30px;
     button {
       @include linksFont;
       opacity: 80%;
@@ -36,5 +35,31 @@
 
   app-footer {
     opacity: 90%;
+  }
+
+  &.open {
+    animation: rollDown 1.3s forwards;
+  }
+
+  &.closed {
+    animation: rollUp 1.3s forwards;
+  }
+
+  @keyframes rollDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes rollUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
   }
 }

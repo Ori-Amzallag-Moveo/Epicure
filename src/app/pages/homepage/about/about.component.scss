@@ -6,7 +6,7 @@
 
 .wrapper {
   @include componentPadding;
-  
+
   @include small-screen {
     @include smallPadding;
   }
@@ -25,19 +25,19 @@
 
     .logo {
       @include small-screen {
-        width: 102px;
+        width: 100px;
         height: 95px;
-        margin: 24px 0 32px;
+        margin: 25px 0 30px;
       }
     }
 
     .logo-wrapper {
       @include medium-large-screens {
-        margin: 174px 0 189px;
+        margin: 175px 0 190px;
 
         img {
-          width: 178px;
-          height: 166px;
+          width: 180px;
+          height: 170px;
         }
       }
     }
@@ -49,8 +49,8 @@
       @include small-screen {
         .apple-google-container {
           @include flexStyleColumn;
-          margin-bottom: 48px;
-          gap: 16px;
+          margin-bottom: 50px;
+          gap: 15px;
         }
 
         h3 {
@@ -61,14 +61,14 @@
         .description-container {
           @include articleTextFont;
           line-height: 35px;
-          margin-bottom: 48px;
+          margin-bottom: 50px;
         }
       }
 
       @include medium-large-screens {
         .apple-google-container {
           display: flex;
-          gap: 16px;
+          gap: 15px;
           order: 3;
           margin-bottom: 30px;
         }
@@ -87,17 +87,10 @@
         h3 {
           text-transform: uppercase;
           @include articleSubHeaderFont;
-          letter-spacing: 2.14px;
           order: 1;
-          margin: 40px 0 16px;
+          margin: 35px 0 15px;
         }
       }
     }
-  }
-}
-
-app-restaurants-button {
-  @include medium-large-screens {
-    display: none;
   }
 }
