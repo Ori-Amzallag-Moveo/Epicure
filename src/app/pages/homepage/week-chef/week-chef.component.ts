@@ -6,6 +6,7 @@ import { WeekChefPictureComponent } from '../../../../shared/components/week-che
 import { breakpointsData } from '../../../data/breakpointsData';
 import { chefsData } from '../../../data/chefsData';
 import { Chef } from '../../../models/chef.model';
+import { popularRestaurantsService } from '../popular-restaurants/popularRestaurants.service';
 
 @Component({
   selector: 'app-week-chef',
@@ -21,9 +22,14 @@ import { Chef } from '../../../models/chef.model';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class WeekChefComponent {
-  chefs: Chef[] = chefsData;
-  chefOfTheWeek = this.chefs[0];
+  chefs: Chef[] = [];
   breakpoints = breakpointsData;
+
+  constructor(private restaurantsService: popularRestaurantsService) {}
+
+  async ngOnInit() {
+    this.chefs = await this.restaurantsService.getchefs();
+  }
 
   getFirstName(fullName: string): string {
     return fullName.split(' ')[0];

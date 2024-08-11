@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^18.0.5",
+    "@angular/animations": "^18.1.4",
     "@angular/common": "^18.0.5",
     "@angular/compiler": "^18.0.5",
     "@angular/forms": "^18.0.0",
@@ -23,6 +23,7 @@
     "@angular/ssr": "^18.0.4",
     "@ngx-env/builder": "^18.0.1",
     "@ngx-env/core": "^16.1.3",
+    "axios": "^1.7.3",
     "express": "^4.18.2",
     "hammerjs": "^2.0.8",
     "rxjs": "~7.8.0",

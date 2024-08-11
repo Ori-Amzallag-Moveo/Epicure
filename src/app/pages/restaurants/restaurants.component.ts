@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
-
 @Component({
   selector: 'app-restaurants',
   standalone: true,
@@ -15,7 +14,7 @@ export class RestaurantsComponent implements OnInit{
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.redirectToAll();
   }
 

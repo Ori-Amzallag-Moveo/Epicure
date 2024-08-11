@@ -1,8 +1,9 @@
-import { Restaurant } from './restaurant.model';
+import { Restaurant } from './Restaurant.model';
 
 export interface Chef {
   name: string;
-  imgSrc: string;
-  description: string;
-  restaurants: Restaurant[];
+    slug?: string;
+    imageSrc: string;
+    description: String;
+    restaurants?: Restaurant[];
 }

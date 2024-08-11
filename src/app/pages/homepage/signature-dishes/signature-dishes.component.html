@@ -11,7 +11,7 @@
             <p class="ingredients">{{ dish.ingredients }}</p>
             <div class="icon-container">
               @for (icon of dish.icons; track icon) {
-              <img [src]="icon.src" [alt]="icon.alt" class="icon" />
+              <img [src]="icon.imgSrc" [alt]="icon.alt" class="icon" />
               }
             </div>
             <div class="price-container">

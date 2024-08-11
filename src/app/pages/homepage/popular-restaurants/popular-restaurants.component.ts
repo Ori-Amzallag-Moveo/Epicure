@@ -3,7 +3,7 @@ import { RestaurantsButtonComponent } from '../../../../shared/buttons/restauran
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { CommonModule } from '@angular/common';
 import { breakpointsData } from '../../../data/breakpointsData';
-import { PopularRestaurant } from '../../../models/popularRestaurants.model';
+import { Restaurant } from '../../../models/Restaurant.model';
 import { popularRestaurantsService } from './popularRestaurants.service';
 @Component({
   selector: 'app-popular-restaurants',
@@ -14,18 +14,29 @@ import { popularRestaurantsService } from './popularRestaurants.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PopularRestaurantsComponent implements OnInit {
-  restaurants: PopularRestaurant[] = [];
+  restaurants: Restaurant[] = [];
   breakpoints = breakpointsData;
 
   constructor(private restaurantsService: popularRestaurantsService) {}
 
-  ngOnInit() {
-    this.loadRestaurants();
+  async ngOnInit() {
+    this.restaurants = await this.restaurantsService.getPopularRestaurants();
   }
 
-  loadRestaurants() {
-    this.restaurantsService.getRestaurants().subscribe((data: PopularRestaurant[]) => {
-      this.restaurants = data;
-    });
+  ratingConverter(rating: number): string {
+    switch (rating) {
+      case 1:
+        return 'assets/rating-icons/1-stars-rating.svg';
+      case 2:
+        return 'assets/rating-icons/2-stars-rating.svg';
+      case 3:
+        return 'assets/rating-icons/3-stars-rating.svg';
+      case 4:
+        return 'assets/rating-icons/4-stars-rating.svg';
+      case 5:
+        return 'assets/rating-icons/5-stars-rating.svg';
+      default:
+        return '';
+    }
   }
 }

@@ -8,8 +8,8 @@
           [imageSrc]="restaurant.imageSrc"
           [title]="restaurant.name">
           <div card-content>
-            <p>{{ restaurant.chef }}</p>
-            <img class="rating" [src]="restaurant.rating" alt="rating" />
+            <p>{{ restaurant.chef?.name }}</p>
+            <img class="rating" [src]="ratingConverter(restaurant.rating)" alt="rating" />
           </div>
         </app-generic-card>
       </swiper-slide>

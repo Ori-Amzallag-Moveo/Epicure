@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { restaurantsData } from '../../../data/restaurantsData';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { PopularRestaurant } from '../../../models/popularRestaurants.model';
+import { Restaurant } from '../../../models/Restaurant.model';
+import { RestaurantsService } from '../restaurants.service';
 
 @Component({
   selector: 'app-map-view',
@@ -11,23 +11,27 @@ import { PopularRestaurant } from '../../../models/popularRestaurants.model';
   imports: [GoogleMapsModule],
 })
 export class MapViewComponent implements OnInit {
-
   options: google.maps.MapOptions = {
-    mapId: "DEMO_MAP_ID",
+    mapId: 'DEMO_MAP_ID',
     center: { lat: 32.0853, lng: 34.7818 },
     zoom: 13,
   };
   markers: { position: google.maps.LatLngLiteral; name: string }[] = [];
 
-  ngOnInit() {
-    this.loadMarkers();
+  constructor (private restaurantsService: RestaurantsService) {}
+
+  async ngOnInit() {
+   await this.loadMarkers();
   }
 
-  loadMarkers() {
-    this.markers = restaurantsData.map((restaurant: PopularRestaurant) => ({
-      position: { lat: restaurant.latitude, lng: restaurant.longitude },
+  async loadMarkers() {
+    const restaurants = await this.restaurantsService.getRestaurants();
+    this.markers = restaurants.map((restaurant: Restaurant) => ({
+      position: {
+        lat: restaurant.location.coordinates[1],
+        lng: restaurant.location.coordinates[0],
+      },
       name: restaurant.name,
     }));
   }
-  
 }
