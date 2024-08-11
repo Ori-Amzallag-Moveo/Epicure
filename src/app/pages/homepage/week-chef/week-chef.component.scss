@@ -60,21 +60,25 @@
         text-align: justify;
         margin-bottom: 30px;
         width: 100%;
-  
+
         @include small-screen {
           line-height: 30px;
         }
-  
+
         @include medium-screens {
           line-height: 25px;
           font-size: 15px;
         }
-  
+
         @include large-screens {
           line-height: 40px;
         }
       }
     }
+  }
+
+  .swiper-container {
+    height: 250px;
   }
 
   app-restaurants-button {

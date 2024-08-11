@@ -47,8 +47,8 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  onToggleCart() {
-    this.cartService.toggleCart();
+  onClick(iconName: string) {
+    if (iconName === 'bag') {this.cartService.toggleCart();}
   }
 
   onToggleNavbar() {

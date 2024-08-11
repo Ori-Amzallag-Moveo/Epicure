@@ -7,7 +7,7 @@
 }
 
 @mixin h2Font {
-  @include responsiveFont(200, 18px, 25px, 1.25px);
+  @include responsiveFont(200, 16px, 25px, 1.25px);
 }
 
 @mixin h3Font {

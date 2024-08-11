@@ -20,8 +20,10 @@ app-generic-card {
   width: 100%;
   max-width: 500px;
 
-  @include small-screen {
-    p {
+  p {
+    padding-bottom: 10px;
+
+    @include small-screen {
       padding-bottom: 20px;
     }
   }

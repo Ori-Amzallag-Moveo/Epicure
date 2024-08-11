@@ -11,7 +11,7 @@
       <h3>{{ getFirstName(chefs[12].name) }}'s restaurants</h3>
       <swiper-container class="cards-container" [breakpoints]="breakpoints">
         @for (restaurant of chefs[12].restaurants; track restaurant){
-        <swiper-slide>
+        <swiper-slide class="swiper-container">
           <app-generic-card
             [title]="restaurant.name"
             [imageSrc]="restaurant.imageSrc"/>

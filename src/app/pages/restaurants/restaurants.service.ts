@@ -12,41 +12,27 @@ export class RestaurantsService {
   private openNowApiUrl = 'http://localhost:3001/api/v1/restaurants/open';
 
   async getRestaurants(): Promise<Restaurant[]> {
-    try {
-      const response = await axios.get< { success: boolean, data: Restaurant[] } >(this.apiUrl);
-      return response.data.data;
-    } catch (error) {
-      console.error('Error fetching restaurants:', error);
-      return [];
-    }
+    return this.fetchRestaurants(this.apiUrl);
   }
 
   async getNewRestaurants(): Promise<Restaurant[]> {
-    try {
-      const response = await axios.get< { success: boolean, data: Restaurant[] } >(this.newApiUrl);
-      return response.data.data;
-    } catch (error) {
-      console.error('Error fetching new restaurants:', error);
-      return [];
-    }
+    return this.fetchRestaurants(this.newApiUrl);
   }
 
   async getPopularRestaurants(): Promise<Restaurant[]> {
-    try {
-      const response = await axios.get<{ success: boolean, data: Restaurant[] }>(this.popularApiUrl);
-      return response.data.data;
-    } catch (error) {
-      console.error('Error fetching popular restaurants:', error);
-      return [];
-    }
+    return this.fetchRestaurants(this.popularApiUrl);
   }
 
   async getOpenRestaurants(): Promise<Restaurant[]> {
+    return this.fetchRestaurants(this.openNowApiUrl);
+  }
+
+  private async fetchRestaurants(url: string): Promise<Restaurant[]> {
     try {
-      const response = await axios.get<{ success: boolean, data: Restaurant[] }>(this.openNowApiUrl);
+      const response = await axios.get<{ success: boolean, data: Restaurant[] }>(url);
       return response.data.data;
     } catch (error) {
-      console.error('Error fetching open restaurants:', error);
+      console.error(`Error fetching restaurants from ${url}:`, error);
       return [];
     }
   }

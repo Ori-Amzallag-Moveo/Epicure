@@ -4,9 +4,8 @@ import { RestaurantsButtonComponent } from '../../../../shared/buttons/restauran
 import { WeekChefPictureComponent } from '../../../../shared/components/week-chef-picture/week-chef-picture.component';
 
 import { breakpointsData } from '../../../data/breakpointsData';
-import { chefsData } from '../../../data/chefsData';
 import { Chef } from '../../../models/chef.model';
-import { popularRestaurantsService } from '../popular-restaurants/popularRestaurants.service';
+import { HomepageService } from '../homepage.service';
 
 @Component({
   selector: 'app-week-chef',
@@ -25,10 +24,10 @@ export class WeekChefComponent {
   chefs: Chef[] = [];
   breakpoints = breakpointsData;
 
-  constructor(private restaurantsService: popularRestaurantsService) {}
+  constructor(private homepageService: HomepageService) {}
 
   async ngOnInit() {
-    this.chefs = await this.restaurantsService.getChefs();
+    this.chefs = await this.homepageService.getChefs();
   }
 
   getFirstName(fullName: string): string {

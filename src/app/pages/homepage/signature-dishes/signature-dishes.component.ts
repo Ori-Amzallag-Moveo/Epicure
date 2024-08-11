@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RestaurantsButtonComponent } from '../../../../shared/buttons/restaurants-button/restaurants-button.component';
 import { breakpointsData } from '../../../data/breakpointsData';
 import { Dish } from '../../../models/dish.model';
-import { popularRestaurantsService } from '../popular-restaurants/popularRestaurants.service';
+import { HomepageService } from '../homepage.service';
 @Component({
   selector: 'app-signature-dishes',
   standalone: true,
@@ -17,9 +17,9 @@ export class SignatureDishesComponent {
   dishes: Dish[] = [];
   breakpoints = breakpointsData;
 
-  constructor(private restaurantsService: popularRestaurantsService) {}
+  constructor(private homepageService: HomepageService) {}
 
   async ngOnInit() {
-    this.dishes = await this.restaurantsService.getSignatureDishes();
+    this.dishes = await this.homepageService.getSignatureDishes();
   }
 }
