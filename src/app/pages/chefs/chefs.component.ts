@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
 import { FilterBarComponent } from '../../../shared/components/filter-bar/filter-bar.component';
-import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CartComponent } from '../../../shared/components/cart/cart.component';
+import { RouterModule, Router } from '@angular/router';
+import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CartService } from '../../../shared/components/cart/cart.service';
 
 @Component({
-  selector: 'app-restaurants',
+  selector: 'app-chefs',
   standalone: true,
-  imports: [FilterBarComponent, GenericCardComponent, RouterModule, CartComponent],
-  templateUrl: './restaurants.component.html',
-  styleUrls: ['./restaurants.component.scss'],
+  imports: [FilterBarComponent, CartComponent, RouterModule],
+  templateUrl: './chefs.component.html',
+  styleUrl: './chefs.component.scss'
 })
-export class RestaurantsComponent implements OnInit {
+export class ChefsComponent {
   cartItems: any[] = [];
   cartIsEmpty: boolean = true;
   showCart: boolean = false;
   selectedFilter: string = 'All';
 
-  filters: string[] = ['All', 'New', 'Most Popular', 'Open Now', 'Map View'];
-  secondFilters: string[] = ['Price Range', 'Distance', 'Rating'];
+  filters: string[] = ['All', 'New', 'Most Viewed'];
+  secondFilters: string[] = []
 
   constructor(private router: Router, private cartService: CartService) {}
 
@@ -38,26 +38,22 @@ export class RestaurantsComponent implements OnInit {
   onFilterChange(filter: string) {
     this.selectedFilter = filter;
     const filterPath = this.getFilterPath(filter);
-    this.router.navigate([`/restaurants/${filterPath}`]);
+    this.router.navigate([`/chefs/${filterPath}`]);
   }
 
   private getFilterPath(filter: string): string {
     switch (filter) {
       case 'New':
         return 'new';
-      case 'Most Popular':
-        return 'most-popular';
-      case 'Open Now':
-        return 'open';
-      case 'Map View':
-        return 'map-view';
+      case 'Most Viewed':
+        return 'most-viewed';
       default:
         return 'all';
     }
   }
 
   redirectToAll() {
-    this.router.navigate(['/restaurants/all']);
+    this.router.navigate(['/chefs/all']);
   }
 
   toggleCart() {

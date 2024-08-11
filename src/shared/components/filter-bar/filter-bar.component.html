@@ -1,7 +1,7 @@
 <div class="wrapper">
-  <h1>RESTAURANTS</h1>
+  <h1>{{ pageName }}</h1>
   <div class="filter-bar-container">
-    @for(filter of filters; track filter) {
+    @for(filter of tabsNames; track filter) {
     <ng-container>
       <app-filter-button
         [filter]="filter"
@@ -13,8 +13,10 @@
     }
   </div>
 </div>
-<div class="second-filter-bar-container">
-  @for (secondFilter of secondFilters; track secondFilter) {
-  <app-second-filter-button [secondFilterName]="secondFilter" />
-  }
-</div>
+@if (secondTabsNames.length > 0) {
+  <div class="second-filter-bar-container">
+    @for (secondFilter of secondTabsNames; track secondFilter) {
+    <app-second-filter-button [secondFilterName]="secondFilter" />
+    }
+  </div>
+}

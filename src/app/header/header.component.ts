@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   headerTabs = ['Restaurants', 'Chefs'];
-  toolbarIcons = [
+  toolbarIcons: { name: string; imgsrc: string }[] = [
     { name: 'search', imgsrc: 'assets/hero-logos/search.svg' },
     { name: 'client', imgsrc: 'assets/logos/navbar-logos/client.svg' },
     { name: 'bag', imgsrc: 'assets/logos/navbar-logos/bag.svg' },
@@ -58,6 +58,7 @@ export class HeaderComponent implements OnInit {
   navigateTo(tab: typeof this.headerTabs[number]) {
     const routes: { [key in typeof this.headerTabs[number]]: string } = {
       Restaurants: '/restaurants',
+      Chefs: '/chefs',
     };
     this.router.navigate([routes[tab]]);
   }
@@ -69,7 +70,11 @@ export class HeaderComponent implements OnInit {
   private setActiveTab(url: string) {
     if (url.startsWith('/restaurants')) {
       this.selectedTab = 'Restaurants';
-    } else {
+    } 
+    else if (url.startsWith('/chefs')) {
+      this.selectedTab = 'Chefs';
+    }
+    else {
       this.selectedTab = '';
     }
   }
