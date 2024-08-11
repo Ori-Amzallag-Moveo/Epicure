@@ -31,7 +31,7 @@ export class RestaurantsComponent implements OnInit{
       case 'Most Popular':
         return 'most-popular';
       case 'Open Now':
-        return 'open-now';
+        return 'open';
       case 'Map View':
         return 'map-view';
       default:

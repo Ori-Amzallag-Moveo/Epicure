@@ -11,7 +11,8 @@ export class popularRestaurantsService {
 
   async getPopularRestaurants(): Promise<Restaurant[]> {
     try {
-      const response = await axios.get< { success: boolean, data: Restaurant[] } >(this.apiUrl + 'restaurants/popular');
+      const response = await axios.get<{ success: boolean;data: Restaurant[];}> (
+        this.apiUrl + 'restaurants/popular');
       return response.data.data;
     } catch (error) {
       console.error('Error fetching popular restaurants:', error);
@@ -21,7 +22,9 @@ export class popularRestaurantsService {
 
   async getSignatureDishes(): Promise<Dish[]> {
     try {
-      const response = await axios.get< { success: boolean, data: Dish[] } >(this.apiUrl + 'dishes');
+      const response = await axios.get<{ success: boolean; data: Dish[] }>(
+        this.apiUrl + 'dishes'
+      );
       return response.data.data;
     } catch (error) {
       console.error('Error fetching signature dishes:', error);
@@ -29,15 +32,15 @@ export class popularRestaurantsService {
     }
   }
 
-  async getchefs(): Promise<Chef[]> {
+  async getChefs(): Promise<Chef[]> {
     try {
-      const response = await axios.get< { success: boolean, data: Chef[] } >(this.apiUrl + 'chefs');
+      const response = await axios.get<{ success: boolean; data: Chef[] }>(
+        this.apiUrl + 'chefs'
+      );
       return response.data.data;
     } catch (error) {
       console.error('Error fetching chefs:', error);
       return [];
     }
   }
-
-  
 }

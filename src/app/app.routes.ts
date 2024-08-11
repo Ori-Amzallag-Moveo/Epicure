@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 import { MapViewComponent } from './pages/restaurants/map-view/map-view.component';
-import { AllRestaurantsComponent } from './pages/restaurants/all-restaurants/all-restaurants.component';
+import { FilterRestaurantsComponent } from './pages/restaurants/filter-restaurants/filter-restaurants.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -12,10 +12,10 @@ export const routes: Routes = [
     component: RestaurantsComponent,
     children: [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
-      { path: 'all', component: AllRestaurantsComponent },
-      { path: 'new', component: AllRestaurantsComponent },
-      { path: 'most-popular', component: AllRestaurantsComponent },
-      { path: 'open-now', component: AllRestaurantsComponent },
+      { path: 'all', component: FilterRestaurantsComponent },
+      { path: 'new', component: FilterRestaurantsComponent },
+      { path: 'most-popular', component: FilterRestaurantsComponent },
+      { path: 'open', component: FilterRestaurantsComponent },
       { path: 'map-view', component: MapViewComponent },
     ],
   },

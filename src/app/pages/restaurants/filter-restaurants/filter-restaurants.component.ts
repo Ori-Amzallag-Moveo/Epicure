@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RestaurantsService } from '../restaurants.service';
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { Restaurant } from '../../../models/Restaurant.model';
@@ -6,17 +7,33 @@ import { Restaurant } from '../../../models/Restaurant.model';
   selector: 'app-all-restaurants',
   standalone: true,
   imports: [GenericCardComponent],
-  templateUrl: './all-restaurants.component.html',
-  styleUrl: './all-restaurants.component.scss'
+  templateUrl: './filter-restaurants.component.html',
+  styleUrl: './filter-restaurants.component.scss'
 })
-export class AllRestaurantsComponent implements OnInit {
+export class FilterRestaurantsComponent implements OnInit {
 
   restaurants: Restaurant[] = [];
 
-  constructor(private restaurantsService: RestaurantsService) {}
+  constructor(private restaurantsService: RestaurantsService, private route: ActivatedRoute) {}
 
   async ngOnInit() {
-    this.restaurants = await this.restaurantsService.getRestaurants();
+    this.route.url.subscribe(async (url) => {
+      const path = url[0].path;
+      switch (path) {
+        case 'new':
+          this.restaurants = await this.restaurantsService.getNewRestaurants();
+          break;
+        case 'open':
+          this.restaurants = await this.restaurantsService.getOpenRestaurants();
+          break;
+        case 'popular':
+          this.restaurants = await this.restaurantsService.getPopularRestaurants();
+          break;
+        default:
+          this.restaurants = await this.restaurantsService.getRestaurants();
+          break;
+      }
+    });
   }
 
   ratingConverter(rating: number): string {

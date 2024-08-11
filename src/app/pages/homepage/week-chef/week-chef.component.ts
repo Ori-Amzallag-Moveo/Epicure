@@ -28,7 +28,7 @@ export class WeekChefComponent {
   constructor(private restaurantsService: popularRestaurantsService) {}
 
   async ngOnInit() {
-    this.chefs = await this.restaurantsService.getchefs();
+    this.chefs = await this.restaurantsService.getChefs();
   }
 
   getFirstName(fullName: string): string {
