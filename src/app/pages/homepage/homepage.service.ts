@@ -14,7 +14,7 @@ export class HomepageService {
   }
 
   async getSignatureDishes(): Promise<Dish[]> {
-    return this.fetchData<Dish[]>(this.apiUrl + 'dishes');
+    return this.fetchData<Dish[]>(this.apiUrl + 'dishes/signature');
   }
 
   async getChefs(): Promise<Chef[]> {
