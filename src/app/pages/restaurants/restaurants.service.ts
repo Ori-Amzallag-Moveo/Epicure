@@ -6,30 +6,37 @@ import { Restaurant } from '../../models/Restaurant.model';
   providedIn: 'root',
 })
 export class RestaurantsService {
-  private apiUrl = 'http://localhost:3001/api/v1/restaurants/';
-  private newApiUrl = 'http://localhost:3001/api/v1/restaurants/new';
-  private popularApiUrl = 'http://localhost:3001/api/v1/restaurants/popular';
-  private openNowApiUrl = 'http://localhost:3001/api/v1/restaurants/open';
+  private readonly apiUrl = 'http://localhost:3000/api/v1';
+
+  private readonly endpoints = {
+    all: `${this.apiUrl}/restaurants/`,
+    new: `${this.apiUrl}/restaurants/new`,
+    popular: `${this.apiUrl}/restaurants/popular`,
+    open: `${this.apiUrl}/restaurants/open`,
+  };
 
   async getRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.apiUrl);
+    return this.fetchRestaurants(this.endpoints.all);
   }
 
   async getNewRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.newApiUrl);
+    return this.fetchRestaurants(this.endpoints.new);
   }
 
   async getPopularRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.popularApiUrl);
+    return this.fetchRestaurants(this.endpoints.popular);
   }
 
   async getOpenRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.openNowApiUrl);
+    return this.fetchRestaurants(this.endpoints.open);
   }
 
   private async fetchRestaurants(url: string): Promise<Restaurant[]> {
     try {
-      const response = await axios.get<{ success: boolean, data: Restaurant[] }>(url);
+      const response = await axios.get<{
+        success: boolean;
+        data: Restaurant[];
+      }>(url);
       return response.data.data;
     } catch (error) {
       console.error(`Error fetching restaurants from ${url}:`, error);
