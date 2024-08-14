@@ -1,45 +1,33 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Restaurant } from '../../models/Restaurant.model';
+import { environment } from '../../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RestaurantsService {
-  private readonly apiUrl = 'http://localhost:3000/api/v1';
+  private readonly apiUrl = environment.apiUrl; 
 
-  private readonly endpoints = {
-    all: `${this.apiUrl}/restaurants/`,
-    new: `${this.apiUrl}/restaurants/new`,
-    popular: `${this.apiUrl}/restaurants/popular`,
-    open: `${this.apiUrl}/restaurants/open`,
-  };
-
-  async getRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.endpoints.all);
-  }
-
-  async getNewRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.endpoints.new);
-  }
-
-  async getPopularRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.endpoints.popular);
-  }
-
-  async getOpenRestaurants(): Promise<Restaurant[]> {
-    return this.fetchRestaurants(this.endpoints.open);
-  }
-
-  private async fetchRestaurants(url: string): Promise<Restaurant[]> {
+  async fetchRestaurants(
+    isPopular?: string,
+    isNewRestaurant?: string,
+    isOpenNow?: string
+  ): Promise<Restaurant[]> {
+    const params: any = {};
+    if (isPopular !== undefined) params.isPopular = isPopular;
+    if (isNewRestaurant !== undefined) params.isNewRestaurant = isNewRestaurant;
+    if (isOpenNow !== undefined) params.isOpenNow = isOpenNow;
     try {
       const response = await axios.get<{
         success: boolean;
         data: Restaurant[];
-      }>(url);
+      }>(`${this.apiUrl}/restaurants`, {
+        params,
+      });
       return response.data.data;
     } catch (error) {
-      console.error(`Error fetching restaurants from ${url}:`, error);
+      console.error('Error fetching restaurants:', error);
       return [];
     }
   }

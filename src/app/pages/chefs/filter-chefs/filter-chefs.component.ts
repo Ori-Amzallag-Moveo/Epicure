@@ -17,19 +17,14 @@ export class FilterChefsComponent implements OnInit {
   constructor(private chefsService: ChefsService, private route: ActivatedRoute) {}
 
   async ngOnInit() {
-    this.route.url.subscribe(async (url) => {
-      const path = url[0].path;
-      switch (path) {
-        case 'new':
-          this.chefs = await this.chefsService.getNewChefs();
-          break;
-        case 'most-viewed':
-          this.chefs = await this.chefsService.getMostViewedChefs();
-          break;
-        default:
-          this.chefs = await this.chefsService.getChefs();
-          break;
-      }
+    this.route.queryParams.subscribe(async (params) => {
+      const isNewChef = params['isNewChef'];
+      const isMostViewedChef = params['isMostViewedChef'];
+
+      this.chefs = await this.chefsService.fetchChefs(
+        isNewChef,
+        isMostViewedChef,
+      );
     });
   }
 }

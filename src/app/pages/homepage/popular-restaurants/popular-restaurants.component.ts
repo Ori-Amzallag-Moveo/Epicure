@@ -4,7 +4,7 @@ import { GenericCardComponent } from '../../../../shared/components/cards/generi
 import { CommonModule } from '@angular/common';
 import { breakpointsData } from '../../../data/breakpointsData';
 import { Restaurant } from '../../../models/Restaurant.model';
-import { HomepageService } from '../homepage.service';
+import { RestaurantsService } from '../../restaurants/restaurants.service';
 @Component({
   selector: 'app-popular-restaurants',
   standalone: true,
@@ -17,10 +17,10 @@ export class PopularRestaurantsComponent implements OnInit {
   restaurants: Restaurant[] = [];
   breakpoints = breakpointsData;
 
-  constructor(private homepageService: HomepageService) {}
+  constructor(private restaurantsService: RestaurantsService) {}
 
   async ngOnInit() {
-    this.restaurants = await this.homepageService.getPopularRestaurants();
+    this.restaurants = await this.restaurantsService.fetchRestaurants('isPopular');
   }
 
   ratingConverter(rating: number): string {

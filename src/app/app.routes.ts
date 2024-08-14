@@ -15,9 +15,6 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: FilterRestaurantsComponent },
-      { path: 'new', component: FilterRestaurantsComponent },
-      { path: 'most-popular', component: FilterRestaurantsComponent },
-      { path: 'open', component: FilterRestaurantsComponent },
       { path: 'map-view', component: MapViewComponent },
     ],
   },
@@ -27,8 +24,6 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: FilterChefsComponent },
-      { path: 'new', component: FilterChefsComponent },
-      { path: 'most-viewed', component: FilterChefsComponent },
     ],
   },
   { path: '**', redirectTo: '' },

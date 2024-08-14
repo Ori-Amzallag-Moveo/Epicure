@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterBarComponent } from '../../../shared/components/filter-bar/filter-bar.component';
 import { CartComponent } from '../../../shared/components/cart/cart.component';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CartService } from '../../../shared/components/cart/cart.service';
+import { FilterChefsComponent } from './filter-chefs/filter-chefs.component';
 
 @Component({
   selector: 'app-chefs',
   standalone: true,
-  imports: [FilterBarComponent, CartComponent, RouterModule],
+  imports: [
+    FilterBarComponent,
+    CartComponent,
+    RouterModule,
+    FilterChefsComponent,
+  ],
   templateUrl: './chefs.component.html',
-  styleUrl: './chefs.component.scss'
+  styleUrl: './chefs.component.scss',
 })
 export class ChefsComponent {
   cartItems: any[] = [];
@@ -19,41 +25,48 @@ export class ChefsComponent {
   selectedFilter: string = 'All';
 
   filters: string[] = ['All', 'New', 'Most Viewed'];
-  secondFilters: string[] = []
+  secondFilters: string[] = [];
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {}
 
   async ngOnInit() {
-    this.cartService.cartItems$.subscribe(items => {
+    this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
       this.cartIsEmpty = items.length === 0;
     });
 
-    this.cartService.showCart$.subscribe(show => {
+    this.cartService.showCart$.subscribe((show) => {
       this.showCart = show;
     });
-    this.redirectToAll();
+    
+    this.onFilterChange(this.selectedFilter);
   }
 
   onFilterChange(filter: string) {
     this.selectedFilter = filter;
-    const filterPath = this.getFilterPath(filter);
-    this.router.navigate([`/chefs/${filterPath}`]);
-  }
 
-  private getFilterPath(filter: string): string {
+    const queryParams: any = {};
+
     switch (filter) {
+      case 'All':
+        this.router.navigate(['all'], { relativeTo: this.route });
+        return; 
       case 'New':
-        return 'new';
+        queryParams.isNewChef = 'true';
+        break;
       case 'Most Viewed':
-        return 'most-viewed';
-      default:
-        return 'all';
+        queryParams.isMostViewedChef = 'true';
+        break;
     }
-  }
 
-  redirectToAll() {
-    this.router.navigate(['/chefs/all']);
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams,
+    });
   }
 
   toggleCart() {

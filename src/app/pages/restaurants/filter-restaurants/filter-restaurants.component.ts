@@ -3,36 +3,30 @@ import { ActivatedRoute } from '@angular/router';
 import { RestaurantsService } from '../restaurants.service';
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { Restaurant } from '../../../models/Restaurant.model';
+
 @Component({
-  selector: 'app-all-restaurants',
+  selector: 'app-filter-restaurants',
   standalone: true,
   imports: [GenericCardComponent],
   templateUrl: './filter-restaurants.component.html',
-  styleUrl: './filter-restaurants.component.scss'
+  styleUrls: ['./filter-restaurants.component.scss']
 })
 export class FilterRestaurantsComponent implements OnInit {
-
   restaurants: Restaurant[] = [];
 
   constructor(private restaurantsService: RestaurantsService, private route: ActivatedRoute) {}
 
-  async ngOnInit() {
-    this.route.url.subscribe(async (url) => {
-      const path = url[0].path;
-      switch (path) {
-        case 'new':
-          this.restaurants = await this.restaurantsService.getNewRestaurants();
-          break;
-        case 'open':
-          this.restaurants = await this.restaurantsService.getOpenRestaurants();
-          break;
-        case 'popular':
-          this.restaurants = await this.restaurantsService.getPopularRestaurants();
-          break;
-        default:
-          this.restaurants = await this.restaurantsService.getRestaurants();
-          break;
-      }
+  ngOnInit() {
+    this.route.queryParams.subscribe(async (params) => {
+      const isPopular = params['isPopular'];
+      const isNewRestaurant = params['isNewRestaurant'];
+      const isOpenNow = params['isOpenNow'];
+
+      this.restaurants = await this.restaurantsService.fetchRestaurants(
+        isPopular,
+        isNewRestaurant,
+        isOpenNow
+      );
     });
   }
 

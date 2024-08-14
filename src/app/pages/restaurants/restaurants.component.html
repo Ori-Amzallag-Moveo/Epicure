@@ -11,6 +11,10 @@
     ></app-filter-bar>
   </div>
   <div class="restaurant-content">
-    <router-outlet></router-outlet>
+    @if (selectedFilter !== 'Map View') {
+    <app-filter-restaurants />
+    } @else {
+    <app-map-view />
+    }
   </div>
 </div>

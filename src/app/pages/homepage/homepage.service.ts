@@ -3,22 +3,19 @@ import { Restaurant } from '../../models/Restaurant.model';
 import axios from 'axios';
 import { Dish } from '../../models/dish.model';
 import { Chef } from '../../models/chef.model';
+import { environment } from '../../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomepageService {
-  private readonly apiUrl = 'http://localhost:3000/api/v1';
+  private readonly apiUrl = environment.apiUrl; 
 
   private readonly endpoints = {
     popularRestaurants: `${this.apiUrl}/restaurants/popular`,
     signatureDishes: `${this.apiUrl}/dishes/signature`,
     chefs: `${this.apiUrl}/chefs`,
   };
-
-  async getPopularRestaurants(): Promise<Restaurant[]> {
-    return this.fetchData<Restaurant[]>(this.endpoints.popularRestaurants);
-  }
 
   async getSignatureDishes(): Promise<Dish[]> {
     return this.fetchData<Dish[]>(this.endpoints.signatureDishes);

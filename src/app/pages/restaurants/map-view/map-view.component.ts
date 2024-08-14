@@ -25,7 +25,7 @@ export class MapViewComponent implements OnInit {
   }
 
   async loadMarkers() {
-    const restaurants = await this.restaurantsService.getRestaurants();
+    const restaurants = await this.restaurantsService.fetchRestaurants();
     this.markers = restaurants.map((restaurant: Restaurant) => ({
       position: {
         lat: restaurant.location.coordinates[1],

@@ -1,36 +1,32 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { Chef } from '../../models/chef.model';
+import { environment } from '../../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChefsService {
-  private readonly apiUrl = 'http://localhost:3000/api/v1';
-  private readonly endpoints = {
-    chefs: `${this.apiUrl}/chefs`,
-    newChefs: `${this.apiUrl}/chefs/new`,
-    mostViewedChefs: `${this.apiUrl}/chefs/most-viewed`,
-  };
+  private readonly apiUrl = environment.apiUrl;
 
-  async getChefs(): Promise<Chef[]> {
-    return this.fetchChefs(this.endpoints.chefs);
-  }
+  async fetchChefs(
+    isNewChef?: string,
+    isMostViewedChef?: string
+  ): Promise<Chef[]> {
+    const params: any = {};
 
-  async getNewChefs(): Promise<Chef[]> {
-    return this.fetchChefs(this.endpoints.newChefs);
-  }
-
-  async getMostViewedChefs(): Promise<Chef[]> {
-    return this.fetchChefs(this.endpoints.mostViewedChefs);
-  }
-
-  private async fetchChefs(url: string): Promise<Chef[]> {
+    if (isNewChef !== undefined) params.isNewChef = isNewChef;
+    if (isMostViewedChef !== undefined) params.isMostViewedChef = isMostViewedChef;
     try {
-      const response = await axios.get<{ success: boolean; data: Chef[] }>(url);
+      const response = await axios.get<{ success: boolean; data: Chef[] }>(
+        `${this.apiUrl}/chefs`,
+        {
+          params,
+        }
+      );
       return response.data.data;
     } catch (error) {
-      console.error(`Error fetching chefs from ${url}:`, error);
+      console.error('Error fetching chefs', error);
       return [];
     }
   }

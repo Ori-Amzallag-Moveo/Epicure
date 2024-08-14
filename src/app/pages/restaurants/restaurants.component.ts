@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FilterBarComponent } from '../../../shared/components/filter-bar/filter-bar.component';
-import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CartComponent } from '../../../shared/components/cart/cart.component';
 import { CartService } from '../../../shared/components/cart/cart.service';
-
+import { FilterRestaurantsComponent } from './filter-restaurants/filter-restaurants.component';
+import { MapViewComponent } from './map-view/map-view.component';
 @Component({
   selector: 'app-restaurants',
   standalone: true,
-  imports: [FilterBarComponent, GenericCardComponent, RouterModule, CartComponent],
+  imports: [
+    FilterBarComponent,
+    CartComponent,
+    FilterRestaurantsComponent,
+    MapViewComponent,
+  ],
   templateUrl: './restaurants.component.html',
   styleUrls: ['./restaurants.component.scss'],
 })
@@ -21,43 +26,52 @@ export class RestaurantsComponent implements OnInit {
   filters: string[] = ['All', 'New', 'Most Popular', 'Open Now', 'Map View'];
   secondFilters: string[] = ['Price Range', 'Distance', 'Rating'];
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private cartService: CartService
+  ) {}
 
-  async ngOnInit() {
-    this.cartService.cartItems$.subscribe(items => {
+  ngOnInit() {
+    this.cartService.cartItems$.subscribe((items) => {
       this.cartItems = items;
       this.cartIsEmpty = items.length === 0;
     });
 
-    this.cartService.showCart$.subscribe(show => {
+    this.cartService.showCart$.subscribe((show) => {
       this.showCart = show;
     });
-    this.redirectToAll();
+
+    this.onFilterChange(this.selectedFilter);
   }
 
   onFilterChange(filter: string) {
     this.selectedFilter = filter;
-    const filterPath = this.getFilterPath(filter);
-    this.router.navigate([`/restaurants/${filterPath}`]);
-  }
 
-  private getFilterPath(filter: string): string {
+    const queryParams: any = {};
+
     switch (filter) {
+      case 'All':
+        this.router.navigate(['all'], { relativeTo: this.route });
+        return; 
       case 'New':
-        return 'new';
+        queryParams.isNewRestaurant = 'true';
+        break;
       case 'Most Popular':
-        return 'most-popular';
+        queryParams.isPopular = 'true';
+        break;
       case 'Open Now':
-        return 'open';
+        queryParams.isOpenNow = 'true';
+        break;
       case 'Map View':
-        return 'map-view';
-      default:
-        return 'all';
+        this.router.navigate(['map-view'], { relativeTo: this.route });
+        return;
     }
-  }
 
-  redirectToAll() {
-    this.router.navigate(['/restaurants/all']);
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams,
+    });
   }
 
   toggleCart() {
