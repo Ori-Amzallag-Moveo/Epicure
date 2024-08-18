@@ -1,18 +1,18 @@
 @if (navBarMobile) {
   <app-mobile-navbar />
 } @else {
-  <div class="wrapper">
+  <div class="header-wrapper">
     <div class="header-container">
       <button class="btn navbar-btn" (click)="onToggleNavbar()">
         <img class="navbar-icon" src="assets/logos/navbar-logos/navbar.svg" alt="Navigation Bar" />
       </button>
 
       <div class="left-toolbar">
-        <button class="btn" (click)="navigateToHomepage()">
+        <button class="btn" (click)="navigateTo('Homepage')">
           <img class="logo" src="assets/logos/navbar-logos/about-logo.svg" alt="Logo" />
         </button>
         <div class="links-container">
-          <button class="btn" (click)="navigateToHomepage()">
+          <button class="btn" (click)="navigateTo('Homepage')">
             <h2 class="title">Epicure</h2>
           </button>
           <div class="button-container">
@@ -35,7 +35,3 @@
     </div>
   </div>
 }
-  
-
-
-        

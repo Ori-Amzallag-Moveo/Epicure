@@ -24,7 +24,7 @@ export class MobileNavbarComponent {
     });
   }
 
-  onClosing() {
+  onToggle() {
     this.headerService.toggleNavbar();
   }
 

@@ -17,6 +17,4 @@ import { RestaurantsComponent } from './pages/restaurants/restaurants.component'
   ],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-
-}
+export class AppComponent {}

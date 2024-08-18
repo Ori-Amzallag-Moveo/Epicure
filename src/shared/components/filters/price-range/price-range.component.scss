@@ -1,0 +1,37 @@
+@import "_index";
+
+.price-range-container {
+  @include flexStyleColumn;
+  gap: 10px;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: -40px;
+  padding-top: 20px;
+  background-color: white;
+  width: 300px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3); 
+
+  .title {
+    @include linksFont;
+    font-weight: 400;
+  }
+
+  .price-container {
+    @include flexStyleRow;
+    font-weight: 100;
+    gap: 5px;
+
+    p{
+      margin-bottom: 10px;
+    }
+  }
+
+  mat-slider {
+    background-color: $cremeColor;
+    border-radius: 10px;
+    width: 80%;
+    margin-bottom: 30px;
+  }
+  
+}
+

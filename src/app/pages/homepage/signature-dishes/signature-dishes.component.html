@@ -1,12 +1,10 @@
-<div class="wrapper">
+<div class="signature-dishes-wrapper">
   <div class="slider-container">
     <h2>Signature dish of:</h2>
     <swiper-container class="slider" [breakpoints]="breakpoints">
       @for (dish of dishes; track dish) {
       <swiper-slide>
-        <app-generic-card
-          [imageSrc]="dish.imageSrc"
-          [title]="dish.name">
+        <app-generic-card [imageSrc]="dish.imageSrc" [title]="dish.name">
           <div class="ingredients-container" card-content>
             <p class="ingredients">{{ dish.ingredients }}</p>
             <div class="icon-container">
@@ -16,10 +14,7 @@
             </div>
             <div class="price-container">
               <img class="line" src="assets/Line.svg" />
-              <div class="coin-container">
-                <img class="ILS" src="assets/ILS.svg" alt="ILS" />
-                <p>{{ dish.price }}</p>
-              </div>
+              <app-coin [price]="dish.price" />
               <img class="line" src="assets/Line.svg" />
             </div>
           </div>
@@ -27,9 +22,9 @@
       </swiper-slide>
       }
     </swiper-container>
-    <app-restaurants-button 
-    [buttonName] = "'All Restaurants'"
-    [url] ="'/restaurants'">
-  </app-restaurants-button>
+    <app-restaurants-button
+      [buttonName]="'All Restaurants'"
+      [url]="'/restaurants'">
+    </app-restaurants-button>
   </div>
 </div>

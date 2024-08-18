@@ -7,9 +7,10 @@
       empty
     </p>
   </div>
-  <app-order-history-button
+  <app-cart-button
+    [buttonName] = "'ORDER HISTORY'"
     (click)="viewOrderHistory()"
-  ></app-order-history-button>
+  ></app-cart-button>
 </div>
 } @else {
 <div class="cart-container full">
@@ -34,8 +35,8 @@
     <textarea rows="3" placeholder="Special requests, allergies"></textarea>
   </div>
   <div class="buttons-container">
-    <app-checkout-button></app-checkout-button>
-    <app-order-history-button />
+    <app-cart-button  [buttonName] = "'ORDER HISTORY'"/>
+    <app-cart-button  [buttonName] = "'CHECKOUT'"/>
   </div>
 </div>
 }

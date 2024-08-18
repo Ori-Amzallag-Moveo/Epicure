@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { OrderHistoryButtonComponent } from '../../buttons/order-history-button/order-history-button.component';
-import { CheckoutButtonComponent } from '../../buttons/checkout-button/checkout-button.component';
+import { CartButtonComponent } from '../../buttons/cart-button/cart-button.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
-  imports: [OrderHistoryButtonComponent, CheckoutButtonComponent],
+  imports: [CartButtonComponent],
 })
 export class CartComponent {
   cartIsEmpty = true;

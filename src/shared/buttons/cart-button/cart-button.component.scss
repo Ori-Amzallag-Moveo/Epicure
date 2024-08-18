@@ -1,13 +1,11 @@
 @import "_index";
 
-.checkout-container {
+.cart-button-container {
   @include buttonFont;
-  font-size: 2vh;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-weight: 400;
   box-sizing: border-box;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 5px;
   min-width: 95px;
   border-width: 0.5px;

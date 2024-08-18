@@ -1,6 +1,6 @@
 @import "_index";
 
-.restaurants-wrapper {
+.filter-chefs-container {
   @include componentPadding;
   display: grid;
   gap: 24px;
@@ -13,27 +13,5 @@
   @include medium-large-screens {
     @include bigPadding;
     grid-template-columns: repeat(3, minmax(150px, 1fr));
-  }
-}
-
-app-generic-card {
-  width: 100%;
-  max-width: 500px;
-
-  p {
-    padding-bottom: 10px;
-
-    @include small-screen {
-      padding-bottom: 20px;
-    }
-  }
-}
-
-.rating {
-  width: 90%;
-  height: 40px;
-
-  @include small-screen {
-    display: none;
   }
 }

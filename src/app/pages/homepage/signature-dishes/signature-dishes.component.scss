@@ -46,20 +46,8 @@
             height: 20px;
           }
         }
-
         .line {
           display: none;
-        }
-
-        .coin-container {
-          @include flexStyleRow;
-          gap: 5px;
-          margin-bottom: 10px;
-
-          .ILS {
-            width: 5px;
-            height: 5px;
-          }
         }
       }
     }
@@ -123,7 +111,7 @@
   }
 }
 
-.wrapper {
+.signature-dishes-wrapper {
   @include componentPadding;
 
   @include small-screen {

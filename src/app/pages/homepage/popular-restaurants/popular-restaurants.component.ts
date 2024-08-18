@@ -20,23 +20,13 @@ export class PopularRestaurantsComponent implements OnInit {
   constructor(private restaurantsService: RestaurantsService) {}
 
   async ngOnInit() {
-    this.restaurants = await this.restaurantsService.fetchRestaurants('isPopular');
+    this.restaurants = await this.restaurantsService.fetchRestaurants('true', undefined, undefined);
   }
 
   ratingConverter(rating: number): string {
-    switch (rating) {
-      case 1:
-        return 'assets/rating-icons/1-stars-rating.svg';
-      case 2:
-        return 'assets/rating-icons/2-stars-rating.svg';
-      case 3:
-        return 'assets/rating-icons/3-stars-rating.svg';
-      case 4:
-        return 'assets/rating-icons/4-stars-rating.svg';
-      case 5:
-        return 'assets/rating-icons/5-stars-rating.svg';
-      default:
-        return '';
+    if (rating >= 1 && rating <= 5) {
+      return `assets/rating-icons/${rating}-stars-rating.svg`;
     }
+    return '';
   }
 }

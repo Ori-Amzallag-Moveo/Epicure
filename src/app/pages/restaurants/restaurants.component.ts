@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FilterBarComponent } from '../../../shared/components/filter-bar/filter-bar.component';
+import { FilterBarComponent } from '../../../shared/components/filters/filter-bar/filter-bar.component';
 import { CartComponent } from '../../../shared/components/cart/cart.component';
 import { CartService } from '../../../shared/components/cart/cart.service';
 import { FilterRestaurantsComponent } from './filter-restaurants/filter-restaurants.component';
@@ -18,11 +18,10 @@ import { MapViewComponent } from './map-view/map-view.component';
   styleUrls: ['./restaurants.component.scss'],
 })
 export class RestaurantsComponent implements OnInit {
-  cartItems: any[] = [];
   cartIsEmpty: boolean = true;
   showCart: boolean = false;
+  
   selectedFilter: string = 'All';
-
   filters: string[] = ['All', 'New', 'Most Popular', 'Open Now', 'Map View'];
   secondFilters: string[] = ['Price Range', 'Distance', 'Rating'];
 
@@ -34,7 +33,6 @@ export class RestaurantsComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.cartItems$.subscribe((items) => {
-      this.cartItems = items;
       this.cartIsEmpty = items.length === 0;
     });
 
@@ -53,7 +51,7 @@ export class RestaurantsComponent implements OnInit {
     switch (filter) {
       case 'All':
         this.router.navigate(['all'], { relativeTo: this.route });
-        return; 
+        return;
       case 'New':
         queryParams.isNewRestaurant = 'true';
         break;

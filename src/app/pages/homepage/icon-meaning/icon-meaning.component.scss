@@ -1,6 +1,6 @@
 @import "_index";
 
-.container {
+.icons-wrapper {
   @include componentPadding;
   background-color: $lightGreyColor;
   @include flexStyleColumn;

@@ -1,6 +1,5 @@
-<div class="restaurants-wrapper">
-    @for (chef of chefs; track chef) {
-    <app-week-chef-picture [chefPicture]="chef.imageSrc" [chefName]="chef.name" /> 
-    }
-  </div>
-  
+<div class="filter-chefs-container">
+  @for (chef of chefs; track chef) {
+  <app-week-chef-picture [chefPicture]="chef.imageSrc" [chefName]="chef.name" />
+  }
+</div>

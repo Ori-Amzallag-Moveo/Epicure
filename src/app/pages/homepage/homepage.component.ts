@@ -27,7 +27,6 @@ import { CartComponent } from '../../../shared/components/cart/cart.component';
 })
 
 export class HomepageComponent implements OnInit {
-  cartItems: any[] = [];
   cartIsEmpty: boolean = true;
   showCart: boolean = false;
 
@@ -35,7 +34,6 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.cartItems$.subscribe(items => {
-      this.cartItems = items;
       this.cartIsEmpty = items.length === 0;
     });
 

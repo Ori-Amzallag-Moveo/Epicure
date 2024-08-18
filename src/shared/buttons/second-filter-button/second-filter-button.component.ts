@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SecondFilterButtonComponent {
   @Input({required: true}) secondFilterName !: string;
+  @Input() selected: boolean = false; 
 }

@@ -1,0 +1,12 @@
+<div class="price-range-container">
+  <h3 class="title">Price Range Selected</h3>
+  <div class="price-container">
+    <app-coin [price]="minValue" />
+    <p>-</p>
+    <app-coin [price]="maxValue" />
+  </div>
+  <mat-slider discrete color="primary" [min]="minValue" [max]="maxValue">
+    <input matSliderStartThumb [value]="minValue + 20" [(ngModel)]="minValue" />
+    <input matSliderEndThumb [value]="maxValue - 20" [(ngModel)]="maxValue" />
+  </mat-slider>
+</div>

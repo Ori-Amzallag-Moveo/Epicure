@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterBarComponent } from '../../../shared/components/filter-bar/filter-bar.component';
+import { FilterBarComponent } from '../../../shared/components/filters/filter-bar/filter-bar.component';
 import { CartComponent } from '../../../shared/components/cart/cart.component';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
@@ -19,7 +19,6 @@ import { FilterChefsComponent } from './filter-chefs/filter-chefs.component';
   styleUrl: './chefs.component.scss',
 })
 export class ChefsComponent {
-  cartItems: any[] = [];
   cartIsEmpty: boolean = true;
   showCart: boolean = false;
   selectedFilter: string = 'All';
@@ -35,7 +34,6 @@ export class ChefsComponent {
 
   async ngOnInit() {
     this.cartService.cartItems$.subscribe((items) => {
-      this.cartItems = items;
       this.cartIsEmpty = items.length === 0;
     });
 

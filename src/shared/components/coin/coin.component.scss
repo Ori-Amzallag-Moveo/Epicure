@@ -1,0 +1,12 @@
+@import "_index";
+
+.coin-container {
+  @include flexStyleRow;
+  gap: 5px;
+  margin-bottom: 10px;
+
+  .ILS {
+    width: 7px;
+    height: 7px;
+  }
+}

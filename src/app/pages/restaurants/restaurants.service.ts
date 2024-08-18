@@ -9,11 +9,7 @@ import { environment } from '../../../enviroments/enviroment';
 export class RestaurantsService {
   private readonly apiUrl = environment.apiUrl; 
 
-  async fetchRestaurants(
-    isPopular?: string,
-    isNewRestaurant?: string,
-    isOpenNow?: string
-  ): Promise<Restaurant[]> {
+  async fetchRestaurants(isPopular?: string, isNewRestaurant?: string, isOpenNow?: string): Promise<Restaurant[]> {
     const params: any = {};
     if (isPopular !== undefined) params.isPopular = isPopular;
     if (isNewRestaurant !== undefined) params.isNewRestaurant = isNewRestaurant;

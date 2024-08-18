@@ -1,6 +1,6 @@
 @import "_index";
 
-.wrapper {
+.header-wrapper {
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -83,7 +83,7 @@
         @include flexStyleRow;
         justify-content: space-between;
         gap: 30px;
-        padding-top: 3px;
+        padding-top: 5px;
 
         button {
           @include buttonFont;
@@ -92,13 +92,14 @@
           &.active {
             border-bottom: 1.5px solid $goldColor;
             padding-top: 5px;
-            padding-bottom: 3px;
+            padding-bottom: 5px;
           }
         }
       }
     }
   }
 }
+
 /* Medium and large screens */
 @include medium-large-screens {
   .navbar-icon {

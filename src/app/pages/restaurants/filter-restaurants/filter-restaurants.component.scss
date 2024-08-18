@@ -1,6 +1,6 @@
 @import "_index";
 
-.restaurants-wrapper {
+.filter-restaurants-wrapper {
   @include componentPadding;
   display: grid;
   gap: 24px;

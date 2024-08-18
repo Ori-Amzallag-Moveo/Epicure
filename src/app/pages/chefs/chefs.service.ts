@@ -9,12 +9,8 @@ import { environment } from '../../../enviroments/enviroment';
 export class ChefsService {
   private readonly apiUrl = environment.apiUrl;
 
-  async fetchChefs(
-    isNewChef?: string,
-    isMostViewedChef?: string
-  ): Promise<Chef[]> {
+  async fetchChefs(isNewChef?: string, isMostViewedChef?: string): Promise<Chef[]> {
     const params: any = {};
-
     if (isNewChef !== undefined) params.isNewChef = isNewChef;
     if (isMostViewedChef !== undefined) params.isMostViewedChef = isMostViewedChef;
     try {

@@ -1,7 +1,7 @@
-<div class="wrapper">
+<div class="footer-wrapper">
   <div class="footer-container">
-    <button class="btn">Contact Us</button>
-    <button class="btn">Term of Use</button>
-    <button class="btn">Privacy Policy</button>
+    @for (tags of footerTags; track tags) {
+      <button class="btn">{{tags}}</button>
+    }
   </div>
 </div>
