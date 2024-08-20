@@ -12,9 +12,9 @@
   }
 
   @include medium-large-screens {
+    @include bigPadding;
     display: flex;
     justify-content: center;
-    @include bigPadding;
   }
 
   .header-container {
@@ -22,6 +22,10 @@
     box-sizing: border-box;
     justify-content: space-between;
     position: relative;
+    max-width: 1440px;
+    width: 100%; 
+    margin-left: auto;
+    margin-right: auto;
 
     @include small-screen {
       height: 45px;
@@ -29,7 +33,6 @@
 
     @include medium-large-screens {
       height: 65px;
-      width: 100%;
       gap: 50px;
     }
 
@@ -54,8 +57,6 @@
       gap: 15px;
 
       .logo {
-        padding-bottom: 5px;
-
         @include small-screen {
             position: absolute;
             top: 15%;

@@ -7,7 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./cart-button.component.scss'],
 })
 export class CartButtonComponent {
-  @Input({ required: true }) buttonName!: string;
-  @Input() backgroundColor: string = 'black'; 
-  @Input() fontColor: string = 'white';      
+  @Input({ required: true }) buttonName!: string;   
 }

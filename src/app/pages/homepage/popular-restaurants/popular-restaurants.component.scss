@@ -1,70 +1,76 @@
 @import "_index";
 
-.slider-container {
-  width: 100%;
-  overflow: hidden;
-
-  h2 {
-    @include h2Font;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .slider {
-    display: flex;
-    flex-direction: row;
-
-    @include small-screen {
-      margin-bottom: 20px;
-
-      .rating {
-        display: none;
-      }
-
-      p {
-        margin-bottom: 20px;
-      }
-    }
-
-    @include medium-large-screens {
-      width: 100%;
-      min-width: 600px;
-
-      p {
-        margin-bottom: 10px;
-      }
-
-      .rating {
-        width: 90%;
-        height: 40px;
-      }
-    }
-  }
-}
-
 .popular-restaurants-wrapper {
   @include componentPadding;
-  
+
   @include small-screen {
     @include smallPadding;
-
-    .slider-container {
-      app-restaurants-button {
-        display: flex;
-      }
-    }
   }
 
   @include medium-large-screens {
     @include bigPadding;
+  }
 
-    .slider-container {
+  .slider-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+
+    @include medium-large-screens {
       @include flexStyleColumn;
       text-align: center;
+    }
 
-      app-restaurants-button {
-        align-self: flex-end;
+    h2 {
+      @include h2Font;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+
+      @include small-screen {
+        margin-bottom: 10px;
+      }
+    }
+    .slider {
+      display: flex;
+      flex-direction: row;
+
+      @include medium-large-screens {
+        width: 100%;
+        min-width: 600px;
+      }
+
+      .rating {
+        @include small-screen {
+          display: none;
+        }
+
+        @include medium-large-screens {
+          width: 90%;
+          height: 40px;
+        }
+      }
+
+      p {
+        @include bodyTextFont;
+        margin-left: 15px;
+
+        @include medium-large-screens {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    app-restaurants-button {
+      display: flex;
+
+      @include small-screen {
         margin-top: 20px;
+      }
+      @include medium-large-screens {
+        align-self: flex-end;
+        margin-top: 40px;
       }
     }
   }

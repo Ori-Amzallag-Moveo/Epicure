@@ -1,10 +1,14 @@
 <div class="filter-restaurants-wrapper">
-  @for (restaurant of restaurants; track restaurant) {
-  <app-generic-card [imageSrc]="restaurant.imageSrc" [title]="restaurant.name">
-    <div card-content>
-      <p>{{ restaurant.chef?.name }}</p>
-      <img class="rating" [src]="ratingConverter(restaurant.rating)" alt="rating" />
-    </div>
-  </app-generic-card>
-  }
+  <div class="filter-restaurants-container">
+    @for (restaurant of restaurants; track restaurant) {
+      <a class="btn" (click)="goToRestaurant(restaurant._id)">
+        <app-generic-card [imageSrc]="restaurant.imageSrc" [title]="restaurant.name">
+          <div card-content>
+            <p>{{ restaurant.chef?.name }}</p>
+            <img class="rating" [src]="ratingConverter(restaurant.rating)" alt="rating" />
+          </div>
+        </app-generic-card>
+      </a>
+    }
+  </div>
 </div>

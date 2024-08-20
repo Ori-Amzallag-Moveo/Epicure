@@ -1,0 +1,16 @@
+@import "_index";
+
+.restaurant-page-wrapper {
+  @include small-screen {
+    @include smallPadding;
+  }
+
+  @include medium-large-screens {
+    @include bigPadding;
+  }
+  .restaurant-page-container {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

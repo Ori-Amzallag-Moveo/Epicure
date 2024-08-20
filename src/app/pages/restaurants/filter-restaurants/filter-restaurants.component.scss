@@ -2,17 +2,20 @@
 
 .filter-restaurants-wrapper {
   @include componentPadding;
-  display: grid;
-  gap: 24px;
-  justify-items: center;
 
-  @include small-screen {
-    @include smallPadding;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-  @include medium-large-screens {
-    @include bigPadding;
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  .filter-restaurants-container {
+    display: grid;
+    gap: 25px;
+
+    @include small-screen {
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    }
+    @include medium-screens {
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    }
+    @include large-screens {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
   }
 }
 
@@ -21,11 +24,9 @@ app-generic-card {
   max-width: 500px;
 
   p {
-    padding-bottom: 10px;
-
-    @include small-screen {
-      padding-bottom: 20px;
-    }
+    @include bodyTextFont;
+    margin-bottom: 15px;
+    margin-left: 15px;
   }
 }
 

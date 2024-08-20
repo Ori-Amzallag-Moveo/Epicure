@@ -6,6 +6,7 @@ import { MapViewComponent } from './pages/restaurants/map-view/map-view.componen
 import { FilterRestaurantsComponent } from './pages/restaurants/filter-restaurants/filter-restaurants.component';
 import { FilterChefsComponent } from './pages/chefs/filter-chefs/filter-chefs.component';
 import { ChefsComponent } from './pages/chefs/chefs.component';
+import { RestaurantPageComponent } from './pages/restaurants/restaurant-page/restaurant-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -18,6 +19,7 @@ export const routes: Routes = [
       { path: 'map-view', component: MapViewComponent },
     ],
   },
+  { path: 'restaurants/:id', component: RestaurantPageComponent },
   {
     path: 'chefs',
     component: ChefsComponent,

@@ -5,13 +5,13 @@ import { RestaurantsButtonComponent } from '../../../../shared/buttons/restauran
 import { breakpointsData } from '../../../data/breakpointsData';
 import { Dish } from '../../../models/dish.model';
 import { HomepageService } from '../homepage.service';
-import { CoinComponent } from '../../../../shared/components/coin/coin.component';
+import { DishCardComponent } from '../../../../shared/components/cards/dish-card/dish-card.component';
 @Component({
   selector: 'app-signature-dishes',
   standalone: true,
   templateUrl: './signature-dishes.component.html',
   styleUrl: './signature-dishes.component.scss',
-  imports: [CommonModule, GenericCardComponent, RestaurantsButtonComponent, CoinComponent],
+  imports: [CommonModule, GenericCardComponent, RestaurantsButtonComponent, DishCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SignatureDishesComponent {

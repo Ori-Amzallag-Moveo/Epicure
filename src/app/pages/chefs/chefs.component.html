@@ -1,16 +1,20 @@
-@if (showCart) {
-<app-cart />
-}
-<div class="chefs-wrapper">
-  <div class="chefs-container">
-    <app-filter-bar
-      [pageName]="'Chefs'"
-      [tabsNames]="filters"
-      [secondTabsNames]="secondFilters"
-      (filterChange)="onFilterChange($event)"
-    ></app-filter-bar>
-  </div>
-  <div class="chefs-content">
-    <app-filter-chefs />
+<div class="chef-page-wrapper">
+  <div class="chef-page-container">
+    @if (showCart) {
+    <app-cart />
+    }
+    <div class="chefs-wrapper">
+      <div class="chefs-container">
+        <app-filter-bar
+          [pageName]="'Chefs'"
+          [tabsNames]="filters"
+          [secondTabsNames]="secondFilters"
+          (filterChange)="onFilterChange($event)"
+        ></app-filter-bar>
+      </div>
+      <div class="chefs-content">
+        <app-filter-chefs />
+      </div>
+    </div>
   </div>
 </div>

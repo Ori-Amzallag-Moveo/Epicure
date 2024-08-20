@@ -21,7 +21,7 @@ import { RatingBarComponent } from "../rating-bar/rating-bar.component";
   styleUrls: ['./filter-bar.component.scss'],
 })
 export class FilterBarComponent {
-  selectedFilter: string = 'All';
+  selectedFilter: string = '';
   secondFilterSelected: string = '';
   isPriceRangeVisible: boolean = false;
 

@@ -4,21 +4,7 @@
     <swiper-container class="slider" [breakpoints]="breakpoints">
       @for (dish of dishes; track dish) {
       <swiper-slide>
-        <app-generic-card [imageSrc]="dish.imageSrc" [title]="dish.name">
-          <div class="ingredients-container" card-content>
-            <p class="ingredients">{{ dish.ingredients }}</p>
-            <div class="icon-container">
-              @for (icon of dish.icons; track icon) {
-              <img [src]="icon.imgSrc" [alt]="icon.alt" class="icon" />
-              }
-            </div>
-            <div class="price-container">
-              <img class="line" src="assets/Line.svg" />
-              <app-coin [price]="dish.price" />
-              <img class="line" src="assets/Line.svg" />
-            </div>
-          </div>
-        </app-generic-card>
+        <app-dish-card [dish]="dish"></app-dish-card>
       </swiper-slide>
       }
     </swiper-container>

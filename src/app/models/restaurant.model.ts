@@ -1,5 +1,6 @@
 import { Chef } from "./chef.model";
 export interface Restaurant {
+  _id: string,
   name: string;
     slug?: string;
     imageSrc: string;

@@ -1,20 +1,24 @@
-@if (showCart) {
-<app-cart />
-}
-<div class="wrapper">
-  <div class="filter-bar-container">
-    <app-filter-bar
-      [pageName]="'Restaurants'"
-      [tabsNames]="filters"
-      [secondTabsNames]="secondFilters"
-      (filterChange)="onFilterChange($event)"
-    ></app-filter-bar>
-  </div>
-  <div class="restaurant-content">
-    @if (selectedFilter !== 'Map View') {
-    <app-filter-restaurants />
-    } @else {
-    <app-map-view />
+<div class="restaurant-page-wrapper">
+  <div class="restaurant-page-container">
+    @if (showCart) {
+    <app-cart />
     }
+    <div class="wrapper">
+      <div class="filter-bar-container">
+        <app-filter-bar
+          [pageName]="'Restaurants'"
+          [tabsNames]="filters"
+          [secondTabsNames]="secondFilters"
+          (filterChange)="onFilterChange($event)"
+        ></app-filter-bar>
+      </div>
+      <div class="restaurant-content">
+        @if (selectedFilter !== 'Map View') {
+        <app-filter-restaurants />
+        } @else {
+        <app-map-view />
+        }
+      </div>
+    </div>
   </div>
 </div>

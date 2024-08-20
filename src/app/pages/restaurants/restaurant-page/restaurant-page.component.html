@@ -1,0 +1,16 @@
+@if (restaurant) {
+<div class="restaurant-page-wrapper">
+  <div class="restaurant-container">
+    <img [src]="restaurant.imageSrc" [alt]="restaurant?.name" />
+    <h3 class="restaurant-name">{{ restaurant?.name }}</h3>
+    <h4 class="chef-name">{{ restaurant?.chef?.name }}</h4>
+    <div class="open-status"></div>
+  </div>
+  <app-filter-bar (filterChange)="onFilterChange($event)" [tabsNames]="filters" />
+  <div class="dishes-container">
+    @for (dish of dishes; track dish) {
+    <app-dish-card [dish]="dish" />
+    }
+  </div>
+</div>
+}

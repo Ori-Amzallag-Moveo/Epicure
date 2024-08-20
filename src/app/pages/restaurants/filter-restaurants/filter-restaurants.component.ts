@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantsService } from '../restaurants.service';
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { Restaurant } from '../../../models/Restaurant.model';
@@ -14,7 +14,7 @@ import { Restaurant } from '../../../models/Restaurant.model';
 export class FilterRestaurantsComponent implements OnInit {
   restaurants: Restaurant[] = [];
 
-  constructor(private restaurantsService: RestaurantsService, private route: ActivatedRoute) {}
+  constructor(private restaurantsService: RestaurantsService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(async (params) => {
@@ -35,5 +35,9 @@ export class FilterRestaurantsComponent implements OnInit {
       return `assets/rating-icons/${rating}-stars-rating.svg`;
     }
     return '';
+  }
+
+  goToRestaurant(restaurantId: string) {
+    this.router.navigate([`/restaurants`, restaurantId]);
   }
 }

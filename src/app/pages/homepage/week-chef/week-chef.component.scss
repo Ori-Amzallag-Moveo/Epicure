@@ -1,20 +1,23 @@
 @import "_index";
 
-.wrapper {
+.week-chef-wrapper {
+  @include componentPadding;
+
+  @include small-screen {
+    @include smallPadding;
+  }
+  @include medium-large-screens {
+    @include bigPadding;
+  }
   .week-chef-container {
-    @include componentPadding;
+    max-width: 1440px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
     @include small-screen {
-      @include smallPadding;
-
-      .week-chef-container {
-        align-items: flex-start;
-        overflow: hidden;
-        width: 100%;
-      }
-    }
-
-    @include medium-large-screens {
-      @include bigPadding;
+      align-items: flex-start;
+      overflow: hidden;
     }
 
     h2 {
@@ -25,6 +28,34 @@
       @include medium-large-screens {
         text-align: center;
         margin-bottom: 40px;
+      }
+    }
+    .descripition-container {
+      app-week-chef-picture {
+        width: 700px;
+      }
+      @include medium-large-screens {
+        @include flexStyleRow;
+        gap: 50px;
+        align-items: flex-start;
+      }
+
+      .chef-description {
+        @include articleTextFont;
+        text-align: justify;
+        margin-bottom: 30px;
+        width: 100%;
+
+        @include small-screen {
+          line-height: 25px;
+        }
+        @media (min-width: 875px) and (max-width: 1225px) {
+          font-size: 20px;
+          line-height: 25px;
+        }
+        @include large-screens {
+          line-height: 40px;
+        }
       }
     }
 
@@ -38,52 +69,31 @@
       .cards-container {
         @include small-screen {
           @include flexStyleRow;
+          align-items: flex-start;
           margin-bottom: 15px;
-        }
-
-        @include medium-large-screens {
-          margin-right: 450px;
-          margin-bottom: 15px;
-        }
-      }
-    }
-
-    .descripition-container {
-      @include medium-large-screens {
-        @include flexStyleRow;
-        gap: 100px;
-        align-items: flex-start;
-      }
-
-      .chef-description {
-        @include articleTextFont;
-        text-align: justify;
-        margin-bottom: 30px;
-        width: 100%;
-
-        @include small-screen {
-          line-height: 30px;
         }
 
         @include medium-screens {
-          line-height: 25px;
-          font-size: 15px;
+          margin-right: 200px;
         }
-
         @include large-screens {
-          line-height: 40px;
+          margin-right: 300px;
         }
       }
     }
   }
+}
 
-  .swiper-container {
-    height: 250px;
+.swiper-container {
+  @include small-screen {
+    height: 220px;
   }
-
-  app-restaurants-button {
-    @include medium-large-screens {
-      display: none;
-    }
+  @include medium-large-screens {
+    height: 330px;
+  }
+}
+app-restaurants-button {
+  @include medium-large-screens {
+    display: none;
   }
 }

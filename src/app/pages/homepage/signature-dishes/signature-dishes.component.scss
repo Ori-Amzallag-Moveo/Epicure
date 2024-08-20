@@ -2,20 +2,20 @@
 
 .slider-container {
   width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
   text-align: center;
 
   h2 {
-    text-transform: uppercase;
-    margin-bottom: 10px;
+    @include h2Font;
+    text-transform: uppercase;  
+    margin-bottom: 20px;
 
     @include small-screen {
-      @include h2Font;
       text-align: left;
-    }
-
-    @include medium-large-screens {
-      @include h2Font;
+      margin-bottom: 10px
     }
   }
 
@@ -25,88 +25,10 @@
 
     @include small-screen {
       margin-bottom: 20px;
-
-      .ingredients-container {
-        @include flexStyleColumn;
-        gap: 5px;
-        align-items: flex-start;
-        margin-right: 25px;
-
-        .ingredients {
-          text-align: left;
-          height: 60px;
-        }
-
-        .icon-container {
-          display: flex;
-          gap: 5px;
-
-          .icon {
-            width: 20px;
-            height: 20px;
-          }
-        }
-        .line {
-          display: none;
-        }
-      }
     }
 
     @include medium-large-screens {
-      width: 100%;
-
-      .ingredients-container {
-        @include flexStyleColumn;
-        justify-content: space-between;
-
-        .ingredients {
-          order: 2;
-          margin-left: 40px;
-          margin-right: 40px;
-          text-align: center;
-          height: 150px;
-
-          @include small-screen {
-            height: 100px;
-          }
-        }
-
-        .icon-container {
-          order: 1;
-          display: flex;
-          gap: 5px;
-
-          .icon {
-            width: 40px;
-            height: 30px;
-            margin-bottom: 5px;
-          }
-        }
-
-        .price-container {
-          @include flexStyleRow;
-          order: 3;
-          gap: 10px;
-
-          .line {
-            width: 60px;
-            height: 0;
-            border: 0.1px solid #979797;
-          }
-
-          .coin-container {
-            @include flexStyleRow;
-            gap: 3px;
-            margin-bottom: 10px;
-            margin-top: 10px;
-
-            .ILS {
-              width: 10px;
-              height: 10px;
-            }
-          }
-        }
-      }
+      width: 100%; 
     }
   }
 }
