@@ -2,8 +2,8 @@
     <app-cart />
 }
 <app-hero />
-<app-popular-restaurants />
-<app-signature-dishes />
+<app-popular-restaurants [popularRestaurants]="homepageData?.popularRestaurants"/>
+<app-signature-dishes  [signatureDishes]="homepageData?.signatureDishes"/>
 <app-icon-meaning />
-<app-week-chef />
+<app-week-chef [chefOfTheWeek]="homepageData?.chefOfTheWeek"/>
 <app-about />

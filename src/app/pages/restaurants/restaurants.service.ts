@@ -8,20 +8,28 @@ import { Dish } from '../../models/dish.model';
   providedIn: 'root',
 })
 export class RestaurantsService {
-  private readonly apiUrl = environment.apiUrl; 
+  private readonly apiUrl = environment.apiUrl;
 
   async getDishes(): Promise<Dish[]> {
     try {
-      const response = await axios.get<{ success: boolean; data: Dish[] }>(this.apiUrl + '/dishes');
+      const response = await axios.get<{ success: boolean; data: Dish[] }>(
+        this.apiUrl + '/dishes'
+      );
       return response.data.data;
     } catch (error) {
       console.error(`Error fetching data from :`, error);
-      return [] as unknown as Dish[] ;
+      return [] as unknown as Dish[];
     }
   }
 
-  async fetchRestaurants(isPopular?: string, isNewRestaurant?: string, isOpenNow?: string): Promise<Restaurant[]> {
-    const params: any = {};
+  async fetchRestaurants(
+    page: number,
+    limit?: number,
+    isPopular?: string,
+    isNewRestaurant?: string,
+    isOpenNow?: string,
+  ): Promise<Restaurant[]> {
+    const params: any = { page, limit };
     if (isPopular !== undefined) params.isPopular = isPopular;
     if (isNewRestaurant !== undefined) params.isNewRestaurant = isNewRestaurant;
     if (isOpenNow !== undefined) params.isOpenNow = isOpenNow;
@@ -40,7 +48,9 @@ export class RestaurantsService {
   }
 
   async getRestaurantById(id: string): Promise<Restaurant> {
-    const response = await axios.get<{ success: boolean; data: Restaurant }>(`${this.apiUrl}/restaurants/${id}`);
+    const response = await axios.get<{ success: boolean; data: Restaurant }>(
+      `${this.apiUrl}/restaurants/${id}`
+    );
     return response.data.data;
   }
 }

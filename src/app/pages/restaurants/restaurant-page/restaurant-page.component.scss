@@ -9,21 +9,20 @@
   }
   .restaurant-container {
     @include flexStyleColumn;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
 
     @include small-screen {
       align-items: flex-start;
       gap: 10px;
     }
 
-    img {
+    .restaurant-img {
       width: 100%;
 
-      @include small-screen {
-        // width: 120%;
-      }
-
       @include medium-large-screens {
-        height: 400px;
+        height: 450px;
         margin-bottom: 30px;
       }
     }
@@ -32,26 +31,64 @@
       margin-bottom: 5px;
 
       @include medium-large-screens {
-        font-size: 50px;
+        font-size: 56px;
       }
     }
 
     .chef-name {
       @include restaurantsLinkFont;
-    }
-  }
+      @include small-screen {
+        font-weight: 100;
+      }
 
-  .dishes-container {
-    margin-top: 40px;
-    display: grid;
-    gap: 24px;
-    justify-items: center;
-
-    @include small-screen {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      @include medium-large-screens {
+        font-size: 32px;
+        font-weight: 100;
+      }
     }
-    @include medium-large-screens {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .open-status {
+      @include flexStyleRow;
+
+      gap: 5px;
+      @include small-screen {
+      }
+      @include medium-large-screens {
+        margin-top: 20px;
+      }
+      .open-status-img {
+        width: 20px;
+        height: 20px;
+
+        @include small-screen {
+          width: 15px;
+          height: 15px;
+        }
+      }
+      p {
+        font-weight: 100;
+        font-size: 18px;
+        letter-spacing: 2px;
+
+        @include small-screen {
+          font-size: 16px;
+        }
+      }
+    }
+    .dishes-container {
+      margin-top: 40px;
+      width: 100%;
+      display: grid;
+      gap: 24px;
+
+      @include small-screen {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      }
+      @include medium-screens {
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      }
+      @include large-screens {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      }
     }
   }
 }

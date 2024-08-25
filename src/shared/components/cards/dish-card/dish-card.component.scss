@@ -48,6 +48,10 @@
       @include small-screen {
         width: 20px;
         height: 20px;
+
+        :host-context(.restaurant-container) .icon-container {
+          display: none;
+        }
       }
       @include medium-large-screens {
         width: 40px;
@@ -76,6 +80,11 @@
 
       @include small-screen {
         display: none;
+
+        :host-context(.restaurant-container) & {
+          display: flex;
+          border: 0.5px solid #979797;
+        }
       }
     }
   }

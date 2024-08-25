@@ -3,15 +3,6 @@
 .filter-bar-wrapper {
   @include componentPadding;
 
-  @include small-screen {
-    @include smallPadding;
-    margin-top: 15px;
-  }
-
-  @include medium-large-screens {
-    @include bigPadding;
-  }
-
   h1 {
     align-self: flex-start;
     @include h1Font;

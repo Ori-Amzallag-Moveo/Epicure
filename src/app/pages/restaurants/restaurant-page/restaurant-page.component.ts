@@ -19,11 +19,11 @@ export class RestaurantPageComponent {
   filters: string[] = ['Breakfast', 'Lunch', 'Dinner'];
   selectedFilter: string = 'Breakfast';
   dishes: Dish[] = [];
+  restaurantIsOpen: boolean = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private cartService: CartService,
     private restaurantsService: RestaurantsService
   ) {}
 

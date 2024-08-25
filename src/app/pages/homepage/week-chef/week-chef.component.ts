@@ -1,11 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { RestaurantsButtonComponent } from '../../../../shared/buttons/restaurants-button/restaurants-button.component';
 import { WeekChefPictureComponent } from '../../../../shared/components/week-chef-picture/week-chef-picture.component';
 
 import { breakpointsData } from '../../../data/breakpointsData';
-import { Chef } from '../../../models/chef.model';
 import { HomepageService } from '../homepage.service';
+import { chefOfTheWeek } from '../../../models/HomepageData';
 
 @Component({
   selector: 'app-week-chef',
@@ -21,16 +21,10 @@ import { HomepageService } from '../homepage.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class WeekChefComponent {
-  chefs: Chef[] = [];
+  @Input({ required: true }) chefOfTheWeek!: chefOfTheWeek | undefined;
   breakpoints = breakpointsData;
 
-  constructor(private homepageService: HomepageService) {}
-
-  async ngOnInit() {
-    this.chefs = await this.homepageService.getChefs();
-  }
-
-  getFirstName(fullName: string): string {
-    return fullName.split(' ')[0];
+  getFirstName(fullName: string | undefined): string {
+    return fullName ? fullName.split(' ')[0] : 'Unknown';
   }
 }
