@@ -21,7 +21,7 @@ export class RestaurantsComponent implements OnInit {
   cartIsEmpty: boolean = true;
   showCart: boolean = false;
   
-  selectedFilter: string = 'All';
+  selectedFilter: string = '';
   filters: string[] = ['All', 'New', 'Most Popular', 'Open Now', 'Map View'];
   secondFilters: string[] = ['Price Range', 'Distance', 'Rating'];
 
@@ -50,7 +50,7 @@ export class RestaurantsComponent implements OnInit {
 
     switch (filter) {
       case 'All':
-        this.router.navigate(['all'], { relativeTo: this.route });
+        this.router.navigate(['restaurants']);
         return;
       case 'New':
         queryParams.isNewRestaurant = 'true';

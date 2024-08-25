@@ -14,7 +14,6 @@ export const routes: Routes = [
     path: 'restaurants',
     component: RestaurantsComponent,
     children: [
-      { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: FilterRestaurantsComponent },
       { path: 'map-view', component: MapViewComponent },
     ],
@@ -24,7 +23,6 @@ export const routes: Routes = [
     path: 'chefs',
     component: ChefsComponent,
     children: [
-      { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'all', component: FilterChefsComponent },
     ],
   },

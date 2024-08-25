@@ -21,7 +21,7 @@ import { FilterChefsComponent } from './filter-chefs/filter-chefs.component';
 export class ChefsComponent {
   cartIsEmpty: boolean = true;
   showCart: boolean = false;
-  selectedFilter: string = 'All';
+  selectedFilter: string = '';
 
   filters: string[] = ['All', 'New', 'Most Viewed'];
   secondFilters: string[] = [];
@@ -51,7 +51,7 @@ export class ChefsComponent {
 
     switch (filter) {
       case 'All':
-        this.router.navigate(['all'], { relativeTo: this.route });
+        this.router.navigate(['chefs']);
         return; 
       case 'New':
         queryParams.isNewChef = 'true';
