@@ -2,7 +2,7 @@
   <div class="ingredients-container" card-content>
     <div class="icon-container">
       @for (icon of dish.icons; track icon) {
-      <img [src]="icon.imgSrc" [alt]="icon.alt" class="icon" />
+      <img [src]="icon.imageSrc" [alt]="icon.alt" class="icon" />
       }
     </div>
     <p>{{ dish.ingredients }}</p>

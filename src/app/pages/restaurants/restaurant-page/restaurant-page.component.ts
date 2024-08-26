@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FilterBarComponent } from '../../../../shared/components/filters/filter-bar/filter-bar.component';
 import { Dish } from '../../../models/dish.model';
 import { DishCardComponent } from '../../../../shared/components/cards/dish-card/dish-card.component';
-import { CartService } from '../../../../shared/components/cart/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantsService } from '../restaurants.service';
 import { Restaurant } from '../../../models/Restaurant.model';
+import { isRestaurantOpen } from '../../../../helpers/isopen.helper';
 
 @Component({
   selector: 'app-restaurant-page',
@@ -14,12 +14,12 @@ import { Restaurant } from '../../../models/Restaurant.model';
   templateUrl: './restaurant-page.component.html',
   styleUrl: './restaurant-page.component.scss',
 })
-export class RestaurantPageComponent {
+export class RestaurantPageComponent implements OnInit {
   restaurant!: Restaurant;
   filters: string[] = ['Breakfast', 'Lunch', 'Dinner'];
-  selectedFilter: string = 'Breakfast';
+  selectedFilter: string = '';
   dishes: Dish[] = [];
-  restaurantIsOpen: boolean = false;
+  restaurantIsOpen: boolean | null = null;
 
   constructor(
     private router: Router,
@@ -30,27 +30,56 @@ export class RestaurantPageComponent {
   async ngOnInit() {
     const restaurantId = this.route.snapshot.paramMap.get('id');
 
-    this.loadRestaurant(restaurantId);
-
-    this.onFilterChange(this.selectedFilter);
-
-    this.dishes = await this.restaurantsService.getDishes();
+    if (!restaurantId) {
+      console.error('No restaurant ID found in route');
+      return;
+    }
+    await this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {},
+      replaceUrl: true,
+    });
+    await this.loadRestaurantData(restaurantId);
   }
 
-  onFilterChange(filter: string) {
-    this.selectedFilter = filter;
+  async loadRestaurantData(restaurantId: string) {
+    this.route.queryParams.subscribe(async (params) => {
+      const meal = params['meal'] || '';
+      this.selectedFilter = meal
+        ? meal.charAt(0).toUpperCase() + meal.slice(1)
+        : '';
 
-    const queryParams: any = {};
-
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams,
+      try {
+        this.restaurant = await this.restaurantsService.getRestaurantById(
+          restaurantId,
+          meal
+        );
+        if (this.restaurant) {
+          this.dishes = this.restaurant.dishes;
+          this.restaurantIsOpen = isRestaurantOpen(this.restaurant);
+        }
+      } catch (error) {
+        console.error('Error loading restaurant data:', error);
+      }
     });
   }
 
-  async loadRestaurant(id: string | null) {
-    if (id) {
-      this.restaurant = await this.restaurantsService.getRestaurantById(id);
+  async loadFilteredDishes(restaurantId: string, meal: string) {
+    try {
+      this.restaurant = await this.restaurantsService.getRestaurantById(
+        restaurantId,
+        meal
+      );
+      this.dishes = this.restaurant.dishes;
+    } catch (error) {
+      console.error('Error loading filtered dishes:', error);
     }
+  }
+
+  onFilterChange(filter: string) {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { meal: filter.toLowerCase() },
+    });
   }
 }

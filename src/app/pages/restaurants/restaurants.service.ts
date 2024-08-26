@@ -10,18 +10,6 @@ import { Dish } from '../../models/dish.model';
 export class RestaurantsService {
   private readonly apiUrl = environment.apiUrl;
 
-  async getDishes(): Promise<Dish[]> {
-    try {
-      const response = await axios.get<{ success: boolean; data: Dish[] }>(
-        this.apiUrl + '/dishes'
-      );
-      return response.data.data;
-    } catch (error) {
-      console.error(`Error fetching data from :`, error);
-      return [] as unknown as Dish[];
-    }
-  }
-
   async fetchRestaurants(
     page: number,
     limit?: number,
@@ -47,10 +35,21 @@ export class RestaurantsService {
     }
   }
 
-  async getRestaurantById(id: string): Promise<Restaurant> {
-    const response = await axios.get<{ success: boolean; data: Restaurant }>(
-      `${this.apiUrl}/restaurants/${id}`
-    );
-    return response.data.data;
+  async getRestaurantById(id: string, meal?: string): Promise<Restaurant> {
+    const params: any = {};
+    if (meal) {
+      params.meal = meal;
+    }
+
+    try {
+      const response = await axios.get<{ success: boolean; data: Restaurant }>(
+        `${this.apiUrl}/restaurants/${id}`,
+        { params }
+      );
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching restaurant by id:', error);
+      throw error;
+    }
   }
 }

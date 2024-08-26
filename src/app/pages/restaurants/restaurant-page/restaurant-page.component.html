@@ -17,7 +17,7 @@
       [tabsNames]="filters"
     />
     <div class="dishes-container">
-      @for (dish of dishes; track dish) {
+      @for (dish of dishes; track dish._id) {
       <app-dish-card [dish]="dish" />
       }
     </div>
