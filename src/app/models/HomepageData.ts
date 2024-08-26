@@ -1,6 +1,7 @@
 import { Dish } from './dish.model';
 
 export interface popularRestaurantsHomepage {
+  restaurantId: string;
   restaurantImg: string;
   restaurantName: string;
   chefName: string;
