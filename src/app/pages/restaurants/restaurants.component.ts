@@ -5,6 +5,7 @@ import { CartComponent } from '../../../shared/components/cart/cart.component';
 import { CartService } from '../../../shared/components/cart/cart.service';
 import { FilterRestaurantsComponent } from './filter-restaurants/filter-restaurants.component';
 import { MapViewComponent } from './map-view/map-view.component';
+
 @Component({
   selector: 'app-restaurants',
   standalone: true,

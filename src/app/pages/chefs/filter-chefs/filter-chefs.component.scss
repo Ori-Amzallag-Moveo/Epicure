@@ -4,6 +4,7 @@
   @include componentPadding;
   display: grid;
   gap: 25px;
+  min-height: 400px;
 
   @include small-screen {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

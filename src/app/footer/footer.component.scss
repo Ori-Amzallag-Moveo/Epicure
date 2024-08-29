@@ -15,7 +15,7 @@
     gap: 40px;
 
     button {
-      @include linksFont;
+      @include footerFont;
     }
 
     @include small-screen {

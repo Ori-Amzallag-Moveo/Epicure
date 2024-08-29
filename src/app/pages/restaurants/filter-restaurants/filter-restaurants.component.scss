@@ -2,11 +2,11 @@
 
 .filter-restaurants-wrapper {
   @include componentPadding;
+  min-height: 400px;
 
   .filter-restaurants-container {
     display: grid;
     gap: 25px;
-
     @include small-screen {
       grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     }

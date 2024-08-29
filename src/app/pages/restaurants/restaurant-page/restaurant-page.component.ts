@@ -48,7 +48,6 @@ export class RestaurantPageComponent implements OnInit {
       this.selectedFilter = meal
         ? meal.charAt(0).toUpperCase() + meal.slice(1)
         : '';
-
       try {
         this.restaurant = await this.restaurantsService.getRestaurantById(
           restaurantId,
@@ -62,18 +61,6 @@ export class RestaurantPageComponent implements OnInit {
         console.error('Error loading restaurant data:', error);
       }
     });
-  }
-
-  async loadFilteredDishes(restaurantId: string, meal: string) {
-    try {
-      this.restaurant = await this.restaurantsService.getRestaurantById(
-        restaurantId,
-        meal
-      );
-      this.dishes = this.restaurant.dishes;
-    } catch (error) {
-      console.error('Error loading filtered dishes:', error);
-    }
   }
 
   onFilterChange(filter: string) {

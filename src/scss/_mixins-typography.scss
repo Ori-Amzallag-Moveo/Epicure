@@ -55,9 +55,9 @@
 }
 
 @mixin linksFont {
-  @include responsiveFont(200, 12px, 18px, 1.92px);
+  @include responsiveFont(200, 14px, 24px, 1.92px);
+}
+@mixin footerFont {
+  @include responsiveFont(200, 14px, 18px, 1.92px);
 }
 
-@mixin linksFont {
-  @include responsiveFont(200, 12px, 18px, 1.92px);
-}

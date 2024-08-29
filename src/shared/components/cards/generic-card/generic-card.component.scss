@@ -27,9 +27,11 @@
     }
     @include medium-screens {
       height: 150px;
+      min-height: 150px;
     }
     @include large-screens {
       height: 200px;
+      min-height: 200px;
     }
   }
 
