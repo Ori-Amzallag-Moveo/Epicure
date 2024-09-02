@@ -31,7 +31,7 @@
 }
 
 @mixin searchBarFont {
-  @include responsiveFont(200, 12px, 24px, 1.3px);
+  @include responsiveFont(200, 12px, 24px, 1.5px);
 }
 
 @mixin restaurantsLinkFont {
@@ -55,9 +55,16 @@
 }
 
 @mixin linksFont {
-  @include responsiveFont(200, 14px, 24px, 1.92px);
+  @include responsiveFont(200, 14px, 24px, 2px);
 }
+
 @mixin footerFont {
-  @include responsiveFont(200, 14px, 18px, 1.92px);
+  @include responsiveFont(200, 14px, 18px, 2px);
 }
+
+@mixin filterBarFont {
+  @include responsiveFont(200, 18px, 18px, 2px);
+}
+
+
 

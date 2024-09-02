@@ -48,12 +48,14 @@
     }
     .open-status {
       @include flexStyleRow;
-
       gap: 5px;
+
       @include small-screen {
+        margin-bottom: 30px;
       }
       @include medium-large-screens {
         margin-top: 20px;
+        margin-bottom: 50px;
       }
       .open-status-img {
         width: 20px;
@@ -93,5 +95,3 @@
     }
   }
 }
-
-

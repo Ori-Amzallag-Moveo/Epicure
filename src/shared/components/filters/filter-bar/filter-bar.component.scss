@@ -1,11 +1,9 @@
 @import "_index";
 
 .filter-bar-wrapper {
-  @include componentPadding;
-
   h1 {
-    align-self: flex-start;
     @include h1Font;
+    align-self: flex-start;
     margin-bottom: 25px;
 
     @include medium-large-screens {

@@ -5,6 +5,7 @@ import { CartComponent } from '../../../shared/components/cart/cart.component';
 import { CartService } from '../../../shared/components/cart/cart.service';
 import { FilterRestaurantsComponent } from './filter-restaurants/filter-restaurants.component';
 import { MapViewComponent } from './map-view/map-view.component';
+import { RestaurantQueryParams } from '../../models/queries.model';
 
 @Component({
   selector: 'app-restaurants',
@@ -47,7 +48,7 @@ export class RestaurantsComponent implements OnInit {
   onFilterChange(filter: string) {
     this.selectedFilter = filter;
 
-    const queryParams: any = {};
+    const queryParams: RestaurantQueryParams = {};
 
     switch (filter) {
       case 'All':

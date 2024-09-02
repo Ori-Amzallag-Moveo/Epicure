@@ -1,8 +1,7 @@
 @import "_index";
 
 .filter-item {
-  @include linksFont;
-  font-size: 18px;
+  @include filterBarFont;
   transition: all 0.3s ease;
 
   &.active {

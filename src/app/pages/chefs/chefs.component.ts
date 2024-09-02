@@ -5,6 +5,7 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
 import { CartService } from '../../../shared/components/cart/cart.service';
 import { FilterChefsComponent } from './filter-chefs/filter-chefs.component';
+import { ChefQueryParams } from '../../models/queries.model';
 
 @Component({
   selector: 'app-chefs',
@@ -47,7 +48,7 @@ export class ChefsComponent {
   onFilterChange(filter: string) {
     this.selectedFilter = filter;
 
-    const queryParams: any = {};
+    const queryParams: ChefQueryParams = {};
 
     switch (filter) {
       case 'All':

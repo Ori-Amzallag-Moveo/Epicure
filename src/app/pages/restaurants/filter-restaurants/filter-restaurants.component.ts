@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantsService } from '../restaurants.service';
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { Restaurant } from '../../../models/Restaurant.model';
+import { RestaurantQueryParams } from '../../../models/queries.model';
 @Component({
   selector: 'app-filter-restaurants',
   standalone: true,
@@ -33,7 +34,7 @@ export class FilterRestaurantsComponent implements OnInit {
     });
   }
 
-  resetFilters(params: any) {
+  resetFilters(params: RestaurantQueryParams) {
     this.page = 1;
     this.limit = 10;
     this.isPopular = params['isPopular'] || '';

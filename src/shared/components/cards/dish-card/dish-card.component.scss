@@ -21,7 +21,7 @@
 
     @include small-screen {
       text-align: left;
-      height: 60px;
+      height: 50px;
     }
     @include medium-screens {
       font-size: 16px;
@@ -42,7 +42,11 @@
     @include medium-large-screens {
       order: 1;
     }
-
+    .place-holder {
+      height: 30px;
+      width: 40px;
+      margin-bottom: 5px;
+    }
     .icon {
       @include small-screen {
         width: 20px;

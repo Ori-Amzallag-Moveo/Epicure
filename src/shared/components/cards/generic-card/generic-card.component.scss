@@ -40,7 +40,6 @@
     @include h3Font;
     margin-top: 10px;
 
-
     @include small-screen {
       align-self: flex-start;
       align-items: flex-start;
@@ -54,7 +53,7 @@
     }
 
     @include medium-large-screens {
-      width: 100%;
+      width: 80%;
     }
   }
 }

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class MobileNavbarComponent {
   navBarMobile: boolean = false;
+  tabs: string[] = ['Contact Us', 'Terms of Use', 'Privacy Policy'];
   routes: { routeName: string; routeUrl: string }[] = [
     { routeName: 'Restaurants', routeUrl: 'restaurants' },
     { routeName: 'Chefs', routeUrl: 'chefs' },

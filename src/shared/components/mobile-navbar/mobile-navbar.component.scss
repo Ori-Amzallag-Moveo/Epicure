@@ -14,21 +14,38 @@
     padding-top: 30px;
   }
 
-  hr {
-    border-width: 0.1px;
-    width: 100%;
-    margin: 10px 0;
-  }
-
   .links-container {
-    @include flexStyleColumn;
-    @include smallPadding;
-    align-items: flex-start;
-    gap: 30px;
-    margin-bottom: 30px;
-    button {
-      @include linksFont;
-      opacity: 80%;
+    .first-links {
+      @include smallPadding;
+      @include flexStyleColumn;
+      margin-bottom: 30px;
+      align-items: flex-start;
+      gap: 30px;
+
+      button {
+        @include linksFont;
+        opacity: 80%;
+      }
+    }
+    .second-links {
+      @include smallPadding;
+      @include flexStyleColumn;
+      margin-bottom: 30px;
+      align-items: flex-start;
+      gap: 30px;
+
+      button {
+        @include linksFont;
+        opacity: 80%;
+      }
+    }
+
+    hr {
+      border-width: 0.01px;
+      width: 1500px;
+      margin: 10px 0;
+      margin-bottom: 30px;
+
     }
   }
 

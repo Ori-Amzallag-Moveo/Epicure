@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FilterBarComponent } from '../../../../shared/components/filters/filter-bar/filter-bar.component';
 import { Dish } from '../../../models/dish.model';
 import { DishCardComponent } from '../../../../shared/components/cards/dish-card/dish-card.component';
