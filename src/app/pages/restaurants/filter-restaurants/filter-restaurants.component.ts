@@ -18,6 +18,7 @@ export class FilterRestaurantsComponent implements OnInit {
   isPopular: string = '';
   isNewRestaurant: string = '';
   isOpenNow: string = '';
+  rating: string = ''; 
   isLoading: boolean = false;
   allRestaurantsLoaded: boolean = false;
 
@@ -40,6 +41,7 @@ export class FilterRestaurantsComponent implements OnInit {
     this.isPopular = params['isPopular'] || '';
     this.isNewRestaurant = params['isNewRestaurant'] || '';
     this.isOpenNow = params['isOpenNow'] || '';
+    this.rating = params['rating'] || ''; 
     this.restaurants = [];
     this.allRestaurantsLoaded = false;
   }
@@ -54,7 +56,8 @@ export class FilterRestaurantsComponent implements OnInit {
         this.limit,
         this.isPopular,
         this.isNewRestaurant,
-        this.isOpenNow
+        this.isOpenNow,
+        this.rating
       );
       this.restaurants = [...this.restaurants, ...newRestaurants];
 

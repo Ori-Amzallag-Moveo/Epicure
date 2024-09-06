@@ -1,8 +1,5 @@
 <div class="restaurant-page-wrapper">
   <div class="restaurant-page-container">
-    @if (showCart) {
-    <app-cart />
-    }
     <div class="wrapper">
       <div class="filter-bar-container">
         <app-filter-bar
@@ -11,6 +8,7 @@
           [tabsNames]="filters"
           [secondTabsNames]="secondFilters"
           (filterChange)="onFilterChange($event)"
+          (ratingChange)="onRatingChange($event)"
         ></app-filter-bar>
       </div>
       <div class="restaurant-content">

@@ -2,9 +2,9 @@
   <h3 class="title">Rating</h3>
   <div class="check-boxes-container">
     @for (i of [1, 2, 3, 4, 5]; track i) {
-        <mat-checkbox labelPosition="after">
-            <img src="assets/rating-icons/{{i}}-stars-rating.svg" alt="{{i}} stars rating">
-        </mat-checkbox>
+      <mat-checkbox labelPosition="after" [checked]="isChecked(i)" (change)="onRatingChange(i, $event.checked)">
+          <img src="assets/rating-icons/{{i}}-stars-rating.svg" alt="{{i}} stars rating">
+      </mat-checkbox>
     }
   </div>
 </div>

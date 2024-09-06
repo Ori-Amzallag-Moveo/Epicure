@@ -4,22 +4,27 @@
   @include flexStyleColumn;
   gap: 10px;
   position: absolute;
-  margin-top: 30px;
-  margin-left: 280px;
   padding-top: 20px;
   background-color: white;
-  width: 300px;
-  padding-inline: 30px;
+  width: 350px;
+  padding-inline: 50px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3); 
+  right: -115px;
 
   .title {
     @include linksFont;
     font-weight: 400;
   }
-
-  mat-checkbox {
-    border-radius: 10px;
-    width: 80%;
-    margin-bottom: 30px;
+  .check-boxes-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+    mat-checkbox {
+      border-radius: 10px;
+      width: 80%;
+      margin-bottom: 15px;
+    }
   }
+
+  
 }

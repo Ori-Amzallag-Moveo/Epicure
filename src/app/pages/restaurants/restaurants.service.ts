@@ -4,16 +4,15 @@ import { Restaurant } from '../../models/Restaurant.model';
 import { environment } from '../../../enviroments/enviroment';
 import { isClient } from '../../../helpers/isclient.helper';
 import { RestaurantQueryParams, SingleRestaurantQueryParams } from '../../models/queries.model';
-import { Dish } from '../../models/dish.model';
 @Injectable({
   providedIn: 'root',
 })
 export class RestaurantsService {
   private readonly apiUrl = environment.apiUrl;
 
-  async fetchRestaurants(page: number,limit?: number,isPopular?: string,isNewRestaurant?: string,isOpenNow?: string): Promise<Restaurant[]> {
+  async fetchRestaurants(page: number,limit?: number, isPopular?: string, isNewRestaurant?: string, isOpenNow?: string, rating?: string): Promise<Restaurant[]> {
     const params: RestaurantQueryParams = { page, limit }; 
-    const sessionKey = `restaurants-${page}-${limit}-${isPopular}-${isNewRestaurant}-${isOpenNow}`;
+    const sessionKey = `restaurants-${page}-${limit}-${isPopular}-${isNewRestaurant}-${isOpenNow}-${rating}`;
 
     if (isClient()) {
       const storedData = sessionStorage.getItem(sessionKey);
@@ -21,18 +20,18 @@ export class RestaurantsService {
         return JSON.parse(storedData);
       }
     }
-
     if (isPopular !== undefined) params.isPopular = isPopular;
     if (isNewRestaurant !== undefined) params.isNewRestaurant = isNewRestaurant;
     if (isOpenNow !== undefined) params.isOpenNow = isOpenNow;
+    if (rating !== undefined) params.rating = rating; 
+
     try {
-      const response = await axios.get<{success: boolean; data: Restaurant[]}>(`${this.apiUrl}/restaurants`, {params,});
+      const response = await axios.get<{success: boolean; data: Restaurant[]}>(`${this.apiUrl}/restaurants`, {params});
       const data: Restaurant[] = response.data.data;
 
       if (isClient()) {
         sessionStorage.setItem(sessionKey, JSON.stringify(data));
       }
-      
       return data;
     } catch (error) {
       console.error('Error fetching restaurants:', error);
@@ -50,7 +49,6 @@ export class RestaurantsService {
         return JSON.parse(storedData);
       }
     }
-
     if (meal) {
       params.meal = meal;
     }

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterBarComponent } from '../../../shared/components/filters/filter-bar/filter-bar.component';
-import { CartComponent } from '../../../shared/components/cart/cart.component';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
-import { GenericCardComponent } from '../../../shared/components/cards/generic-card/generic-card.component';
-import { CartService } from '../../../shared/components/cart/cart.service';
 import { FilterChefsComponent } from './filter-chefs/filter-chefs.component';
 import { ChefQueryParams } from '../../models/queries.model';
 
@@ -12,36 +9,23 @@ import { ChefQueryParams } from '../../models/queries.model';
   standalone: true,
   imports: [
     FilterBarComponent,
-    CartComponent,
     RouterModule,
     FilterChefsComponent,
   ],
   templateUrl: './chefs.component.html',
   styleUrl: './chefs.component.scss',
 })
-export class ChefsComponent {
-  cartIsEmpty: boolean = true;
-  showCart: boolean = false;
+export class ChefsComponent implements OnInit{
   selectedFilter: string = '';
-
   filters: string[] = ['All', 'New', 'Most Viewed'];
   secondFilters: string[] = [];
 
   constructor(
     private router: Router,
-    private cartService: CartService,
     private route: ActivatedRoute
   ) {}
 
   async ngOnInit() {
-    this.cartService.cartItems$.subscribe((items) => {
-      this.cartIsEmpty = items.length === 0;
-    });
-
-    this.cartService.showCart$.subscribe((show) => {
-      this.showCart = show;
-    });
-    
     this.onFilterChange(this.selectedFilter);
   }
 
@@ -66,9 +50,5 @@ export class ChefsComponent {
       relativeTo: this.route,
       queryParams,
     });
-  }
-
-  toggleCart() {
-    this.cartService.toggleCart();
   }
 }

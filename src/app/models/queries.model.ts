@@ -11,15 +11,9 @@ export interface RestaurantQueryParams {
   isNewRestaurant?: string;
   isPopular?: string;
   isOpenNow?: string;
+  rating?: string;
 }
 
 export interface SingleRestaurantQueryParams {
   meal?: string;
-}
-
-export interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
 }

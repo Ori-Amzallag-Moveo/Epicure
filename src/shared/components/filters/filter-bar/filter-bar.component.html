@@ -1,7 +1,7 @@
 <div class="filter-bar-wrapper">
   <h1>{{ pageName }}</h1>
   <div class="filter-bar-container">
-    @for(filter of tabsNames; track filter) {
+    @for (filter of tabsNames; track filter) {
     <ng-container>
       <app-filter-button
         [filter]="filter"
@@ -9,33 +9,29 @@
         [fontSize]="fontSize"
         (onFilterChange)="setFilter($event)"
         (click)="onFilterButtonClick(filter)"
-      ></app-filter-button>
+      />
     </ng-container>
     }
   </div>
 </div>
+
 @if (secondTabsNames.length > 0) {
 <div *ngIf="secondTabsNames.length > 0" class="second-filter-bar-container">
-  <ng-container [ngSwitch]="secondFilterSelected">
-    <app-price-range
-      *ngSwitchCase="'Price Range'"
-      [minValue]="10"
-      [maxValue]="360"
-    ></app-price-range>
-    <app-distance-bar
-      *ngSwitchCase="'Distance'"
-      [minValue]="0"
-      [maxValue]="4"
-    ></app-distance-bar>
-    <app-rating-bar *ngSwitchCase="'Rating'"></app-rating-bar>
-  </ng-container>
-
   @for (secondFilter of secondTabsNames; track secondFilter) {
-  <app-second-filter-button
-    [secondFilterName]="secondFilter"
-    [selected]="secondFilter === secondFilterSelected"
-    (click)="onSecondFilterButtonClick(secondFilter)"
-  />
+  <div class="filter-item-container">
+    <app-second-filter-button
+      [secondFilterName]="secondFilter"
+      [selected]="secondFilter === secondFilterSelected"
+      (click)="onSecondFilterButtonClick(secondFilter)"
+    />
+    @if (secondFilter === 'Price Range' && secondFilterSelected === 'Price Range') {
+    <app-price-range [minValue]="10" [maxValue]="360"></app-price-range>
+    } @if (secondFilter === 'Distance' && secondFilterSelected === 'Distance') {
+    <app-distance-bar [minValue]="0" [maxValue]="4"></app-distance-bar>
+    } @if (secondFilter === 'Rating' && secondFilterSelected === 'Rating') {
+    <app-rating-bar [selectedRatings]="selectedRatings" (ratingChange)="onRatingChange($event)"/>
+    }
+  </div>
   }
 </div>
 }

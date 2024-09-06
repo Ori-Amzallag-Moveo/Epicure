@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartComponent } from '../../shared/components/cart/cart.component';
-import { CartService } from '../../shared/components/cart/cart.service';
 import { HeaderService } from './header.service';
 import { MobileNavbarComponent } from '../../shared/components/mobile-navbar/mobile-navbar.component';
 import { Router, NavigationEnd, Event } from '@angular/router';
@@ -10,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CartComponent, MobileNavbarComponent, CommonModule],
+  imports: [MobileNavbarComponent, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -25,7 +23,6 @@ export class HeaderComponent implements OnInit {
   selectedTab: (typeof this.headerTabs)[number] | '' = '';
 
   constructor(
-    private cartService: CartService,
     private headerService: HeaderService,
     private router: Router
   ) {}
@@ -45,12 +42,6 @@ export class HeaderComponent implements OnInit {
       .subscribe((event: NavigationEnd) => {
         this.setActiveTab(event.urlAfterRedirects);
       });
-  }
-
-  onClick(iconName: string) {
-    if (iconName === 'bag') {
-      this.cartService.toggleCart();
-    }
   }
 
   onToggleNavbar() {

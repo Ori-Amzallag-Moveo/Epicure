@@ -27,7 +27,7 @@
 
       <div class="right-toolbar">
         @for(icon of toolbarIcons; track icon) {
-          <button (click)="onClick(icon.name)" class="btn">
+          <button class="btn">
             <img [src]="icon.imgsrc" [alt]="icon.name" />
           </button>
         } 

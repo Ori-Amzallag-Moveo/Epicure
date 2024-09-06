@@ -21,16 +21,17 @@ import { RatingBarComponent } from "../rating-bar/rating-bar.component";
   styleUrls: ['./filter-bar.component.scss'],
 })
 export class FilterBarComponent {
-  selectedFilter: string = '';
-  secondFilterSelected: string = '';
-  isPriceRangeVisible: boolean = false;
-
+  @Input() selectedRatings: number[] = []; 
   @Input() pageName!: string;
   @Input({ required: true }) tabsNames: string[] = [];
   @Input() secondTabsNames: string[] = [];
   @Input() fontSize !: number;
+  @Output() ratingChange = new EventEmitter<number[]>();
   @Output() filterChange = new EventEmitter<string>();
-  @Output() secondFilterChange = new EventEmitter<string>();
+
+  selectedFilter: string = 'All';
+  secondFilterSelected: string = '';
+  isPriceRangeVisible: boolean = false;
 
   setFilter(filter: string) {
     this.selectedFilter = filter;
@@ -46,7 +47,9 @@ export class FilterBarComponent {
       this.secondFilterSelected = '';
     } else {
       this.secondFilterSelected = secondFilter;
-      this.secondFilterChange.emit(secondFilter);
     }
+  }
+  onRatingChange(selectedRatings: number[]) {
+    this.ratingChange.emit(selectedRatings);
   }
 }
