@@ -27,7 +27,6 @@ export class RestaurantsService {
     if (isOpenNow !== undefined) params.isOpenNow = isOpenNow;
     try {
       const response = await axios.get<{success: boolean; data: Restaurant[]}>(`${this.apiUrl}/restaurants`, {params,});
-
       const data: Restaurant[] = response.data.data;
 
       if (isClient()) {
@@ -56,10 +55,7 @@ export class RestaurantsService {
       params.meal = meal;
     }
     try {
-      const response = await axios.get<{ success: boolean; data: Restaurant }>(
-        `${this.apiUrl}/restaurants/${id}`,
-        { params }
-      );
+      const response = await axios.get<{ success: boolean; data: Restaurant }>(`${this.apiUrl}/restaurants/${id}`,{ params });
       const data: Restaurant = response.data.data;
 
       if (isClient()) {

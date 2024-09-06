@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { FilterBarComponent } from '../../../../shared/components/filters/filter-bar/filter-bar.component';
 import { Dish } from '../../../models/dish.model';
 import { DishCardComponent } from '../../../../shared/components/cards/dish-card/dish-card.component';
@@ -20,14 +20,19 @@ export class RestaurantPageComponent implements OnInit {
   selectedFilter: string = '';
   dishes: Dish[] = [];
   restaurantIsOpen: boolean | null = null;
+  filterBarFontSize !: number;
+
+  private smallScreenSize = 875;
+  private largeScreenSize = 1024;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private restaurantsService: RestaurantsService
+    private restaurantsService: RestaurantsService,
   ) {}
 
   async ngOnInit() {
+    this.isSmallScreenSize();
     const restaurantId = this.route.snapshot.paramMap.get('id');
 
     if (!restaurantId) {
@@ -63,10 +68,26 @@ export class RestaurantPageComponent implements OnInit {
     });
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.isSmallScreenSize();
+  }
+
   onFilterChange(filter: string) {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { meal: filter.toLowerCase() },
     });
+  }
+
+  private isSmallScreenSize(): void { // change logic
+    const width = window.innerWidth;
+    if (width <= this.smallScreenSize) {
+      this.filterBarFontSize = 18;
+    } else if (width >= this.largeScreenSize) {
+      this.filterBarFontSize = 24;
+    } else {
+      this.filterBarFontSize = 20; 
+    }
   }
 }

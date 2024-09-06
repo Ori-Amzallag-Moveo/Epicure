@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class FilterButtonComponent {
   @Input() filter: string = '';
   @Input() selectedFilter: string = '';
+  @Input() fontSize: number = 18;
   @Output() onFilterChange: EventEmitter<string> = new EventEmitter<string>();
 
   setFilter() {

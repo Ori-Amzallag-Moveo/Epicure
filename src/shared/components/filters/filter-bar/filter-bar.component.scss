@@ -16,6 +16,10 @@
     justify-content: center;
     gap: 25px;
 
+    @include small-screen {
+      gap: 20px;
+    }
+
     .map-view {
       @include small-screen {
         display: none;

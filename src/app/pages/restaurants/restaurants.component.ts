@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FilterBarComponent } from '../../../shared/components/filters/filter-bar/filter-bar.component';
 import { CartComponent } from '../../../shared/components/cart/cart.component';
@@ -22,10 +22,13 @@ import { RestaurantQueryParams } from '../../models/queries.model';
 export class RestaurantsComponent implements OnInit {
   cartIsEmpty: boolean = true;
   showCart: boolean = false;
-  
+
   selectedFilter: string = '';
   filters: string[] = ['All', 'New', 'Most Popular', 'Open Now', 'Map View'];
   secondFilters: string[] = ['Price Range', 'Distance', 'Rating'];
+  filterBarFontSize !: number;
+
+  private smallScreenSize = 875;
 
   constructor(
     private router: Router,
@@ -41,8 +44,8 @@ export class RestaurantsComponent implements OnInit {
     this.cartService.showCart$.subscribe((show) => {
       this.showCart = show;
     });
-
     this.onFilterChange(this.selectedFilter);
+    this.isSmallScreenSize();
   }
 
   onFilterChange(filter: string) {
@@ -76,5 +79,21 @@ export class RestaurantsComponent implements OnInit {
 
   toggleCart() {
     this.cartService.toggleCart();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.isSmallScreenSize();
+  }
+
+  private isSmallScreenSize(): void {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width <= this.smallScreenSize) {
+        this.filterBarFontSize = 16;
+      } else {
+        this.filterBarFontSize = 18;
+      }
+    }
   }
 }

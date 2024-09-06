@@ -7,6 +7,7 @@
       <div class="filter-bar-container">
         <app-filter-bar
           [pageName]="'Restaurants'"
+          [fontSize]="filterBarFontSize"
           [tabsNames]="filters"
           [secondTabsNames]="secondFilters"
           (filterChange)="onFilterChange($event)"

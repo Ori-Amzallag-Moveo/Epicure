@@ -15,6 +15,7 @@
     <app-filter-bar
       (filterChange)="onFilterChange($event)"
       [tabsNames]="filters"
+      [fontSize]="filterBarFontSize"
     />
     <div class="dishes-container">
       @for (dish of dishes; track dish._id) {

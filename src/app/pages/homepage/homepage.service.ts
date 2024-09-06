@@ -17,7 +17,6 @@ export class HomepageService {
     const storedData = this.cookieService.get(this.cookieName);
 
     if (storedData) {
-      console.log(storedData);
       return JSON.parse(storedData);
     }
 

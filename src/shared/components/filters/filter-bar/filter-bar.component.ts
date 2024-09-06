@@ -28,6 +28,7 @@ export class FilterBarComponent {
   @Input() pageName!: string;
   @Input({ required: true }) tabsNames: string[] = [];
   @Input() secondTabsNames: string[] = [];
+  @Input() fontSize !: number;
   @Output() filterChange = new EventEmitter<string>();
   @Output() secondFilterChange = new EventEmitter<string>();
 
