@@ -10,10 +10,10 @@ import { RestaurantQueryParams, SingleRestaurantQueryParams } from '../../models
 export class RestaurantsService {
   private readonly apiUrl = environment.apiUrl;
 
-  async fetchRestaurants(page: number,limit?: number, isPopular?: string, isNewRestaurant?: string, isOpenNow?: string, rating?: string): Promise<Restaurant[]> {
+  async fetchRestaurants(page: number,limit?: number, isPopular?: string, isNewRestaurant?: string, isOpenNow?: string, rating?: string, distance?: string): Promise<Restaurant[]> {
     const params: RestaurantQueryParams = { page, limit }; 
-    const sessionKey = `restaurants-${page}-${limit}-${isPopular}-${isNewRestaurant}-${isOpenNow}-${rating}`;
-
+    const sessionKey = `restaurants-${page}-${limit}-${isPopular}-${isNewRestaurant}-${isOpenNow}-${rating}-${distance}`;
+    
     if (isClient()) {
       const storedData = sessionStorage.getItem(sessionKey);
       if (storedData) {
@@ -24,6 +24,7 @@ export class RestaurantsService {
     if (isNewRestaurant !== undefined) params.isNewRestaurant = isNewRestaurant;
     if (isOpenNow !== undefined) params.isOpenNow = isOpenNow;
     if (rating !== undefined) params.rating = rating; 
+    if (distance !== undefined) params.distance = distance; 
 
     try {
       const response = await axios.get<{success: boolean; data: Restaurant[]}>(`${this.apiUrl}/restaurants`, {params});

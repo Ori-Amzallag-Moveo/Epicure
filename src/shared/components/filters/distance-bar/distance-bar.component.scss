@@ -14,10 +14,35 @@
     @include linksFont;
     font-weight: 400;
   }
-  mat-slider {
+  p {
+    @include inputTextFont;
+    font-weight: 300;
+  }
+  .distance {
+    position: absolute;
+    top: 65px;
+    z-index: 1;
+    right: 30px;
+  }
+  .slider-background {
     background-color: $cremeColor;
     border-radius: 10px;
-    width: 80%;
+    width: 310px;
+    height: 65px;
     margin-bottom: 30px;
+
+    mat-slider {
+      width: 90%;
+      margin-bottom: 30px;
+      margin-top: 15px;
+    }
   }
+
+  .my-location {
+    position: absolute;
+    top: 65px;
+    z-index: 1;
+    left: 30px;
+  }
+
 }

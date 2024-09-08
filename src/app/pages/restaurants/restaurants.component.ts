@@ -13,12 +13,13 @@ import { RestaurantQueryParams } from '../../models/queries.model';
   styleUrls: ['./restaurants.component.scss'],
 })
 export class RestaurantsComponent implements OnInit {
+  
   selectedFilter: string = '';
   filters: string[] = ['All', 'New', 'Most Popular', 'Open Now', 'Map View'];
   secondFilters: string[] = ['Price Range', 'Distance', 'Rating'];
   filterBarFontSize!: number;
-  selectedRatings: number[] = []; 
-
+  selectedRatings: number[] = [];
+  distanceSelected?: number;
 
   private smallScreenSize = 875;
 
@@ -34,6 +35,8 @@ export class RestaurantsComponent implements OnInit {
 
     const queryParams: RestaurantQueryParams = {};
 
+    this.secondFilters = (filter === 'Map View') ? [] : ['Price Range', 'Distance', 'Rating'];
+
     switch (filter) {
       case 'All':
         this.router.navigate(['restaurants']);
@@ -45,7 +48,7 @@ export class RestaurantsComponent implements OnInit {
         queryParams.isPopular = 'true';
         break;
       case 'Open Now':
-        queryParams.isOpenNow = 's';
+        queryParams.isOpenNow = 'true';
         break;
       case 'Map View':
         this.router.navigate(['map-view'], { relativeTo: this.route });
@@ -59,18 +62,32 @@ export class RestaurantsComponent implements OnInit {
   }
 
   onRatingChange(selectedRatings: number[]) {
-    this.selectedRatings = selectedRatings; 
+    this.selectedRatings = selectedRatings;
     const queryParams: RestaurantQueryParams = {};
     const sortedSelectedRatings = selectedRatings.sort();
-    
+
     if (sortedSelectedRatings.length > 0) {
       queryParams.rating = sortedSelectedRatings.join(',');
     } else {
-      queryParams.rating = undefined; 
+      queryParams.rating = undefined;
     }
+
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParamsHandling: 'merge', 
+      queryParamsHandling: 'merge',
+      queryParams,
+    });
+  }
+
+  onDistanceChange(selectedDistance: number) {
+    this.distanceSelected = selectedDistance;
+
+    const queryParams: RestaurantQueryParams = {};
+    queryParams.distance = selectedDistance.toString();
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParamsHandling: 'merge',
       queryParams,
     });
   }
@@ -90,5 +107,4 @@ export class RestaurantsComponent implements OnInit {
       }
     }
   }
-
 }

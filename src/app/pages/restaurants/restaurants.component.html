@@ -8,8 +8,9 @@
           [tabsNames]="filters"
           [secondTabsNames]="secondFilters"
           (filterChange)="onFilterChange($event)"
+          (distanceChange)="onDistanceChange($event)"
           (ratingChange)="onRatingChange($event)"
-        ></app-filter-bar>
+        />
       </div>
       <div class="restaurant-content">
         @if (selectedFilter !== 'Map View') {

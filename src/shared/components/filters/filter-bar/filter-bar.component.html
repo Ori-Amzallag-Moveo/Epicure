@@ -25,9 +25,9 @@
       (click)="onSecondFilterButtonClick(secondFilter)"
     />
     @if (secondFilter === 'Price Range' && secondFilterSelected === 'Price Range') {
-    <app-price-range [minValue]="10" [maxValue]="360"></app-price-range>
+    <app-price-range [minValue]="0" [maxValue]="100" />
     } @if (secondFilter === 'Distance' && secondFilterSelected === 'Distance') {
-    <app-distance-bar [minValue]="0" [maxValue]="4"></app-distance-bar>
+    <app-distance-bar [minValue]="1" [maxValue]="4" (distanceChange)="onDistanceChange($event)" />
     } @if (secondFilter === 'Rating' && secondFilterSelected === 'Rating') {
     <app-rating-bar [selectedRatings]="selectedRatings" (ratingChange)="onRatingChange($event)"/>
     }

@@ -1,6 +1,17 @@
 <div class="distance-bar-container">
   <h3 class="title">Distance</h3>
-  <mat-slider discrete color="primary" showTickMarks [min]="minValue" [max]="maxValue" [displayWith]="formatLabel">
-    <input matSliderThumb [value]="minValue + 20" />
+  <p class="distance">{{selectedDistance}}km</p>
+  <div class="slider-background">
+    <mat-slider
+    discrete
+    color="primary"
+    showTickMarks
+    (input)="onDistanceChange($event)"
+    [min]="minValue"
+    [max]="maxValue"
+    [displayWith]="formatLabel">
+    <input matSliderThumb [(ngModel)]="selectedDistance" [value]="selectedDistance" />
   </mat-slider>
+  </div>
+  <p class="my-location">My Location</p>
 </div>

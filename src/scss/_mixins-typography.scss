@@ -66,5 +66,15 @@
   @include responsiveFont(200, 18px, 18px, 2px);
 }
 
+@mixin loginButton {
+  @include responsiveFont(400, 18px, 18px, 2.5px);
+}
+
+@mixin errorFont {
+  @include responsiveFont(300, 0.8rem, 0.8rem, 2px);
+}
+
+
+
 
 

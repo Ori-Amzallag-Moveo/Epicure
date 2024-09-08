@@ -1,0 +1,71 @@
+@if (isLoginVisible) {
+<div class="modal-background">
+  <div class="modal-container">
+    <div class="modal-content">
+      <div class="title">
+        <h2>@if (isLoginState) { SIGN IN } @else { SIGN UP }</h2>
+        <p>
+          Welcome to Epicure, please sign @if (isLoginState) {in} @else {up}
+        </p>
+      </div>
+
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="inputs">
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            required
+            placeholder="Email adress"
+            #emailField="ngModel"
+            [email]="true"
+          />
+          @if (emailField.invalid && emailField.touched) {
+          <div class="error error-1">Please enter a valid email</div>
+          }
+
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            minlength="6"
+            required
+            placeholder="Password"
+            #passwordField="ngModel"
+          />
+          @if (passwordField.invalid && passwordField.touched) {
+          <div class="error error-2">
+            @if (passwordField.errors?.['required']) { Password is required }
+            @if (passwordField.errors?.['minlength']) { Password must be at
+            least 6 characters }
+          </div>
+          }
+        </div>
+        <div class="second-form">
+          <div class="login-forgot">
+            <button class="login" type="submit" [disabled]="loginForm.invalid">
+              @if (isLoginState) {Login} @else {Register}
+            </button>
+            @if(!isLoginSuccessful) {
+            <div class="error3">
+              @if (isLoginState) {Login} @else {Register} unsuccessful please
+              try again
+            </div>
+            } @if (isLoginState) {<button class="forgot-passowod">
+              Forgot password?</button>}
+          </div>
+
+          <div class="or-lines">
+            <hr class="line" />
+            <p>or</p>
+            <hr class="line" />
+          </div>
+          <button type="button" (click)="onRegister()" class="sign-up">@if (isLoginState) {SIGN UP} @else {Login}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+}

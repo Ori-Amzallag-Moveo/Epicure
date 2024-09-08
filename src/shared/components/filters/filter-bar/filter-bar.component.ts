@@ -28,6 +28,7 @@ export class FilterBarComponent {
   @Input() fontSize !: number;
   @Output() ratingChange = new EventEmitter<number[]>();
   @Output() filterChange = new EventEmitter<string>();
+  @Output() distanceChange = new EventEmitter<number>(); 
 
   selectedFilter: string = 'All';
   secondFilterSelected: string = '';
@@ -49,7 +50,13 @@ export class FilterBarComponent {
       this.secondFilterSelected = secondFilter;
     }
   }
+
   onRatingChange(selectedRatings: number[]) {
     this.ratingChange.emit(selectedRatings);
+  }
+
+  onDistanceChange(event: any) {
+    const sliderValue = event; 
+    this.distanceChange.emit(sliderValue);
   }
 }

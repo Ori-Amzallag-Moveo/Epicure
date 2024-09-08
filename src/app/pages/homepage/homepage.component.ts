@@ -8,6 +8,7 @@ import { WeekChefComponent } from './week-chef/week-chef.component';
 import { AboutComponent } from './about/about.component';
 import { homepageData } from '../../models/HomepageData';
 import { HomepageService } from './homepage.service';
+import { LoginComponent } from '../../auth/login/login.component';
 
 @Component({
   selector: 'app-homepage',
@@ -20,9 +21,9 @@ import { HomepageService } from './homepage.service';
     IconMeaningComponent,
     WeekChefComponent,
     AboutComponent,
+    LoginComponent
   ],
   templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.scss',
 })
 export class HomepageComponent implements OnInit {
   homepageData: homepageData | null = null; 

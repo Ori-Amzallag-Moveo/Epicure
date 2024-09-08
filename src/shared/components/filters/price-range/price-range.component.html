@@ -5,8 +5,8 @@
     <p>-</p>
     <app-coin [price]="maxValue" />
   </div>
-  <mat-slider discrete color="primary" [min]="minValue" [max]="maxValue" >
-    <input matSliderStartThumb [value]="minValue + 20" />
-    <input matSliderEndThumb [value]="maxValue - 20" />
+  <mat-slider discrete>
+    <input [(ngModel)]="minValue" matSliderStartThumb  />
+    <input [(ngModel)]="maxValue" matSliderEndThumb  />
   </mat-slider>
 </div>

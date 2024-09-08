@@ -7,24 +7,29 @@ import { FilterRestaurantsComponent } from './pages/restaurants/filter-restauran
 import { FilterChefsComponent } from './pages/chefs/filter-chefs/filter-chefs.component';
 import { ChefsComponent } from './pages/chefs/chefs.component';
 import { RestaurantPageComponent } from './pages/restaurants/restaurant-page/restaurant-page.component';
+import { AuthGuard } from './auth/authGuard.service';
+import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: 'login', component: LoginComponent }, 
+  { path: '', component: HomepageComponent},
   {
     path: 'restaurants',
     component: RestaurantsComponent,
     children: [
-      { path: 'all', component: FilterRestaurantsComponent },
-      { path: 'map-view', component: MapViewComponent },
+      { path: 'all', component: FilterRestaurantsComponent},
+      { path: 'map-view', component: MapViewComponent},
     ],
+    canActivate: [AuthGuard]
   },
-  { path: 'restaurants/:id', component: RestaurantPageComponent },
+  { path: 'restaurants/:id', component: RestaurantPageComponent, canActivate: [AuthGuard] },
   {
     path: 'chefs',
     component: ChefsComponent,
     children: [
-      { path: 'all', component: FilterChefsComponent },
+      { path: 'all', component: FilterChefsComponent, canActivate: [AuthGuard] },
     ],
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' },
 ];

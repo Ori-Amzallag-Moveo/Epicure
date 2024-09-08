@@ -12,6 +12,7 @@ export interface RestaurantQueryParams {
   isPopular?: string;
   isOpenNow?: string;
   rating?: string;
+  distance?: string;
 }
 
 export interface SingleRestaurantQueryParams {
