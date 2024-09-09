@@ -4,6 +4,10 @@
   @include componentPadding;
   min-height: 400px;
 
+  @include small-screen {
+    min-height: 225px;
+  }
+
   .filter-restaurants-container {
     display: grid;
     gap: 25px;

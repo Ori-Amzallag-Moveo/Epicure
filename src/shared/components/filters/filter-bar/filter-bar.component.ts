@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FilterButtonComponent } from '../../../buttons/filter-button/filter-button.component';
 import { SecondFilterButtonComponent } from '../../../buttons/second-filter-button/second-filter-button.component';
-import { PriceRangeComponent } from '../price-range/price-range.component';
 import { DistanceBarComponent } from '../distance-bar/distance-bar.component';
+import { PriceRangeComponent } from '../price-range/price-range.component';
 import { RatingBarComponent } from "../rating-bar/rating-bar.component";
 
 @Component({
@@ -26,9 +26,13 @@ export class FilterBarComponent {
   @Input({ required: true }) tabsNames: string[] = [];
   @Input() secondTabsNames: string[] = [];
   @Input() fontSize !: number;
+  @Input() userPriceRangeSelected !: number[];
+  @Input() userDistanceSelected !: number;
+  
   @Output() ratingChange = new EventEmitter<number[]>();
   @Output() filterChange = new EventEmitter<string>();
   @Output() distanceChange = new EventEmitter<number>(); 
+  @Output() priceRangeChange = new EventEmitter<number[]>(); 
 
   selectedFilter: string = 'All';
   secondFilterSelected: string = '';
@@ -58,5 +62,9 @@ export class FilterBarComponent {
   onDistanceChange(event: any) {
     const sliderValue = event; 
     this.distanceChange.emit(sliderValue);
+  }
+
+  onpriceRangeChange(event: number[]) {
+    this.priceRangeChange.emit(event);
   }
 }

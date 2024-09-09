@@ -5,7 +5,6 @@ import { GenericCardComponent } from '../../../../shared/components/cards/generi
 import { CommonModule } from '@angular/common';
 import { breakpointsData } from '../../../data/breakpointsData';
 import { popularRestaurantsHomepage } from '../../../models/HomepageData';
-import { RestaurantsService } from '../../restaurants/restaurants.service';
 
 @Component({
   selector: 'app-popular-restaurants',
@@ -19,7 +18,7 @@ export class PopularRestaurantsComponent {
   @Input({ required: true }) popularRestaurants!:| popularRestaurantsHomepage[]| undefined;
   breakpoints = breakpointsData;
 
-  constructor (private restaurantsService: RestaurantsService, private router: Router) {}
+  constructor (private router: Router) {}
 
   goToRestaurant(restaurantId: string) {
     this.router.navigate([`/restaurants`, restaurantId]);

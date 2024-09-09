@@ -28,8 +28,8 @@
   }
 }
 .second-filter-bar-container {
-  @include componentPadding;
   @include flexStyleRow;
+  margin-top: 30px;
   justify-content: center;
   gap: 30px;
   height: 60px;
@@ -43,4 +43,9 @@
 
 .filter-item-container {
   position: relative;
+}
+
+.ai-icon {
+  height: 50px;
+  width: 50px;
 }

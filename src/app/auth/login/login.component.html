@@ -3,10 +3,8 @@
   <div class="modal-container">
     <div class="modal-content">
       <div class="title">
-        <h2>@if (isLoginState) { SIGN IN } @else { SIGN UP }</h2>
-        <p>
-          Welcome to Epicure, please sign @if (isLoginState) {in} @else {up}
-        </p>
+        <h2>SIGN IN</h2>
+        <p>Welcome to Epicure, please sign in</p>
       </div>
 
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
@@ -17,16 +15,15 @@
             [(ngModel)]="email"
             name="email"
             required
-            placeholder="Email adress"
+            placeholder="Email address"
             #emailField="ngModel"
             [email]="true"
           />
           @if (emailField.invalid && emailField.touched) {
           <div class="error error-1">Please enter a valid email</div>
           }
-
           <input
-            type="password"
+            [type]="passwordFieldType"
             id="password"
             [(ngModel)]="password"
             name="password"
@@ -37,24 +34,30 @@
           />
           @if (passwordField.invalid && passwordField.touched) {
           <div class="error error-2">
-            @if (passwordField.errors?.['required']) { Password is required }
-            @if (passwordField.errors?.['minlength']) { Password must be at
-            least 6 characters }
+            Password must be at least 6 characters
           </div>
           }
+
+          <button (click)="onEyeClick()" type="button" class="btn">
+            @if (!passwordVisible) {
+            <img src="assets/eye-icon.svg" alt="Show password" />
+            } @else {
+            <img src="assets/eye-slash-icon.svg" alt="Hide password" />
+            }
+          </button>
         </div>
+
         <div class="second-form">
           <div class="login-forgot">
             <button class="login" type="submit" [disabled]="loginForm.invalid">
-              @if (isLoginState) {Login} @else {Register}
+              Login
             </button>
-            @if(!isLoginSuccessful) {
-            <div class="error3">
-              @if (isLoginState) {Login} @else {Register} unsuccessful please
-              try again
-            </div>
-            } @if (isLoginState) {<button class="forgot-passowod">
-              Forgot password?</button>}
+            @if (!isLoginSuccessful) {
+            <div class="error3">Login unsuccessful. Please try again.</div>
+            }
+            <button type="button" class="btn forgot-password">
+              Forgot password?
+            </button>
           </div>
 
           <div class="or-lines">
@@ -62,7 +65,9 @@
             <p>or</p>
             <hr class="line" />
           </div>
-          <button type="button" (click)="onRegister()" class="sign-up">@if (isLoginState) {SIGN UP} @else {Login}</button>
+          <button type="button" (click)="goToRegister()" class="sign-up">
+            SIGN UP
+          </button>
         </div>
       </form>
     </div>

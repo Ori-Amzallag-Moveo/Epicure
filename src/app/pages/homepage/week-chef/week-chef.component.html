@@ -12,9 +12,11 @@
       <swiper-container class="cards-container" [breakpoints]="breakpoints">
         @for (restaurant of chefOfTheWeek?.restaurants; track restaurant){
         <swiper-slide class="swiper-container">
-          <app-generic-card
-            [title]="restaurant.restaurantName"
-            [imageSrc]="restaurant.restaurantImg"/>
+          <a class="btn" (click)="goToRestaurant(restaurant.restaurantId)">
+            <app-generic-card
+              [title]="restaurant.restaurantName"
+              [imageSrc]="restaurant.restaurantImg"/>
+          </a>
         </swiper-slide>
         }
       </swiper-container>

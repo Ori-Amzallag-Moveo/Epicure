@@ -13,6 +13,7 @@ export interface RestaurantQueryParams {
   isOpenNow?: string;
   rating?: string;
   distance?: string;
+  priceRange?: string;
 }
 
 export interface SingleRestaurantQueryParams {

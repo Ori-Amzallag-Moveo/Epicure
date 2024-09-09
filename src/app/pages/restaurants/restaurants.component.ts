@@ -1,14 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { FilterBarComponent } from '../../../shared/components/filters/filter-bar/filter-bar.component';
+import { RestaurantQueryParams } from '../../models/queries.model';
 import { FilterRestaurantsComponent } from './filter-restaurants/filter-restaurants.component';
 import { MapViewComponent } from './map-view/map-view.component';
-import { RestaurantQueryParams } from '../../models/queries.model';
 
 @Component({
   selector: 'app-restaurants',
   standalone: true,
-  imports: [FilterBarComponent, FilterRestaurantsComponent, MapViewComponent],
+  imports: [FilterBarComponent, FilterRestaurantsComponent, MapViewComponent, CommonModule],
   templateUrl: './restaurants.component.html',
   styleUrls: ['./restaurants.component.scss'],
 })
@@ -18,8 +20,8 @@ export class RestaurantsComponent implements OnInit {
   filters: string[] = ['All', 'New', 'Most Popular', 'Open Now', 'Map View'];
   secondFilters: string[] = ['Price Range', 'Distance', 'Rating'];
   filterBarFontSize!: number;
-  selectedRatings: number[] = [];
-  distanceSelected?: number;
+  userDistanceSelected!: number;
+  userPriceRangeSelected!: number[];
 
   private smallScreenSize = 875;
 
@@ -62,7 +64,6 @@ export class RestaurantsComponent implements OnInit {
   }
 
   onRatingChange(selectedRatings: number[]) {
-    this.selectedRatings = selectedRatings;
     const queryParams: RestaurantQueryParams = {};
     const sortedSelectedRatings = selectedRatings.sort();
 
@@ -80,10 +81,21 @@ export class RestaurantsComponent implements OnInit {
   }
 
   onDistanceChange(selectedDistance: number) {
-    this.distanceSelected = selectedDistance;
-
+    this.userDistanceSelected = selectedDistance;
     const queryParams: RestaurantQueryParams = {};
     queryParams.distance = selectedDistance.toString();
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParamsHandling: 'merge',
+      queryParams,
+    });
+  }
+
+  onPriceRangeChange(selectedPriceRange: number[]) {
+    this.userPriceRangeSelected = selectedPriceRange;
+    const queryParams: RestaurantQueryParams = {};
+    queryParams.priceRange = selectedPriceRange.join(',');
 
     this.router.navigate([], {
       relativeTo: this.route,

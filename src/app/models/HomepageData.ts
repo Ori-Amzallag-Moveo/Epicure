@@ -12,7 +12,7 @@ export interface chefOfTheWeek {
   name: string;
   imageSrc: string;
   description: string;
-  restaurants: Array<{ restaurantImg: string; restaurantName: string }>;
+  restaurants: Array<{restaurantId: string; restaurantImg: string; restaurantName: string }>;
 }
 
 export interface homepageData {

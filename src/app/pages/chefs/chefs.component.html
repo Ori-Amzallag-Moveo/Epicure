@@ -2,12 +2,6 @@
   <div class="chef-page-container">
     <div class="chefs-wrapper">
       <div class="chefs-container">
-        <app-filter-bar
-          [pageName]="'Chefs'"
-          [tabsNames]="filters"
-          [secondTabsNames]="secondFilters"
-          (filterChange)="onFilterChange($event)"
-        ></app-filter-bar>
         <div class="chefs-content">
           <app-filter-chefs />
         </div>
@@ -15,3 +9,9 @@
     </div>
   </div>
 </div>
+<app-filter-bar
+  [pageName]="'Chefs'"
+  [tabsNames]="filters"
+  [secondTabsNames]="secondFilters"
+  (filterChange)="onFilterChange($event)"
+/>

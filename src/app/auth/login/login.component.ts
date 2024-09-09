@@ -1,8 +1,7 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { FormsModule, NgForm} from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,54 +10,44 @@ import { FormsModule, NgForm} from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
+  @Output() close = new EventEmitter<void>();
+
   email: string = '';
   password: string = '';
-  isLoginVisible: boolean = true; 
+  isLoginVisible: boolean = true;
   isLoginSuccessful: boolean = true;
-  isLoginState: boolean = true;
+  passwordVisible: boolean = false;
+  passwordFieldType: string = 'password';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.isLoginSuccessful = true;
     this.isLoginVisible = true;
   }
 
   onSubmit(form: NgForm) {
-    if(this.isLoginState) {
-      if (form.valid) {
-        this.authService.login({ email: this.email, password: this.password }).subscribe(
-          success => {
-            this.isLoginSuccessful = true;
-            this.isLoginVisible = false; 
-            this.router.navigate(['/home']);
-          },
-          error => {
-            console.error('Login failed', error);
-            this.isLoginSuccessful = false;
-          }
-        );
-      }
-    } else {
-      this.authService.register({ email: this.email, password: this.password }).subscribe(
+    if (form.valid) {
+      this.authService.login({ email: this.email, password: this.password }).subscribe(
         success => {
-          this.isLoginState = true;
+          this.isLoginSuccessful = true;
+          this.isLoginVisible = false;
+          this.router.navigate(['/home']);
         },
         error => {
-          console.error('Register failed', error);
+          console.error('Login failed', error);
           this.isLoginSuccessful = false;
         }
       );
     }
-
   }
 
-  onRegister() {
-    if (this.isLoginState) {
-      this.isLoginState = false;
-    } else {
-      this.isLoginState = true;
-    }
+  onEyeClick() {
+    this.passwordVisible = !this.passwordVisible;
+    this.passwordFieldType = this.passwordVisible ? 'text' : 'password';
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register'])
   }
 }

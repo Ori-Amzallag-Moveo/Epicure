@@ -1,17 +1,6 @@
-<div class="restaurant-page-wrapper">
+<div class="restaurant-page-wrapper" [ngClass]="{'padding-contianer': selectedFilter === 'Map View'}">
   <div class="restaurant-page-container">
     <div class="wrapper">
-      <div class="filter-bar-container">
-        <app-filter-bar
-          [pageName]="'Restaurants'"
-          [fontSize]="filterBarFontSize"
-          [tabsNames]="filters"
-          [secondTabsNames]="secondFilters"
-          (filterChange)="onFilterChange($event)"
-          (distanceChange)="onDistanceChange($event)"
-          (ratingChange)="onRatingChange($event)"
-        />
-      </div>
       <div class="restaurant-content">
         @if (selectedFilter !== 'Map View') {
         <app-filter-restaurants />
@@ -22,3 +11,16 @@
     </div>
   </div>
 </div>
+<app-filter-bar
+  [ngClass]="{'padding-class': selectedFilter === 'Map View'}"
+  [pageName]="'Restaurants'"
+  [fontSize]="filterBarFontSize"
+  [tabsNames]="filters"
+  [secondTabsNames]="secondFilters"
+  [userPriceRangeSelected]="userPriceRangeSelected"
+  [userDistanceSelected]="userDistanceSelected"
+  (filterChange)="onFilterChange($event)"
+  (distanceChange)="onDistanceChange($event)"
+  (ratingChange)="onRatingChange($event)"
+  (priceRangeChange)="onPriceRangeChange($event)"
+/>

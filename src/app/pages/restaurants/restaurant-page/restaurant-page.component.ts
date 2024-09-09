@@ -16,7 +16,7 @@ import { isRestaurantOpen } from '../../../../helpers/isopen.helper';
 })
 export class RestaurantPageComponent implements OnInit {
   restaurant!: Restaurant;
-  filters: string[] = ['Breakfast', 'Lunch', 'Dinner'];
+  filters: string[] = ['All', 'Breakfast', 'Lunch', 'Dinner', 'AI'];
   selectedFilter: string = '';
   dishes: Dish[] = [];
   restaurantIsOpen: boolean | null = null;
@@ -74,20 +74,27 @@ export class RestaurantPageComponent implements OnInit {
   }
 
   onFilterChange(filter: string) {
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { meal: filter.toLowerCase() },
-    });
+    if (filter === 'All') {
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: {}, 
+      });
+    } else {
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { meal: filter.toLowerCase() }
+      });
+    }
   }
 
-  private isSmallScreenSize(): void { // change logic
+  private isSmallScreenSize(): void {
     const width = window.innerWidth;
-    if (width <= this.smallScreenSize) {
-      this.filterBarFontSize = 18;
-    } else if (width >= this.largeScreenSize) {
-      this.filterBarFontSize = 24;
+    if (width < this.smallScreenSize) {  
+      this.filterBarFontSize = 18;   
+    } else if (width < this.largeScreenSize) {  
+      this.filterBarFontSize = 20;  
     } else {
-      this.filterBarFontSize = 20; 
+      this.filterBarFontSize = 24;  
     }
   }
 }
