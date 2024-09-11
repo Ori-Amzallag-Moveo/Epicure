@@ -1,42 +1,57 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+
+import { AuthModel } from '../../models/auth.model';
 import { AuthService } from '../auth.service';
-import { FormsModule, NgForm } from '@angular/forms';
+import { HeaderService } from '../../header/header.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  @Output() close = new EventEmitter<void>();
+  @Output() moveToRegister = new EventEmitter<AuthModel>();
 
-  email: string = '';
-  password: string = '';
-  isLoginVisible: boolean = true;
+  loginForm!: FormGroup;
+  errorMessage?: string;
   isLoginSuccessful: boolean = true;
   passwordVisible: boolean = false;
   passwordFieldType: string = 'password';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private headerService: HeaderService
+  ) {}
 
   ngOnInit() {
-    this.isLoginVisible = true;
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+    });
   }
 
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.authService.login({ email: this.email, password: this.password }).subscribe(
-        success => {
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.authService.login({ email, password }).subscribe(
+        (response: { access_token: string }) => {
           this.isLoginSuccessful = true;
-          this.isLoginVisible = false;
-          this.router.navigate(['/home']);
+          this.authService.setShowAuth(false);
+          this.authService.handleLoginSuccess(response.access_token);
         },
-        error => {
-          console.error('Login failed', error);
+        (error) => {
           this.isLoginSuccessful = false;
+          this.errorMessage = error.error.error;
         }
       );
     }
@@ -48,6 +63,10 @@ export class LoginComponent implements OnInit {
   }
 
   goToRegister() {
-    this.router.navigate(['/register'])
+    this.moveToRegister.emit('register');
+  }
+
+  onClose() {
+    this.authService.setShowAuth(false);
   }
 }

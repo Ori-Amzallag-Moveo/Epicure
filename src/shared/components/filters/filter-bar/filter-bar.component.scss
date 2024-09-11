@@ -17,7 +17,7 @@
     gap: 25px;
 
     @include small-screen {
-      gap: 20px;
+      gap: 15px;
     }
 
     .map-view {
@@ -45,6 +45,11 @@
   position: relative;
 }
 
+.ai-button {
+  @include small-screen {
+    display: none;
+  }
+}
 .ai-icon {
   height: 50px;
   width: 50px;

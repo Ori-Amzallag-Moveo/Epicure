@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { FooterComponent } from './footer/footer.component';
-import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
+import { Router, RouterOutlet } from '@angular/router';
+
+import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { AuthService } from './auth/auth.service';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 
 @Component({
   selector: 'app-root',
@@ -18,24 +19,22 @@ import { AuthService } from './auth/auth.service';
     FooterComponent,
     RestaurantsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  isLoginVisible: boolean = false; 
-  isRegisterVisible: boolean = false;
+export class AppComponent implements OnInit{
+  constructor(public authService: AuthService, public router: Router) {}
+  isLogin: string = 'login';
+  showAuth: boolean = true;
 
-  showLogin() {
-    this.isLoginVisible = true;
-  }
+  ngOnInit() {
+    this.authService.showAuth$.subscribe((show) => {
+      this.showAuth = show;
+    });
 
-  showRegister() {
-    this.isRegisterVisible = true;
-  }
-
-  hideModals() {
-    this.isLoginVisible = false;
-    this.isRegisterVisible = false;
+    this.authService.isLoginMode$.subscribe((mode) => {
+      this.isLogin = mode;
+    });
   }
 }

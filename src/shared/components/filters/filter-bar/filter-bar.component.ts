@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 import { FilterButtonComponent } from '../../../buttons/filter-button/filter-button.component';
 import { SecondFilterButtonComponent } from '../../../buttons/second-filter-button/second-filter-button.component';
 import { DistanceBarComponent } from '../distance-bar/distance-bar.component';
@@ -15,7 +17,8 @@ import { RatingBarComponent } from "../rating-bar/rating-bar.component";
     SecondFilterButtonComponent,
     PriceRangeComponent,
     DistanceBarComponent,
-    RatingBarComponent
+    RatingBarComponent,
+    MatTooltipModule
 ],
   templateUrl: './filter-bar.component.html',
   styleUrls: ['./filter-bar.component.scss'],

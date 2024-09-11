@@ -1,45 +1,73 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+
+import { HeaderService } from '../../header/header.service';
+import { AuthModel } from '../../models/auth.model';
 import { AuthService } from '../auth.service';
-import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  @Output() close = new EventEmitter<void>();
+  @Output() moveToLogin = new EventEmitter<AuthModel>();
 
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  isRegisterVisible: boolean = true;
+  registerForm!: FormGroup;
   isRegisterSuccessful: boolean = true;
   passwordVisible: boolean = false;
   confirmPasswordVisible: boolean = false;
   passwordFieldType: string = 'password';
   confirmPasswordFieldType: string = 'password';
+  errorMessage?: string;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private headerService: HeaderService
+  ) {}
 
   ngOnInit() {
-    this.isRegisterVisible = true;
+    this.registerForm = this.fb.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/),
+          ],
+        ],
+        confirmPassword: ['', Validators.required],
+      },
+      { validators: this.passwordsMatchValidator }
+    );
   }
 
-  onSubmit(form: NgForm) {
-    if (form.valid && this.password === this.confirmPassword) {
-      this.authService.register({ email: this.email, password: this.password }).subscribe(
-        success => {
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const { email, password } = this.registerForm.value;
+      this.authService.register({ email, password }).subscribe(
+        (response: { access_token: string }) => {
+          this.authService.handleLoginSuccess(response.access_token); 
           this.isRegisterSuccessful = true;
-          this.isRegisterVisible = false;
-          this.router.navigate(['/home']);
+          this.authService.setShowAuth(false);
         },
-        error => {
+        (error) => {
           console.error('Registration failed', error);
           this.isRegisterSuccessful = false;
+          this.errorMessage = error.error.error;
+          console.log(error.error.error);
         }
       );
     }
@@ -52,10 +80,26 @@ export class RegisterComponent implements OnInit {
 
   onConfirmPasswordEyeClick() {
     this.confirmPasswordVisible = !this.confirmPasswordVisible;
-    this.confirmPasswordFieldType = this.confirmPasswordVisible ? 'text' : 'password';
+    this.confirmPasswordFieldType = this.confirmPasswordVisible
+      ? 'text'
+      : 'password';
   }
-  
+
+  passwordsMatchValidator(form: FormGroup) {
+    const password = form.get('password');
+    const confirmPassword = form.get('confirmPassword');
+    return password &&
+      confirmPassword &&
+      password.value === confirmPassword.value
+      ? null
+      : { passwordsMismatch: true };
+  }
+
   goToLogin() {
-    this.router.navigate(['/']);
+    this.moveToLogin.emit('login');
+  }
+
+  onClose() {
+    this.authService.setShowAuth(false);
   }
 }

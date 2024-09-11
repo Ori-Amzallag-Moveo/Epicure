@@ -25,7 +25,6 @@ export class HomepageService {
       
       const data: homepageData = response.data.data;
       this.cookieService.set(this.cookieName, JSON.stringify(data), 1); 
-      console.log(data);
       return data;
     } catch (error) {
       console.error(`Error fetching homepage data`, error);

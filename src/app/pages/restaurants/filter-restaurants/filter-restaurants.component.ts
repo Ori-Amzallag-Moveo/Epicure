@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestaurantsService } from '../restaurants.service';
+
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
 import { Restaurant } from '../../../models/Restaurant.model';
 import { RestaurantQueryParams } from '../../../models/queries.model';
+import { RestaurantsService } from '../restaurants.service';
 @Component({
   selector: 'app-filter-restaurants',
   standalone: true,
@@ -21,8 +22,12 @@ export class FilterRestaurantsComponent implements OnInit {
   rating: string = ''; 
   distance: string= '';
   priceRange: string = '';
+
   isLoading: boolean = false;
   allRestaurantsLoaded: boolean = false;
+
+  isButtonDisabled: boolean = false;
+  delayTime: number = 2000;
 
   constructor(
     private restaurantsService: RestaurantsService,
@@ -99,6 +104,11 @@ export class FilterRestaurantsComponent implements OnInit {
   }
 
   goToRestaurant(restaurantId: string) {
+    this.restaurantsService.increaseClicks(restaurantId);
+    this.isButtonDisabled = true;
+    setTimeout(() => {
+      this.isButtonDisabled = false;
+    }, this.delayTime);
     this.router.navigate([`/restaurants`, restaurantId]);
   }
 }

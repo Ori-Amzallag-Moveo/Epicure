@@ -3,6 +3,7 @@
 .chef-page-wrapper {
   @include small-screen {
     @include smallPadding;
+    padding-top: 90px;
   }
 
   @include medium-large-screens {
@@ -17,7 +18,7 @@
 }
 .chefs-container {
   padding-top: 50px;
-  min-height: 1200px;
+  min-height: 500px;
 
   app-filter-bar {
     @include small-screen {
@@ -38,4 +39,9 @@ app-filter-bar {
   background-color: #fff;
   top: 65px;
   padding-bottom: 30px;
+
+  @include small-screen{
+    padding: 30px;
+    top: 40px;
+  }
 }

@@ -1,3 +1,12 @@
 <app-header />
 <router-outlet />
 <app-footer />
+@if (showAuth) {
+  @if (!this.authService.isAuthenticated() && this.isLogin == 'login') {
+    <div>
+      <app-login (moveToRegister)="this.isLogin=$event" />
+    </div>
+    } @else if (!this.authService.isAuthenticated() && this.isLogin == 'register') {
+    <app-register (moveToLogin)="this.isLogin=$event"/>
+    }
+}

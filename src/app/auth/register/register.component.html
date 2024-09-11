@@ -1,97 +1,72 @@
-@if (isRegisterVisible) {
 <div class="modal-background">
   <div class="modal-container">
     <div class="modal-content">
+      <button (click)="onClose()" type="button" class="btn">
+        <img class="x-icon" src="/assets/logos/navbar-logos/x-icon.svg" alt="Close icon"/>
+      </button>
       <div class="title">
         <h2>SIGN UP</h2>
         <p>Welcome to Epicure, please sign up</p>
       </div>
 
-      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="inputs">
-          <input
-            type="email"
-            id="email"
-            [(ngModel)]="email"
-            name="email"
-            required
-            placeholder="Email address"
-            #emailField="ngModel"
-            [email]="true"
-          />
-          @if (emailField.invalid && emailField.touched) {
-          <div class="error error-1">Please enter a valid email</div>
-          }
-          <input
-            [type]="passwordFieldType"
-            id="password"
-            [(ngModel)]="password"
-            name="password"
-            minlength="6"
-            required
-            placeholder="Password"
-            #passwordField="ngModel"
-          />
-          @if (passwordField.invalid && passwordField.touched) {
-            <div class="error error-2" >
-              Password must be at least 6 characters
-            </div>
-          }
-          <input
-            [type]="confirmPasswordFieldType"
-            id="confirmPassword"
-            [(ngModel)]="confirmPassword"
-            name="confirmPassword"
-            required
-            placeholder="Confirm Password"
-            #confirmPasswordField="ngModel"
-          />
-          @if (password !== confirmPassword && confirmPasswordField.touched) {
-          <div class="error error-3">Passwords do not match</div>
-          }
+          <div class="input-wrapper">
+            <p class="place-holder">Email address</p>
+            <input
+              class="email1"
+              type="email"
+              formControlName="email"
+              required/>
+          </div>
+          <div
+            class="error error-1"*ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            <span *ngIf="registerForm.get('email')?.errors?.['required']" >Email is required</span>
+            <span *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+          </div>
 
-          <button (click)="onPasswordEyeClick()" type="button" class="btn img1">
-            @if (!passwordVisible) {
-            <img src="assets/eye-icon.svg" alt="Show password" />
-            } @else {<img
-              src="assets/eye-slash-icon.svg"
-              alt="Hide password"
-            />}
-          </button>
-          <button (click)="onConfirmPasswordEyeClick()" type="button" class="btn img2">
-            @if (!confirmPasswordVisible) {
-            <img src="assets/eye-icon.svg" alt="Show confirm password" />
-            } @else {<img
-              src="assets/eye-slash-icon.svg"
-              alt="Hide confirm password"
-            />}
-          </button>
+          <div class="input-wrapper">
+            <p class="place-holder">Password</p>
+            <input
+              [type]="passwordVisible ? 'text' : 'password'"
+              formControlName="password"/>
+            <button [ngClass]="{ 'flipped-1': passwordVisible }" (click)="onPasswordEyeClick()" type="button" class="btn eye-img">
+              <img [src]="passwordVisible ? 'assets/eye-slash-icon.svg' : 'assets/eye-icon.svg'" alt="Toggle password visibility" />
+            </button>
+          </div>
+
+          <div class="error error-2" *ngIf=" registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            <span *ngIf="registerForm.get('password')?.errors?.['required']" >Password is required</span>
+            <span *ngIf="registerForm.get('password')?.errors?.['minlength']" >Password must be at least 8 characters</span>
+            <span *ngIf="registerForm.get('password')?.errors?.['pattern']"> Password must contain at least one uppercase letter, one number, and one special character. </span>
+          </div>
+
+          <div class="input-wrapper">
+            <p class="place-holder">Confirm password</p>
+            <input  
+              [type]="confirmPasswordVisible ? 'text' : 'password'"
+              formControlName="confirmPassword"/>
+            <button [ngClass]="{ 'flipped-2': confirmPasswordVisible }" (click)="onConfirmPasswordEyeClick()" type="button" class="btn eye-img">
+              <img [src]="confirmPasswordVisible ? 'assets/eye-slash-icon.svg' : 'assets/eye-icon.svg'" alt="Toggle confirm password visibility" />
+            </button>
+          </div>
+
+          <div class="error error-3" *ngIf="registerForm.errors?.['passwordsMismatch'] && registerForm.get('confirmPassword')?.touched">
+            Passwords do not match
+          </div>
         </div>
 
         <div class="second-form">
-            
-          <button
-            class="register"
-            type="submit"
-            [disabled]="registerForm.invalid"
-          >
-            Register
-          </button>
-          @if (!isRegisterSuccessful) {
-          <div class="error-4">Registration unsuccessful. Please try again.</div>
-          }
+          <button class="register" [ngClass]="{ 'valid-register': registerForm.valid }" type="submit" [disabled]="registerForm.invalid">Register</button>
+          <div class="error4" *ngIf="!isRegisterSuccessful">{{errorMessage}}</div>
           <div class="or-lines">
             <hr class="line" />
             <p>or</p>
             <hr class="line" />
           </div>
-          <button type="button" (click)="goToLogin()" class="sign-up">
-            SIGN IN
-          </button>
+          <button type="button" (click)="goToLogin()" class="sign-up">SIGN IN</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-}

@@ -3,6 +3,7 @@
 .restaurant-page-wrapper {
   @include small-screen {
     @include smallPadding;
+    padding-top: 150px;
   }
 
   @include medium-large-screens {
@@ -23,6 +24,11 @@ app-filter-bar {
   z-index: 999;
   background-color: #fff;
   top: 65px;
+
+  @include small-screen{
+    padding: 30px;
+    top: 40px;
+  }
 }
 
 .padding-class {

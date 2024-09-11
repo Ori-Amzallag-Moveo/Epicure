@@ -1,50 +1,74 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+
 import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private token: string | null = null;
-  private apiUrl = environment.apiUrl; 
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  login(credentials: { email: string; password: string }): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/auth/login`, credentials)
-      .pipe(
-        tap(response => {
-          this.handleLoginSuccess(response.token);
-        })
-      );
+  private showAuthSource = new BehaviorSubject<boolean>(true);
+  showAuth$ = this.showAuthSource.asObservable();
+
+  private isLoginModeSource = new BehaviorSubject<string>('login');
+  isLoginMode$ = this.isLoginModeSource.asObservable();
+
+  setShowAuth(show: boolean) {
+    this.showAuthSource.next(show);
   }
 
-  register(credentials: { email: string; password: string }) {
-    return this.http.post(`${this.apiUrl}/users`, credentials)
+  setLoginMode(mode: 'login' | 'register') {
+    this.isLoginModeSource.next(mode);
+  }
+
+  login(user: {
+    email: string;
+    password: string;
+  }): Observable<{ access_token: string }> {
+    return this.http.post<{ access_token: string }>(
+      `${this.apiUrl}/auth/login`,
+      user
+    );
+  }
+
+  register(credentials: {
+    email: string;
+    password: string;
+  }): Observable<{ access_token: string }> {
+    return this.http.post<{ access_token: string }>(
+      `${this.apiUrl}/users`,
+      credentials
+    );
   }
 
   handleLoginSuccess(token: string): void {
-    this.token = token;
-    localStorage.setItem('token', token);
-    this.router.navigate(['/secure']);
+    localStorage.setItem('authToken', token);
+    this.router.navigate(['']);
   }
 
   isAuthenticated(): boolean {
     const token = this.getToken();
-    return !!token; 
-  }
-
-  logout(): void {
-    this.token = null;
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    return !!token;
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem('authToken');
   }
 
-}
+  getAuthHeaders(): { Authorization: string } {
+    const token = this.getToken();
+    return {
+      Authorization: `Bearer ${token}`,
+    };
+  }
+
+  logout () {
+    localStorage.removeItem('authToken')
+  }
+} 

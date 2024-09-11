@@ -15,4 +15,5 @@ export interface Restaurant {
     type: string;
     coordinates: [number, number];
   };
+  clicks: number;
 }

@@ -27,11 +27,11 @@
 }
 
 @mixin labelTextFont {
-  @include responsiveFont(200, 14px, 14px, 2px);
+  @include responsiveFont(400, 14px, 14px, 2px);
 }
 
 @mixin searchBarFont {
-  @include responsiveFont(200, 12px, 24px, 1.5px);
+  @include responsiveFont(200,  0.6rem, 1.2rem, 1.5px);
 }
 
 @mixin restaurantsLinkFont {
@@ -72,6 +72,10 @@
 
 @mixin errorFont {
   @include responsiveFont(300, 0.8rem, 0.8rem, 2px);
+}
+
+@mixin placeHolderFormFont {
+  @include responsiveFont(100, 12px, 12px, 2px);
 }
 
 
