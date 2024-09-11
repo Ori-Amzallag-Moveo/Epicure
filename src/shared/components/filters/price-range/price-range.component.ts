@@ -12,7 +12,7 @@ import { CoinComponent } from '../../coin/coin.component';
 export class PriceRangeComponent implements OnInit{
 
   @Input({required: true}) minValue : number = 0;
-  @Input({required: true}) maxValue : number = 100;
+  @Input({required: true}) maxValue : number = 150;
   @Input() userPriceRangeSelected !: number[];
   @Output() priceRangeChange = new EventEmitter<number[]>(); 
 

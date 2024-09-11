@@ -45,6 +45,7 @@ export class MobileNavbarComponent implements OnInit {
     if (route === 'logout') {
       this.routes[0] = { routeName: 'Login / Register', routeUrl: 'login-register' };
       this.authService.logout();
+      this.authService.setShowAuth(true);
     } else if (route === 'login-register') {
       this.authService.setLoginMode('login');
       this.authService.setShowAuth(true);
