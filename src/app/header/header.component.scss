@@ -1,21 +1,55 @@
 @import "_index";
 
-.wrapper {
-  position: sticky;
+.header-wrapper {
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @include small-screen {
+    @include smallPadding;
+  }
+
+  @include medium-large-screens {
+    @include bigPadding;
+    display: flex;
+    justify-content: center;
+  }
 
   .header-container {
     @include flexStyleRow;
     box-sizing: border-box;
     justify-content: space-between;
     position: relative;
+    max-width: 1440px;
+    width: 100%; 
+    margin-left: auto;
+    margin-right: auto;
+
+    @include small-screen {
+      height: 45px;
+    }
+
+    @include medium-large-screens {
+      height: 65px;
+      gap: 50px;
+    }
 
     .right-toolbar {
       @include flexStyleRow;
+      justify-content: space-between;
       gap: 20px;
+
+      @include small-screen {
+        gap: 10px;
+      }
+
+      @include medium-large-screens {
+        display: flex;
+        flex-direction: row;
+      }
     }
 
     .left-toolbar {
@@ -24,14 +58,24 @@
       gap: 15px;
 
       .logo {
-        padding-bottom: 5px;
+        @include small-screen {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+        }
       }
     }
 
     .links-container {
       @include flexStyleRow;
       justify-content: space-between;
-      gap: 32px;
+      gap: 30px;
+
+      @include small-screen {
+        display: none;
+      }
 
       h2 {
         @include h2Font;
@@ -40,63 +84,29 @@
       .button-container {
         @include flexStyleRow;
         justify-content: space-between;
-        gap: 32px;
-        padding-top: 3px;
+        gap: 30px;
+        padding-top: 5px;
 
         button {
           @include buttonFont;
+          transition: all 0.3s ease;
+
+          &.active {
+            border-bottom: 1.5px solid $goldColor;
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
         }
       }
     }
   }
 }
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .wrapper {
-    @include smallPadding;
-    .header-container {
-      height: 46px;
-
-      .links-container {
-        display: none;
-      }
-      .logo {
-        position: absolute;
-        top: 15%;
-        left: 50%;
-        transform: translateY(-50%);
-        transform: translateX(-50%);
-      }
-    }
-  }
-}
-
-/* Medium and large screens */
 @include medium-large-screens {
-  .wrapper {
-    display: flex;
-    justify-content: center;
-    @include bigPadding;
-
-    .header-container {
-      height: 64px;
-      width: 100%;
-      gap: 50px;
-
-      .navbar-icon {
-        display: none;
-      }
-      .navbar-btn {
-        display: none;
-      }
-
-      .right-toolbar {
-        display: flex;
-        flex-direction: row;
-      }
-    }
+  .navbar-icon {
+    display: none;
+  }
+  .navbar-btn {
+    display: none;
   }
 }

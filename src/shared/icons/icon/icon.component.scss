@@ -1,0 +1,50 @@
+@import "_index";
+
+.container {
+  @include flexStyleColumn;
+
+  img {
+    height: 60px;
+    width: 80px;
+    margin-bottom: 30px;
+  }
+
+  @include small-screen {
+    p {
+      @include iconLabelFont;
+      font-size: 15px;
+    }
+
+    img {
+      height: 35px;
+      width: 45px;
+      margin-bottom: 30px;
+    }
+  }
+
+  @include medium-screens {
+    p {
+      @include iconLabelFont;
+      font-size: 15px;
+    }
+
+    img {
+      height: 45px;
+      width: 60px;
+      margin-bottom: 30px;
+    }
+  }
+
+  @include large-screens {
+    p {
+      @include iconLabelFont;
+      font-size: 20px;
+    }
+
+    img {
+      height: 60px;
+      width: 80px;
+      margin-bottom: 30px;
+    }
+  }
+}

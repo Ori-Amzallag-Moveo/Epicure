@@ -1,7 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+
+import { AuthService } from './auth/auth.service';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +15,26 @@ import { HomepageComponent } from './homepage/homepage.component';
   imports: [
     RouterOutlet,
     HeaderComponent,
-    HomepageComponent
+    HomepageComponent,
+    FooterComponent,
+    RestaurantsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'Epicure-project';
+export class AppComponent implements OnInit{
+  constructor(public authService: AuthService, public router: Router) {}
+  isLogin: string = 'login';
+  showAuth: boolean = true;
+
+  ngOnInit() {
+    this.authService.showAuth$.subscribe((show) => {
+      this.showAuth = show;
+    });
+
+    this.authService.isLoginMode$.subscribe((mode) => {
+      this.isLogin = mode;
+    });
+  }
 }

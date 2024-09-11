@@ -1,64 +1,59 @@
 @import "_index";
 
 .generic-card-container {
+  @include flexStyleColumn;
   background-color: $cremeColor;
   overflow: hidden;
+  gap: 10px;
+  width: 100%;
+  padding-bottom: 15px;
+  min-width: 150px;
+  height: 100%;
+
+  @include small-screen {
+    align-items: flex-start;
+  }
+
+  @include medium-large-screens {
+    text-align: center;
+  }
 
   img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
+
+    @include small-screen {
+      height: 140px;
+    }
+    @include medium-screens {
+      height: 150px;
+      min-height: 150px;
+    }
+    @include large-screens {
+      height: 200px;
+      min-height: 200px;
+    }
   }
   
-  .text-container {
+  h3 {
     @include flexStyleColumn;
-  }
-}
+    @include h3Font;
+    margin-top: 10px;
 
-/* ---------------- Media Query ---------------- */
-
-/* Small screens */
-@include small-screen {
-  .generic-card-container {
-    @include flexStyleColumn;
-    justify-content: space-between;
-    gap: 8px;
-    width: 100%;
-
-    h3 {
-      @include h3Font;
-      font-size: 3vh;
+    @include small-screen {
       align-self: flex-start;
-      margin-top: 1vh;
-      margin-left: 3vh;
+      align-items: flex-start;
+      text-align:left;
+      margin-top: 5px;
+      margin-left: 15px;
     }
-    .text-container {
-      @include bodyTextFont;
-      font-size: 2vh;
-      align-self: flex-start;
-      margin-left: 3vh;
-    }
-  }
-}
 
-/* Medium and large screens */
-@include medium-large-screens {
-  .generic-card-container {
-    @include flexStyleColumn;
-    justify-content: space-between;
-    gap: 12px;
-    width: 100%;
-    min-height: 155px;
-    text-align: center;
-
-    h3 {
-      @include h3Font;
-      font-size: 19px;
+    @include medium-screens {
+      font-size: 28px;
     }
-    .text-container {
-      @include bodyTextFont;
-      font-size: 10px;
-      text-align: center;
+
+    @include medium-large-screens {
+      width: 75%;
     }
   }
 }

@@ -1,0 +1,44 @@
+@import "_index";
+
+.filter-restaurants-wrapper {
+  @include componentPadding;
+  min-height: 500px;
+
+  @include small-screen {
+    min-height: 225px;
+  }
+
+  .filter-restaurants-container {
+    display: grid;
+    gap: 25px;
+    @include small-screen {
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    }
+    @include medium-screens {
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    }
+    @include large-screens {
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    }
+  }
+}
+
+app-generic-card {
+  width: 100%;
+  max-width: 500px;
+
+  p {
+    @include bodyTextFont;
+    margin-bottom: 15px;
+    margin-left: 15px;
+  }
+}
+
+.rating {
+  width: 90%;
+  height: 40px;
+
+  @include small-screen {
+    display: none;
+  }
+}

@@ -1,0 +1,93 @@
+@import "_index";
+
+.restaurant-page-wrapper {
+  @include small-screen {
+    @include smallPadding;
+  }
+  @include medium-large-screens {
+    @include bigPadding;
+  }
+  .restaurant-container {
+    @include flexStyleColumn;
+    max-width: 1440px;
+    min-height: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include small-screen {
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .restaurant-img {
+      width: 100%;
+      object-fit: cover;
+
+      @include medium-large-screens {
+        height: 450px;
+        margin-bottom: 30px;
+      }
+    }
+    .restaurant-name {
+      @include h3Font;
+      margin-bottom: 5px;
+
+      @include medium-large-screens {
+        font-size: 56px;
+      }
+    }
+    .chef-name {
+      @include restaurantsLinkFont;
+      @include small-screen {
+        font-weight: 100;
+      }
+
+      @include medium-large-screens {
+        font-size: 32px;
+        font-weight: 100;
+      }
+    }
+    .open-status {
+      @include flexStyleRow;
+      gap: 5px;
+
+      @include small-screen {
+        margin-top: 10px;
+      }
+      @include medium-large-screens {
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+      .open-status-img {
+        width: 20px;
+        height: 20px;
+
+        @include small-screen {
+          width: 15px;
+          height: 15px;
+        }
+      }
+      p {
+        font-weight: 100;
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+    }
+    .dishes-container {
+      margin-top: 40px;
+      width: 100%;
+      display: grid;
+      gap: 24px;
+      justify-content: center;
+
+      @include small-screen {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      }
+      @include medium-screens {
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      }
+      @include large-screens {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      }
+    }
+  }
+}

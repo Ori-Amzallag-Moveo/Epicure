@@ -1,0 +1,17 @@
+<app-generic-card [imageSrc]="dish.imageSrc" [title]="dish.name">
+  <div class="ingredients-container" card-content>
+    <div class="icon-container">
+      @if (dish.icons.length === 0) {
+      <p class="place-holder"></p>
+      } @else { @for (icon of dish.icons; track icon) {
+      <img [src]="icon.imageSrc" [alt]="icon.alt" class="icon" />
+      } }
+    </div>
+    <p>{{ dish.ingredients.slice(0, 5) }}</p>
+    <div class="price-container">
+      <hr class="line" />
+      <app-coin [price]="dish.price" />
+      <hr class="line" />
+    </div>
+  </div>
+</app-generic-card>

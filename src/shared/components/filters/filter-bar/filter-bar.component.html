@@ -1,0 +1,60 @@
+<div class="filter-bar-wrapper">
+  <h1>{{ pageName }}</h1>
+  <div class="filter-bar-container">
+    @for (filter of tabsNames; track filter) {
+    <ng-container>
+      @if (filter === 'AI') {
+      <button
+        class="btn ai-button"
+        mat-raised-button
+        matTooltip="Personalized Dining Experience"
+        >
+      <img src="assets/ai-icon.png" alt="AI" class="ai-icon" />
+      </button>
+      } @else {
+      <app-filter-button
+        [filter]="filter"
+        [selectedFilter]="selectedFilter"
+        [fontSize]="fontSize"
+        (onFilterChange)="setFilter($event)"
+        (click)="onFilterButtonClick(filter)"
+      />
+      }
+    </ng-container>
+    }
+  </div>
+</div>
+
+@if (secondTabsNames.length > 0) {
+<div *ngIf="secondTabsNames.length > 0" class="second-filter-bar-container">
+  @for (secondFilter of secondTabsNames; track secondFilter) {
+  <div class="filter-item-container">
+    <app-second-filter-button
+      [secondFilterName]="secondFilter"
+      [selected]="secondFilter === secondFilterSelected"
+      (click)="onSecondFilterButtonClick(secondFilter)"
+    />
+    @if (secondFilter === 'Price Range' && secondFilterSelected === 'Price Range') {
+    <app-price-range
+      [minValue]="0"
+      [maxValue]="150"
+      (priceRangeChange)="onpriceRangeChange($event)"
+      [userPriceRangeSelected]="userPriceRangeSelected"
+    />
+    } @if (secondFilter === 'Distance' && secondFilterSelected === 'Distance') {
+    <app-distance-bar
+      [minValue]="1"
+      [maxValue]="4"
+      (distanceChange)="onDistanceChange($event)"
+      [userDistanceSelected]="userDistanceSelected"
+    />
+    } @if (secondFilter === 'Rating' && secondFilterSelected === 'Rating') {
+    <app-rating-bar
+      [selectedRatings]="selectedRatings"
+      (ratingChange)="onRatingChange($event)"
+    />
+    }
+  </div>
+  }
+</div>
+}

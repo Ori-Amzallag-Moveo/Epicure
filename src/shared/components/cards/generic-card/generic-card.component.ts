@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./generic-card.component.scss']
 })
 export class GenericCardComponent {
-  @Input() imageSrc!: string;
-  @Input() title!: string;
+  @Input({ required: true }) imageSrc!: string;
+  @Input({ required: true }) title!: string;
 }

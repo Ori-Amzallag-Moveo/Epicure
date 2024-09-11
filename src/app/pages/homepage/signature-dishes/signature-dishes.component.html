@@ -1,0 +1,16 @@
+<div class="signature-dishes-wrapper">
+  <div class="slider-container">
+    <h2>Signature dish of:</h2>
+    <swiper-container class="slider" [breakpoints]="breakpoints">
+      @for (dish of signatureDishes; track dish) {
+      <swiper-slide>
+        <app-dish-card [dish]="dish"></app-dish-card>
+      </swiper-slide>
+      }
+    </swiper-container>
+    <app-restaurants-button
+      [buttonName]="'All Restaurants'"
+      [url]="'/restaurants'">
+    </app-restaurants-button>
+  </div>
+</div>

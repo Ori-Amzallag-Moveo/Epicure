@@ -1,0 +1,12 @@
+@import "_index";
+
+.filter-item {
+  @include filterBarFont;
+  transition: all 0.3s ease;
+
+  &.active {
+    border-bottom: 1.5px solid $goldColor;
+    font-weight: 400;
+    padding-bottom: 5px;
+  }
+}

@@ -1,0 +1,25 @@
+<div class="popular-restaurants-wrapper">
+  <div class="slider-container">
+    <h2>Popular restaurants in epicure:</h2>
+    <swiper-container class="slider" [breakpoints]="breakpoints">
+      @for (restaurant of popularRestaurants; track restaurant) {
+      <swiper-slide>
+        <a class="btn" (click)="goToRestaurant(restaurant.restaurantId)">
+        <app-generic-card
+          [imageSrc]="restaurant.restaurantImg"
+          [title]="restaurant.restaurantName">
+          <div card-content>
+            <p>{{ restaurant.chefName }}</p>
+            <img class="rating" [src]="ratingConverter(restaurant.rating)" alt="rating" />
+          </div>
+        </app-generic-card>
+      </a>
+      </swiper-slide>
+      }
+    </swiper-container>
+    <app-restaurants-button 
+    [buttonName] = "'All Restaurants'"
+    [url] ="'/restaurants'">
+  </app-restaurants-button>
+  </div>
+</div>

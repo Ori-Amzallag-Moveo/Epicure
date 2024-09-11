@@ -1,0 +1,17 @@
+@import "_index";
+
+.filter-chefs-container {
+  @include componentPadding;
+  display: grid;
+  gap: 25px;
+  
+  @include small-screen {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  @include medium-screens {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  @include large-screens {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}

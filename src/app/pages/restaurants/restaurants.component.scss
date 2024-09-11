@@ -1,0 +1,40 @@
+@import "_index";
+
+.restaurant-page-wrapper {
+  @include small-screen {
+    @include smallPadding;
+    padding-top: 150px;
+  }
+
+  @include medium-large-screens {
+    padding-inline: 130px;
+    padding-top: 210px;
+  }
+  .restaurant-page-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+  }
+}
+
+app-filter-bar {
+  padding-top: 35px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: #fff;
+  top: 65px;
+
+  @include small-screen{
+    padding: 30px;
+    top: 40px;
+  }
+}
+
+.padding-class {
+  padding-bottom: 20px;
+}
+
+.padding-contianer {
+  padding-top: 110px;
+}

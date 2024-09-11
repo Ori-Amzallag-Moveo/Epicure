@@ -1,0 +1,68 @@
+@import "_index";
+
+.mobile-navbar-container {
+  @include flexStyleColumn;
+  align-items: flex-start;
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  z-index: 1000;
+  transition: 1.3s all;
+  top: 0;
+
+  .close-btn {
+    padding: 30px;
+  }
+
+  .links-container {
+    .first-links {
+      @include smallPadding;
+      @include flexStyleColumn;
+      margin-bottom: 30px;
+      align-items: flex-start;
+      gap: 30px;
+
+      button {
+        @include linksFont;
+        opacity: 80%;
+      }
+    }
+    .second-links {
+      @include smallPadding;
+      @include flexStyleColumn;
+      margin-bottom: 30px;
+      align-items: flex-start;
+      gap: 30px;
+
+      button {
+        @include linksFont;
+        opacity: 80%;
+      }
+    }
+
+    hr {
+      border-width: 0.01px;
+      width: 1500px;
+      margin: 10px 0;
+      margin-bottom: 30px;
+
+    }
+  }
+
+  app-footer {
+    opacity: 90%;
+  }
+
+  &.open {
+    animation: rollDown 1.3s forwards;
+  }
+
+  @keyframes rollDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}

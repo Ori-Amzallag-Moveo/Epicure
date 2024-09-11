@@ -1,0 +1,44 @@
+@import "_index";
+
+.week-chef-picture-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    :host-context(.filter-chefs-container) & {
+      height: 340px;
+    }
+  }
+
+  .overlay-content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    opacity: 0.8;
+    z-index: 1;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px;
+    width: 100%;
+
+    @include small-screen {
+      top: auto;
+      bottom: 0;
+      width: 100%;
+    }
+
+    p {
+      @include chefPhotoNameFont;
+      margin: 0;
+    }
+  }
+}
+
+

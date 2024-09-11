@@ -1,0 +1,20 @@
+<div class="mobile-navbar-container" [ngClass]="{ open: navBarMobile }">
+  <button (click)="onToggle()" class="close-btn btn">
+    <img src="/assets/logos/navbar-logos/x-icon.svg" alt="Close icon" />
+  </button>
+  <div class="links-container">
+    <div class="first-links">
+      @for (route of routes; track route) {
+      <button class="btn" (click)="navigateToTab(route.routeUrl)">
+        {{ route.routeName }}
+      </button>
+      }
+    </div>
+    <hr />
+    <div class="second-links">
+      @for (tab of tabs; track tab) {
+      <button class="btn">{{ tab }}</button>
+      }
+    </div>
+  </div>
+</div>

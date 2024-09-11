@@ -1,0 +1,30 @@
+@import "_index";
+
+.rating-bar-container {
+  @include flexStyleColumn;
+  gap: 10px;
+  position: absolute;
+  padding-top: 20px;
+  background-color: white;
+  width: 350px;
+  padding-inline: 50px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3); 
+  right: -115px;
+
+  .title {
+    @include linksFont;
+    font-weight: 400;
+  }
+  .check-boxes-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+    mat-checkbox {
+      border-radius: 10px;
+      width: 80%;
+      margin-bottom: 15px;
+    }
+  }
+
+  
+}

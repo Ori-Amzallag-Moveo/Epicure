@@ -1,0 +1,97 @@
+@import "_index";
+
+.ingredients-container {
+  @include flexStyleColumn;
+  @include bodyTextFont;
+  padding-inline: 30px;
+  gap: 15px;
+
+  @include small-screen {
+    gap: 5px;
+    align-items: flex-start;
+    padding-inline: 15px;
+  }
+  @include medium-large-screens {
+    align-items: center;
+    height: 100%;
+  }
+
+  p {
+    text-align: center;
+
+    @include small-screen {
+      text-align: left;
+      height: 50px;
+    }
+    @include medium-screens {
+      font-size: 16px;
+    }
+    @include medium-large-screens {
+      order: 2;
+    }
+  }
+
+  .icon-container {
+    gap: 5px;
+    display: flex;
+
+    @include small-screen {
+      order: 3;
+      padding-top: 15px;
+    }
+    @include medium-large-screens {
+      order: 1;
+    }
+    .place-holder {
+      height: 30px;
+      width: 40px;
+      margin-bottom: 5px;
+    }
+    .icon {
+      @include small-screen {
+        width: 20px;
+        height: 20px;
+
+        :host-context(.restaurant-container) .icon-container {
+          display: none;
+        }
+      }
+      @include medium-large-screens {
+        width: 40px;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  .price-container {
+    @include flexStyleRow;
+    height: fit-content;
+    margin-top: auto;
+    order: 3;
+    gap: 10px;
+    width: 100%;
+
+    @include small-screen {
+      order: 4;
+      height: 30px;
+    }
+
+    .line {
+      flex: 1;
+      display: flex;
+      border: 0.5px solid #979797;
+
+      @include small-screen {
+        display: none;
+
+        :host-context(.restaurant-container) & {
+          display: flex;
+          border: 0.5px solid #979797;
+        }
+      }
+    }
+  }
+}
+app-coin {
+  padding-top: 10px;
+}

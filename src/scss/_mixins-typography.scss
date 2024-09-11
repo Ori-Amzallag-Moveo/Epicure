@@ -1,26 +1,25 @@
-@import "_fonts";
 @import "_helpers";
 @import "_media-queries";
 
 /* Mobile and Desktop Mixins */
 @mixin h1Font {
-  @include responsiveFont(200, 24px, 32px, 2px);
+  @include responsiveFont(200, 24px, 30px, 2px);
 }
 
 @mixin h2Font {
-  @include responsiveFont(200, 18px, 30px, 1.25px);
+  @include responsiveFont(200, 16px, 25px, 1.25px);
 }
 
 @mixin h3Font {
-  @include responsiveFont(400, 18px, 40px, 2.7px);
+  @include responsiveFont(400, 18px, 35px, 2.7px);
 }
 
 @mixin bodyTextFont {
-  @include responsiveFont(200, 16px, 24px, 2px);
+  @include responsiveFont(200, 12px, 24px, 2px);
 }
 
 @mixin buttonFont {
-  @include responsiveFont(400, 18px, 18px, 2.7px);
+  @include responsiveFont(200, 18px, 18px, 2.7px);
 }
 
 @mixin inputTextFont {
@@ -28,15 +27,15 @@
 }
 
 @mixin labelTextFont {
-  @include responsiveFont(200, 14px, 14px, 2px);
+  @include responsiveFont(400, 14px, 14px, 2px);
 }
 
 @mixin searchBarFont {
-  @include responsiveFont(200, 12px, 24px, 1.3px);
+  @include responsiveFont(200,  0.6rem, 1.2rem, 1.5px);
 }
 
 @mixin restaurantsLinkFont {
-  @include responsiveFont(400, 16px, 24px, 2px);
+  @include responsiveFont(400, 15px, 24px, 2px);
 }
 
 @mixin iconLabelFont {
@@ -44,13 +43,42 @@
 }
 
 @mixin chefPhotoNameFont {
-  @include responsiveFont(400, 18px, 40px, 2.65px);
+  @include responsiveFont(400, 18px, 22px, 2.65px);
 }
 
 @mixin articleTextFont {
-  @include responsiveFont(200, 18px, 24px, 1.25px);
+  @include responsiveFont(200, 14px, 24px, 1.25px);
 }
 
 @mixin articleSubHeaderFont {
   @include responsiveFont(200, 16px, 30px, 1.25px);
 }
+
+@mixin linksFont {
+  @include responsiveFont(200, 14px, 24px, 2px);
+}
+
+@mixin footerFont {
+  @include responsiveFont(200, 14px, 18px, 2px);
+}
+
+@mixin filterBarFont {
+  @include responsiveFont(200, 18px, 18px, 2px);
+}
+
+@mixin loginButton {
+  @include responsiveFont(400, 18px, 18px, 2.5px);
+}
+
+@mixin errorFont {
+  @include responsiveFont(300, 0.8rem, 0.8rem, 2px);
+}
+
+@mixin placeHolderFormFont {
+  @include responsiveFont(100, 12px, 12px, 2px);
+}
+
+
+
+
+

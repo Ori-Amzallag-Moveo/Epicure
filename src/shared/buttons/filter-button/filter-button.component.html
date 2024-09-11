@@ -1,0 +1,7 @@
+<button
+  class="filter-item btn {{ getFilterClass() }} "
+  [style.fontSize.px]="fontSize"
+  [ngClass]="{ active: selectedFilter === filter }"
+  (click)="setFilter()">
+  {{ filter }}
+</button>

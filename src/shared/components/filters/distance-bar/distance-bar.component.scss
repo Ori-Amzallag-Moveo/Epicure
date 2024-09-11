@@ -1,0 +1,48 @@
+@import "_index";
+
+.distance-bar-container {
+  @include flexStyleColumn;
+  gap: 10px;
+  position: absolute;
+  padding-top: 20px;
+  background-color: white;
+  width: 350px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3); 
+  right: -100px;
+
+  .title {
+    @include linksFont;
+    font-weight: 400;
+  }
+  p {
+    @include inputTextFont;
+    font-weight: 300;
+  }
+  .distance {
+    position: absolute;
+    top: 65px;
+    z-index: 1;
+    right: 30px;
+  }
+  .slider-background {
+    background-color: $cremeColor;
+    border-radius: 10px;
+    width: 310px;
+    height: 65px;
+    margin-bottom: 30px;
+
+    mat-slider {
+      width: 90%;
+      margin-bottom: 30px;
+      margin-top: 15px;
+    }
+  }
+
+  .my-location {
+    position: absolute;
+    top: 65px;
+    z-index: 1;
+    left: 30px;
+  }
+
+}

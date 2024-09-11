@@ -1,0 +1,35 @@
+@import "_index";
+
+.icons-wrapper {
+  @include componentPadding;
+  background-color: $lightGreyColor;
+  @include flexStyleColumn;
+
+  h2 {
+    @include h2Font;
+    text-transform: uppercase;
+    margin-top: 25px;
+    margin-bottom: 30px;
+
+    @include medium-screens {
+      margin-top: 35px;
+    }
+  }
+
+  .icons-container {
+    @include flexStyleColumn;
+    gap: 55px;
+    margin-bottom: 25px;
+
+    @include medium-screens {
+      @include flexStyleRow;
+      margin-bottom: 35px;
+      gap: 40px;
+    }
+
+    @include large-screens {
+      @include flexStyleRow;
+      gap: 40px;
+    }
+  }
+}

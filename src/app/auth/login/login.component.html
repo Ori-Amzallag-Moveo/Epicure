@@ -1,0 +1,64 @@
+<div class="modal-background">
+  <div class="modal-container">
+    <!-- <button (click)="onClose()" type="button" class="btn">
+      <img class="x-icon" src="/assets/logos/navbar-logos/x-icon.svg" alt="Close icon"/>
+    </button> -->
+    <div class="modal-content">
+      <div class="title">
+        <h2>SIGN IN</h2>
+        <p>Welcome to Epicure, please sign in</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="inputs">
+          <div class="input-wrapper">
+            <p class="place-holder">Email address</p>
+            <input
+              type="email"
+              autocomplete="off"
+              id="email"
+              formControlName="email"/>
+  
+            <div class="error error-1" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+              <span *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+            </div>
+          </div>
+
+          <div class="input-wrapper">
+            <p class="place-holder">Password</p>
+            <input
+              [type]="passwordVisible ? 'text' : 'password'"
+              formControlName="password"/>
+            <button [ngClass]="{ 'flipped': passwordVisible }" (click)="onEyeClick()" type="button" class="btn eye-img">
+              <img [src]="passwordVisible ? 'assets/eye-slash-icon.svg' : 'assets/eye-icon.svg'" alt="Toggle password visibility" />
+            </button>
+          </div>
+
+          <div class="error error-2" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
+            <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters</span>
+          </div>
+        </div>
+
+        <div class="second-form">
+          <div class="login-forgot">
+            <button class="login" [ngClass]="{ 'valid-register': loginForm.valid }" type="submit" [disabled]="loginForm.invalid">Login</button>
+            <div class="error4" *ngIf="!isLoginSuccessful">{{errorMessage}}</div>
+
+            <button type="button" class="btn forgot-password">Forgot password?</button>
+          </div>
+
+          <div class="or-lines">
+            <hr class="line" />
+            <p>or</p>
+            <hr class="line" />
+          </div>
+
+          <button type="button" (click)="goToRegister()" class="sign-up">SIGN UP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

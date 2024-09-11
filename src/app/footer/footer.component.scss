@@ -1,0 +1,35 @@
+@import "_index";
+
+.footer-wrapper {
+  @include componentPadding;
+
+  @include small-screen {
+    @include smallPadding;
+  }
+
+  @include medium-large-screens {
+    @include bigPadding;
+  }
+
+  .footer-container {
+    gap: 40px;
+
+    button {
+      @include footerFont;
+    }
+
+    @include small-screen {
+      @include flexStyleColumn;
+      width: 100%;
+      align-items: flex-start;
+      padding-bottom: 25px;
+    }
+
+    @include medium-large-screens {
+      @include flexStyleRow;
+      width: 100%;
+      justify-content: center;
+      padding-bottom: 50px;
+    }
+  }
+}

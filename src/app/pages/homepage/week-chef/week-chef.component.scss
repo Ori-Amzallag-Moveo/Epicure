@@ -1,0 +1,99 @@
+@import "_index";
+
+.week-chef-wrapper {
+  @include componentPadding;
+
+  @include small-screen {
+    @include smallPadding;
+  }
+  @include medium-large-screens {
+    @include bigPadding;
+  }
+  .week-chef-container {
+    max-width: 1440px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include small-screen {
+      align-items: flex-start;
+      overflow: hidden;
+    }
+
+    h2 {
+      @include h2Font;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+
+      @include medium-large-screens {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+    }
+    .descripition-container {
+      app-week-chef-picture {
+        width: 700px;
+      }
+      @include medium-large-screens {
+        @include flexStyleRow;
+        gap: 50px;
+        align-items: flex-start;
+      }
+
+      .chef-description {
+        @include articleTextFont;
+        text-align: justify;
+        margin-bottom: 30px;
+        width: 100%;
+
+        @include small-screen {
+          line-height: 25px;
+        }
+        @media (min-width: 875px) and (max-width: 1225px) {
+          font-size: 20px;
+          line-height: 25px;
+        }
+        @include large-screens {
+          line-height: 40px;
+        }
+      }
+    }
+
+    .restaurants-container {
+      h3 {
+        @include articleSubHeaderFont;
+        margin-bottom: 15px;
+        margin-top: 20px;
+      }
+
+      .cards-container {
+        @include small-screen {
+          @include flexStyleRow;
+          align-items: flex-start;
+          margin-bottom: 15px;
+        }
+
+        @include medium-screens {
+          margin-right: 200px;
+        }
+        @include large-screens {
+          margin-right: 300px;
+        }
+      }
+    }
+  }
+}
+
+.swiper-container {
+  @include small-screen {
+    height: 220px;
+  }
+  @include medium-large-screens {
+    height: 330px;
+  }
+}
+app-restaurants-button {
+  @include medium-large-screens {
+    display: none;
+  }
+}

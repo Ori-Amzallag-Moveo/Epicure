@@ -1,0 +1,17 @@
+<div class="chef-page-wrapper">
+  <div class="chef-page-container">
+    <div class="chefs-wrapper">
+      <div class="chefs-container">
+        <div class="chefs-content">
+          <app-filter-chefs />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-filter-bar
+  [pageName]="'Chefs'"
+  [tabsNames]="filters"
+  [secondTabsNames]="secondFilters"
+  (filterChange)="onFilterChange($event)"
+/>
