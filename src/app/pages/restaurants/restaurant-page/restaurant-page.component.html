@@ -1,5 +1,7 @@
+<app-loading *ngIf="isLoading" [showOverlay]="true"></app-loading>
+
 @if (restaurant) {
-<div class="restaurant-page-wrapper">
+<div  class="restaurant-page-wrapper">
   <div class="restaurant-container">
     <img class="restaurant-img" [src]="restaurant.imageSrc" [alt]="restaurant.name" />
     <h3 class="restaurant-name">{{ restaurant.name }}</h3>
@@ -17,7 +19,7 @@
       [tabsNames]="filters"
       [fontSize]="filterBarFontSize"
     />
-    <div class="dishes-container">
+    <div *ngIf="!isLoading" class="dishes-container">
       @for (dish of dishes; track dish._id) {
       <app-dish-card [dish]="dish" />
       }

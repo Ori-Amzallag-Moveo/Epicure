@@ -1,4 +1,6 @@
-<div class="filter-restaurants-wrapper" (scroll)="onScroll()">
+<app-loading *ngIf="isLoading" [showOverlay]="true"></app-loading>
+
+<div *ngIf="!isLoading" class="filter-restaurants-wrapper" (scroll)="onScroll()">
   <div class="filter-restaurants-container">
     @for (restaurant of restaurants; track restaurant) {
       <a class="btn" (click)="goToRestaurant(restaurant._id)">

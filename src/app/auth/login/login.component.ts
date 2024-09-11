@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -20,6 +26,8 @@ import { HeaderService } from '../../header/header.service';
 })
 export class LoginComponent implements OnInit {
   @Output() moveToRegister = new EventEmitter<AuthModel>();
+
+  private mobileBreakpoint = 875;
 
   loginForm!: FormGroup;
   errorMessage?: string;
@@ -48,6 +56,12 @@ export class LoginComponent implements OnInit {
           this.isLoginSuccessful = true;
           this.authService.setShowAuth(false);
           this.authService.handleLoginSuccess(response.access_token);
+
+          // Check screen width and toggle navbar if on mobile
+          const screenWidth = window.innerWidth; // Get current screen width
+          if (screenWidth <= this.mobileBreakpoint) {
+            this.headerService.toggleNavbar(); // Call the headerService to toggle navbar for mobile
+          }
         },
         (error) => {
           this.isLoginSuccessful = false;
@@ -68,5 +82,18 @@ export class LoginComponent implements OnInit {
 
   onClose() {
     this.authService.setShowAuth(false);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    const screenWidth = event.target.innerWidth;
+    this.toggleNavbarBasedOnScreenSize(screenWidth);
+  }
+
+  // Function to toggle the navbar based on screen width
+  toggleNavbarBasedOnScreenSize(screenWidth: number) {
+    if (screenWidth <= this.mobileBreakpoint) {
+      this.headerService.toggleNavbar();
+    }
   }
 }
