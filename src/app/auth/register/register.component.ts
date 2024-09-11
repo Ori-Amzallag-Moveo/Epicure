@@ -65,10 +65,9 @@ export class RegisterComponent implements OnInit {
           this.isRegisterSuccessful = true;
           this.authService.setShowAuth(false);
 
-          // Check screen width and toggle navbar if on mobile
-          const screenWidth = window.innerWidth; // Get current screen width
+          const screenWidth = window.innerWidth; 
           if (screenWidth <= this.mobileBreakpoint) {
-            this.headerService.toggleNavbar(); // Call the headerService to toggle navbar for mobile
+            this.headerService.toggleNavbar(); 
           }
         },
         (error) => {
