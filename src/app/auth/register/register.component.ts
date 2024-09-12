@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -21,6 +21,8 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
   @Output() moveToLogin = new EventEmitter<AuthModel>();
+
+  private mobileBreakpoint = 875;
 
   registerForm!: FormGroup;
   isRegisterSuccessful: boolean = true;
@@ -62,6 +64,11 @@ export class RegisterComponent implements OnInit {
           this.authService.handleLoginSuccess(response.access_token); 
           this.isRegisterSuccessful = true;
           this.authService.setShowAuth(false);
+
+          const screenWidth = window.innerWidth; 
+          if (screenWidth <= this.mobileBreakpoint) {
+            this.headerService.toggleNavbar(); 
+          }
         },
         (error) => {
           console.error('Registration failed', error);
@@ -101,5 +108,18 @@ export class RegisterComponent implements OnInit {
 
   onClose() {
     this.authService.setShowAuth(false);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    const screenWidth = event.target.innerWidth;
+    this.toggleNavbarBasedOnScreenSize(screenWidth);
+  }
+
+  // Function to toggle the navbar based on screen width
+  toggleNavbarBasedOnScreenSize(screenWidth: number) {
+    if (screenWidth <= this.mobileBreakpoint) {
+      this.headerService.toggleNavbar();
+    }
   }
 }

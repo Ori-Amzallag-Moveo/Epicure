@@ -1,14 +1,17 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { WeekChefPictureComponent } from '../../../../shared/components/week-chef-picture/week-chef-picture.component';
 import { Chef } from '../../../models/chef.model';
-import { ChefsService } from '../chefs.service';
 import { ChefQueryParams } from '../../../models/queries.model';
+import { ChefsService } from '../chefs.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-filter-chefs',
   standalone: true,
-  imports: [WeekChefPictureComponent],
+  imports: [WeekChefPictureComponent, LoadingComponent, CommonModule],
   templateUrl: './filter-chefs.component.html',
   styleUrls: ['./filter-chefs.component.scss'] 
 })

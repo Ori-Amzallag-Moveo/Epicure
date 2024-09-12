@@ -1,16 +1,19 @@
-import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
-import { FilterBarComponent } from '../../../../shared/components/filters/filter-bar/filter-bar.component';
-import { Dish } from '../../../models/dish.model';
-import { DishCardComponent } from '../../../../shared/components/cards/dish-card/dish-card.component';
+import { CommonModule } from '@angular/common';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestaurantsService } from '../restaurants.service';
-import { Restaurant } from '../../../models/Restaurant.model';
+
 import { isRestaurantOpen } from '../../../../helpers/isopen.helper';
+import { DishCardComponent } from '../../../../shared/components/cards/dish-card/dish-card.component';
+import { FilterBarComponent } from '../../../../shared/components/filters/filter-bar/filter-bar.component';
+import { LoadingComponent } from "../../../../shared/components/loading/loading.component";
+import { Restaurant } from '../../../models/Restaurant.model';
+import { Dish } from '../../../models/dish.model';
+import { RestaurantsService } from '../restaurants.service';
 
 @Component({
   selector: 'app-restaurant-page',
   standalone: true,
-  imports: [FilterBarComponent, DishCardComponent],
+  imports: [FilterBarComponent, DishCardComponent, LoadingComponent, CommonModule],
   templateUrl: './restaurant-page.component.html',
   styleUrl: './restaurant-page.component.scss',
 })
@@ -21,6 +24,7 @@ export class RestaurantPageComponent implements OnInit {
   dishes: Dish[] = [];
   restaurantIsOpen: boolean | null = null;
   filterBarFontSize !: number;
+  isLoading: boolean = false;
 
   private smallScreenSize = 875;
   private largeScreenSize = 1024;
@@ -48,12 +52,14 @@ export class RestaurantPageComponent implements OnInit {
   }
 
   async loadRestaurantData(restaurantId: string) {
+
     this.route.queryParams.subscribe(async (params) => {
       const meal = params['meal'] || '';
       this.selectedFilter = meal
         ? meal.charAt(0).toUpperCase() + meal.slice(1)
         : '';
       try {
+        this.isLoading = true;
         this.restaurant = await this.restaurantsService.getRestaurantById(
           restaurantId,
           meal
@@ -64,6 +70,8 @@ export class RestaurantPageComponent implements OnInit {
         }
       } catch (error) {
         console.error('Error loading restaurant data:', error);
+      } finally {
+        this.isLoading = false;
       }
     });
   }

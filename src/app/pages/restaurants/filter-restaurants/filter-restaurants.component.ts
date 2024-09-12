@@ -2,13 +2,15 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { GenericCardComponent } from '../../../../shared/components/cards/generic-card/generic-card.component';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { Restaurant } from '../../../models/Restaurant.model';
 import { RestaurantQueryParams } from '../../../models/queries.model';
 import { RestaurantsService } from '../restaurants.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-filter-restaurants',
   standalone: true,
-  imports: [GenericCardComponent],
+  imports: [GenericCardComponent, LoadingComponent, CommonModule],
   templateUrl: './filter-restaurants.component.html',
   styleUrls: ['./filter-restaurants.component.scss'],
 })
