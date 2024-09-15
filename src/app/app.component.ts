@@ -3,7 +3,6 @@ import { Router, RouterOutlet } from '@angular/router';
 
 import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -19,7 +18,6 @@ import { RestaurantsComponent } from './pages/restaurants/restaurants.component'
     FooterComponent,
     RestaurantsComponent,
     LoginComponent,
-    RegisterComponent,
   ],
   templateUrl: './app.component.html',
 })

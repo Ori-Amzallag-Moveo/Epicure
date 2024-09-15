@@ -1,64 +1,84 @@
 <div class="modal-background">
   <div class="modal-container">
-    <!-- <button (click)="onClose()" type="button" class="btn">
-      <img class="x-icon" src="/assets/logos/navbar-logos/x-icon.svg" alt="Close icon"/>
-    </button> -->
     <div class="modal-content">
       <div class="title">
-        <h2>SIGN IN</h2>
-        <p>Welcome to Epicure, please sign in</p>
+        <h2 *ngIf="isLoginMode">SIGN IN</h2>
+        <h2 *ngIf="!isLoginMode">SIGN UP</h2>
+        <p>Welcome to Epicure, please {{ isLoginMode ? 'sign in' : 'sign up' }}</p>
       </div>
 
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
         <div class="inputs">
+          <!-- Email Input -->
           <div class="input-wrapper">
             <p class="place-holder">Email address</p>
             <input
               type="email"
-              autocomplete="off"
-              id="email"
-              formControlName="email"/>
-  
-            <div class="error error-1" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-              <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
-              <span *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+              formControlName="email"
+              required
+            />
+            <div class="error" *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched">
+              <span *ngIf="authForm.get('email')?.errors?.['required']">Email is required</span>
+              <span *ngIf="authForm.get('email')?.errors?.['email']">Please enter a valid email</span>
             </div>
           </div>
 
+          <!-- Password Input -->
           <div class="input-wrapper">
             <p class="place-holder">Password</p>
             <input
               [type]="passwordVisible ? 'text' : 'password'"
-              formControlName="password"/>
-            <button [ngClass]="{ 'flipped': passwordVisible }" (click)="onEyeClick()" type="button" class="btn eye-img">
+              formControlName="password"
+            />
+            <button [ngClass]="{ 'flipped': passwordVisible }" (click)="onPasswordEyeClick()" type="button" class="btn eye-img">
               <img [src]="passwordVisible ? 'assets/eye-slash-icon.svg' : 'assets/eye-icon.svg'" alt="Toggle password visibility" />
             </button>
           </div>
 
-          <div class="error error-2" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-            <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
-            <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters</span>
+          <!-- Confirm Password Input (Only for Register) -->
+          <div class="input-wrapper" *ngIf="!isLoginMode">
+            <p class="place-holder">Confirm password</p>
+            <input
+              [type]="confirmPasswordVisible ? 'text' : 'password'"
+              formControlName="confirmPassword"
+            />
+            <button [ngClass]="{ 'flipped-2': confirmPasswordVisible }" (click)="onConfirmPasswordEyeClick()" type="button" class="btn eye-img">
+              <img [src]="confirmPasswordVisible ? 'assets/eye-slash-icon.svg' : 'assets/eye-icon.svg'" alt="Toggle confirm password visibility" />
+            </button>
+            <div class="error" *ngIf="authForm.errors?.['passwordsMismatch'] && authForm.get('confirmPassword')?.touched">
+              Passwords do not match
+            </div>
           </div>
         </div>
 
+        <!-- Action Button -->
         <div class="second-form">
-          <div class="login-forgot">
-            <button class="login" [ngClass]="{ 'valid-register': loginForm.valid }" type="submit" [disabled]="loginForm.invalid">Login</button>
-            <div class="error4" *ngIf="!isLoginSuccessful">{{errorMessage}}</div>
+          <button
+            class="submit"
+            [ngClass]="{ 'valid-register': authForm.valid }"
+            type="submit"
+            [disabled]="authForm.invalid"
+          >
+            {{ isLoginMode ? 'Login' : 'Register' }}
+          </button>
 
-            <button type="button" class="btn forgot-password">Forgot password?</button>
-          </div>
+          <div class="error4" *ngIf="!isSubmitSuccessful">{{ errorMessage }}</div>
 
+          <!-- Forgot Password (Only for Login) -->
+          <button *ngIf="isLoginMode" type="button" class="btn forgot-password">Forgot password?</button>
+
+          <!-- Toggle between Login and Register -->
           <div class="or-lines">
             <hr class="line" />
             <p>or</p>
             <hr class="line" />
           </div>
 
-          <button type="button" (click)="goToRegister()" class="sign-up">SIGN UP</button>
+          <button type="button" (click)="toggleMode()" class="toggle-auth">
+            {{ isLoginMode ? 'SIGN UP' : 'SIGN IN' }}
+          </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-

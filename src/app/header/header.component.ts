@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HeaderService } from './header.service';
-import { MobileNavbarComponent } from '../../shared/components/mobile-navbar/mobile-navbar.component';
-import { Router, NavigationEnd, Event } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Event, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
+import { MobileNavbarComponent } from '../../shared/components/mobile-navbar/mobile-navbar.component';
+import { HeaderService } from './header.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private headerService: HeaderService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {

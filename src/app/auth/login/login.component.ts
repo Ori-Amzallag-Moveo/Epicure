@@ -2,9 +2,8 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
-  HostListener,
   OnInit,
-  Output,
+  Output
 } from '@angular/core';
 import {
   FormBuilder,
@@ -13,9 +12,11 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { AuthModel } from '../../models/auth.model';
-import { AuthService } from '../auth.service';
+import { Subscription } from 'rxjs';
 import { HeaderService } from '../../header/header.service';
+import { AuthModel } from '../../models/auth.model';
+import { ScreenSizeService } from '../../services/screen.size.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,73 +27,108 @@ import { HeaderService } from '../../header/header.service';
 })
 export class LoginComponent implements OnInit {
   @Output() moveToRegister = new EventEmitter<AuthModel>();
-
-  private mobileBreakpoint = 875;
-
-  loginForm!: FormGroup;
+  authStatus: 'login' | 'register' = 'login';
+  authForm!: FormGroup;
+  isLoginMode: boolean = true;
   errorMessage?: string;
-  isLoginSuccessful: boolean = true;
+  isSubmitSuccessful: boolean = true;
   passwordVisible: boolean = false;
-  passwordFieldType: string = 'password';
+  confirmPasswordVisible: boolean = false;
+
+  private screenSizeSubscription!: Subscription; 
 
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    public screenSizeService: ScreenSizeService 
   ) {}
 
   ngOnInit() {
-    this.loginForm = this.fb.group({
+    this.authForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#$%^&*])/), // Custom pattern for 1 uppercase letter and 1 special symbol
+      ]],
+      confirmPassword: [''], 
     });
+    this.authForm.get('confirmPassword')?.disable();
+  }
+
+  ngOnDestroy() {
+    if (this.screenSizeSubscription) {
+      this.screenSizeSubscription.unsubscribe();
+    }
+  }
+
+  toggleMode() {
+    this.isLoginMode = !this.isLoginMode;
+
+    // Dynamically add/remove confirm password validation
+    const confirmPasswordControl = this.authForm.get('confirmPassword');
+    if (this.isLoginMode) {
+      confirmPasswordControl?.clearValidators();
+    } else {
+      confirmPasswordControl?.setValidators([Validators.required, this.matchPasswordsValidator()]);
+    }
+    confirmPasswordControl?.updateValueAndValidity();
+  }
+
+  matchPasswordsValidator() {
+    return () => {
+      const password = this.authForm.get('password')?.value;
+      const confirmPassword = this.authForm.get('confirmPassword')?.value;
+      return password === confirmPassword ? null : { passwordsMismatch: true };
+    };
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
+    if (this.authForm.invalid) return;
+
+    const { email, password } = this.authForm.value;
+
+    if (this.isLoginMode) {
+      // Login logic
       this.authService.login({ email, password }).subscribe(
         (response: { access_token: string }) => {
-          this.isLoginSuccessful = true;
+          this.isSubmitSuccessful = true;
           this.authService.setShowAuth(false);
           this.authService.handleLoginSuccess(response.access_token);
 
-          const screenWidth = window.innerWidth; 
-          if (screenWidth <= this.mobileBreakpoint) {
-            this.headerService.toggleNavbar(); 
-          }
+          this.screenSizeSubscription = this.screenSizeService.isHandset$.subscribe((isMobile: boolean) => {
+            if (isMobile) {
+              this.headerService.toggleNavbar();
+            }
+          });
         },
         (error) => {
-          this.isLoginSuccessful = false;
+          this.isSubmitSuccessful = false;
+          this.errorMessage = error.error.error;
+        }
+      );
+    } else {
+      // Registration logic
+      this.authService.register({ email, password }).subscribe(
+        (response) => {
+          this.isSubmitSuccessful = true;
+          this.authService.setShowAuth(false);
+          this.authService.handleLoginSuccess(response.access_token); // Handle successful registration
+        },
+        (error) => {
+          this.isSubmitSuccessful = false;
           this.errorMessage = error.error.error;
         }
       );
     }
   }
 
-  onEyeClick() {
+  onPasswordEyeClick() {
     this.passwordVisible = !this.passwordVisible;
-    this.passwordFieldType = this.passwordVisible ? 'text' : 'password';
   }
 
-  goToRegister() {
-    this.moveToRegister.emit('register');
-  }
-
-  onClose() {
-    this.authService.setShowAuth(false);
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any): void {
-    const screenWidth = event.target.innerWidth;
-    this.toggleNavbarBasedOnScreenSize(screenWidth);
-  }
-
-  // Function to toggle the navbar based on screen width
-  toggleNavbarBasedOnScreenSize(screenWidth: number) {
-    if (screenWidth <= this.mobileBreakpoint) {
-      this.headerService.toggleNavbar();
-    }
+  onConfirmPasswordEyeClick() {
+    this.confirmPasswordVisible = !this.confirmPasswordVisible;
   }
 }
