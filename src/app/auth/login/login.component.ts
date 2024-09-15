@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         Validators.minLength(8),
         Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#$%^&*])/), // Custom pattern for 1 uppercase letter and 1 special symbol
       ]],
-      confirmPassword: [''], 
+      confirmPassword: ['', Validators.required], 
     });
     this.authForm.get('confirmPassword')?.disable();
   }
@@ -65,13 +65,22 @@ export class LoginComponent implements OnInit {
 
   toggleMode() {
     this.isLoginMode = !this.isLoginMode;
-
-    // Dynamically add/remove confirm password validation
+    const passwordControl = this.authForm.get('password');
     const confirmPasswordControl = this.authForm.get('confirmPassword');
     if (this.isLoginMode) {
+      // In login mode, remove validators and disable confirmPassword field
       confirmPasswordControl?.clearValidators();
+      confirmPasswordControl?.disable();
     } else {
+      // In register mode, enable and add validators to confirmPassword field
+      passwordControl?.setValidators( [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#$%^&*])/), // Custom pattern for 1 uppercase letter and 1 special symbol
+      ]);
+      confirmPasswordControl?.enable();
       confirmPasswordControl?.setValidators([Validators.required, this.matchPasswordsValidator()]);
+      confirmPasswordControl?.enable();
     }
     confirmPasswordControl?.updateValueAndValidity();
   }
